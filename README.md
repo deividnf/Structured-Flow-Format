@@ -1,3 +1,76 @@
+## 🖼️ Como visualizar o SVG gerado (lanes-only)
+
+Após rodar o comando:
+```sh
+python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only > export/lanes_only_tb.svg
+```
+Abra o arquivo export/lanes_only_tb.svg no VS Code (basta clicar) ou arraste para o navegador. Você verá um bloco único dividido em faixas, com títulos na esquerda (TB) ou topo (LR).
+
+Exemplo visual TB:
+![lanes-only TB](docs/screenshots/lanes_only_tb.png)
+
+Exemplo visual LR:
+![lanes-only LR](docs/screenshots/lanes_only_lr.png)
+
+Se preferir, use o comando `code export/lanes_only_tb.svg` para abrir direto no VS Code.
+
+### Logs de exemplo (refino BPMN)
+```
+[LANES-ONLY] direction=TB, n_lanes=3
+[LANES-ONLY] TB: container x=24, y=24, w=956, h=720
+[LANES-ONLY] Lane user TB: x=24, y=24, w=956, h=240, title="Usuário"
+[LANES-ONLY] Lane system TB: x=24, y=264, w=956, h=240, title="Sistema"
+[LANES-ONLY] Lane gateway TB: x=24, y=504, w=956, h=240, title="Gateway"
+[LANES-ONLY] TB: total_width=1004, total_height=768
+```
+7. **Exportar apenas as lanes (boxes/baias) em SVG:**
+    ```sh
+    python -m core.cli export <caminho_para_arquivo.sff> --format svg --lanes-only > export/lanes_only.svg
+    ```
+    - Saída esperada:
+       - SVG com apenas as lanes desenhadas, sem nodes/edges/routing
+       - direction=TB: lanes empilhadas, título vertical na esquerda
+       - direction=LR: lanes lado a lado, título horizontal no topo
+       - Lanes “grudadas” (gap pequeno), viewBox auto-ajustado
+    - Logs:
+       - INFO direction, n_lanes, dimensões finais, posição/tamanho de cada lane
+       - ERROR se direction inválida ou lanes vazias
+
+## 🧪 Validação Visual Lanes-Only
+
+### TB (empilhadas)
+1. Use um .sff com 3 lanes (user/system/gateway)
+2. Execute:
+   ```sh
+   python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only > export/lanes_only_tb.svg
+   ```
+3. Abra o SVG gerado (ex: VS Code, navegador)
+4. Confirme:
+   - Lanes empilhadas
+   - Títulos na esquerda, rotacionados
+   - Lanes grudadas
+   - viewBox correto
+
+### LR (lado a lado)
+1. Use um .sff com direction=LR
+2. Execute:
+   ```sh
+   python -m core.cli export exemplo/checkout_flow_lr.sff --format svg --lanes-only > export/lanes_only_lr.svg
+   ```
+3. Abra o SVG gerado
+4. Confirme:
+   - Lanes lado a lado
+   - Títulos no topo, horizontal
+   - Lanes grudadas
+   - viewBox correto
+
+### Logs de exemplo
+```
+[LANES-ONLY] direction=TB, n_lanes=3
+[LANES-ONLY] Lane user TB: x=24, y=24, w=956, h=240, title="Usuário"
+[LANES-ONLY] Lane system TB: x=24, y=278, w=956, h=240, title="Sistema"
+[LANES-ONLY] Lane gateway TB: x=24, y=532, w=956, h=240, title="Gateway"
+```
 
 # Structured Flow Format (SFF) — Guia Visual e Prático
 

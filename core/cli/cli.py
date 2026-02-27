@@ -13,6 +13,7 @@ from core.logger.logger import Logger
 from core.exporters.mermaid_exporter import export_mermaid
 from core.exporters.dot_exporter import export_dot
 from core.exporters.json_exporter import export_json
+from core.exporters.lanes_only_exporter import export_lanes_only
 
 logger = Logger()
 
@@ -23,14 +24,17 @@ def main():
     command = sys.argv[1]
     filepath = sys.argv[2]
     export_format = None
+    lanes_only = False
     if command == "export":
         # Detecta --format
         if '--format' in sys.argv:
             idx = sys.argv.index('--format')
             if len(sys.argv) > idx + 1:
                 export_format = sys.argv[idx + 1].lower()
+        if '--lanes-only' in sys.argv:
+            lanes_only = True
         if not export_format:
-            print("Formato de exportação obrigatório: --format mermaid|dot|json")
+            print("Formato de exportação obrigatório: --format mermaid|dot|json|svg")
             sys.exit(1)
     if command == "validate":
         logger.info(f"Validando arquivo {filepath}")
@@ -136,7 +140,7 @@ def main():
             print(f"Erro: {e}")
             sys.exit(3)
     elif command == "export":
-        logger.info(f"Export iniciado: formato={export_format}, arquivo={filepath}")
+        logger.info(f"Export iniciado: formato={export_format}, arquivo={filepath}, lanes_only={lanes_only}")
         try:
             data = read_sff_file(filepath)
             compiled = compile_sff(data)
@@ -148,20 +152,28 @@ def main():
                 for err in errors:
                     print(f"- {err}")
                 sys.exit(1)
-            layout = generate_layout(data, compiled)
             output = None
-            if export_format == 'mermaid':
+            if export_format == 'svg' and lanes_only:
+                output = export_lanes_only(data)
+            elif export_format == 'mermaid':
+                layout = generate_layout(data, compiled)
                 output = export_mermaid(data, layout)
             elif export_format == 'dot':
+                layout = generate_layout(data, compiled)
                 output = export_dot(data, layout)
             elif export_format == 'json':
+                layout = generate_layout(data, compiled)
                 output = export_json(data, compiled, layout)
+            elif export_format == 'svg':
+                layout = generate_layout(data, compiled)
+                from core.exporters.svg_exporter import export_svg
+                output = export_svg(data, layout)
             else:
                 logger.error(f"Formato de exportação inválido: {export_format}")
                 print(f"Formato de exportação inválido: {export_format}")
                 sys.exit(1)
             print(output)
-            logger.info(f"Export gerado com sucesso: output={export_format}")
+            logger.info(f"Export gerado com sucesso: output={export_format}, lanes_only={lanes_only}")
             sys.exit(0)
         except Exception as e:
             logger.error(str(e))
