@@ -81,41 +81,27 @@ Se direction = TB:
 - Desvios: laterais
 
 Se direction = LR:
-- Entrada principal: esquerda
-- Saída principal: direita
 - Desvios: topo/base
 
 Para nodes do tipo decision:
-- true → lado direito (LR) ou inferior direito (TB)
-- false → lado esquerdo (LR) ou inferior esquerdo (TB)
 - join → convergência central
 
 ---
-
 ## 7. Integração com Lanes
 - Lanes não alteram lógica, apenas organização visual.
 - Cada lane é uma faixa (swimlane); nodes são posicionados dentro da lane correspondente.
 - Ordem visual segue `lane.order`.
-- Nunca misturar nodes fora da sua lane; edges podem cruzar lanes.
 
-## 8. Modelo Interno de Layout
 O engine/compilador deve gerar uma estrutura auxiliar:
 ```json
 "layout": {
   "ranks": {},
-  "positions": {},
   "routing": {}
 }
-```
-- `ranks[node_id]`: nível estrutural
-- `positions[node_id]`: coordenada lógica (grid)
 - `routing[edge_id]`: lista de segmentos ortogonais
 
 ---
-## 8.1 Exemplo de Estrutura Gerada
-```json
 "layout": {
-  "ranks": {"start": 0, "press_power": 1, ...},
   "positions": {"start": [0,0], "press_power": [1,0], ...},
   "routing": {"edge1": [[0,0],[1,0],[1,1]], ...}
 }
@@ -125,15 +111,9 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 
 ## 9. Critérios de Aceite
 - Definição clara de ranks
-- Regra formal de portas
 - Regra formal de roteamento ortogonal
 - Lanes respeitadas visualmente
-- Sem necessidade de posicionamento manual
-- Layout funciona para TB e LR
-- Documentação atualizada
-- Preview via terminal (mesmo que simples)
 
----
 ## 9.1 Checklist de Aceite (Task 01)
 - [x] Definição clara de ranks
 - [x] Regra formal de portas

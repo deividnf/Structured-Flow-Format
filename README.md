@@ -12,6 +12,17 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
 
 ## 🧭 Fluxo de uso — do zero ao log
 
+6. **Exporte o fluxo para outros formatos:**
+    ```sh
+    python -m core.cli export <caminho_para_arquivo.sff> --format mermaid
+    python -m core.cli export <caminho_para_arquivo.sff> --format dot
+    python -m core.cli export <caminho_para_arquivo.sff> --format json
+    ```
+    - Saída esperada:
+       - Mermaid: flowchart TB/LR, lanes agrupadas, decisões com labels Sim/Não
+       - DOT: arquivo DOT com rankdir, clusters por lane, labels
+       - JSON: objeto compilado + layout
+
 5. **Visualize o layout do fluxo (preview):**
     ```sh
     python -m core.cli preview <caminho_para_arquivo.sff>
@@ -71,6 +82,50 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
 ---
 
 ## 🧪 Exemplos práticos
+
+### Export CLI — exemplos de saída
+
+#### Mermaid
+```
+flowchart TB
+subgraph user
+      start[Início]
+      press_power[Pressionar o botão]
+end
+subgraph pc
+      wait_boot[Aguardar]
+end
+start --> press_power
+press_power -->|Sim| wait_boot
+```
+
+#### DOT
+```
+digraph G {
+   rankdir=TB;
+   subgraph cluster_user {
+      label="user";
+      start [label="Início"]
+      press_power [label="Pressionar o botão"]
+   }
+   subgraph cluster_pc {
+      label="pc";
+      wait_boot [label="Aguardar"]
+   }
+   start -> press_power
+   press_power -> wait_boot [label="Sim"]
+}
+```
+
+#### JSON
+```
+{
+   "sff": { ... },
+   "compiled": { ... },
+   "layout": { ... },
+   "export_version": "1.0"
+}
+```
 
 ### Preview CLI — exemplos de saída
 
