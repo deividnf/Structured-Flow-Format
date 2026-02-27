@@ -8,3 +8,12 @@
 2026-02-27 16:19:29 | INFO  | Validação estrutural OK
 2026-02-27 16:22:02 | INFO  | Validando arquivo .\exemplo\order_orchestration_flow.sff
 2026-02-27 16:22:02 | INFO  | Validação estrutural OK
+2026-02-27 16:34:36 | INFO  | Validando arquivo .\exemplo\order_orchestration_flow.sff
+2026-02-27 16:34:36 | INFO  | Validação estrutural OK
+2026-02-27 16:35:06 | INFO  | Compilando arquivo exemplo/checkout_flow.sff
+2026-02-27 16:35:06 | INFO  | Compilação OK
+2026-02-27 16:35:06 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-27 16:37:38 | INFO  | Compilando arquivo .\exemplo\invalid_logic.sff
+2026-02-27 16:37:38 | ERROR | Nó 'end' ('end1') não pode ter edges de saída.
+2026-02-27 16:37:38 | ERROR | Nó 'isolated' não é alcançável a partir do start.
+2026-02-27 16:37:38 | ERROR | Nó 'isolated' está isolado (sem entrada e sem saída).

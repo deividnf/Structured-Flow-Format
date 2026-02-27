@@ -1,0 +1,16 @@
+{
+  "sff": { "version": "1.0", "id": "invalid_logic", "title": "Exemplo Inválido", "direction": "TB" },
+  "entry": { "start": "start", "ends": ["end1"] },
+  "lanes": { "main": { "title": "Main", "order": 1 } },
+  "nodes": {
+    "start": { "type": "start", "lane": "main", "label": "Início" },
+    "process1": { "type": "process", "lane": "main", "label": "Processo" },
+    "end1": { "type": "end", "lane": "main", "label": "Fim" },
+    "isolated": { "type": "process", "lane": "main", "label": "Isolado" }
+  },
+  "edges": [
+    { "from": "start", "to": "process1" },
+    { "from": "process1", "to": "end1" },
+    { "from": "end1", "to": "process1" }  
+  ]
+}

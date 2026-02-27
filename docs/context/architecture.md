@@ -158,23 +158,26 @@ O engine/compilador deve gerar uma estrutura auxiliar:
   - Esperado: saída determinística, sem erros, logs claros, preview mínimo textual
 
 ## 11. Evidências e Documentação
-- Toda alteração nesta arquitetura deve ser registrada neste arquivo.
-- Mudanças operacionais/fluxo: atualizar também `docs/context.md`.
-- Sempre incluir seção "Como validar" em toda entrega.
 
----
 ## Evidências de Execução e Logs (2026-02-27)
 - Testes realizados com arquivos válidos: `exemplo/checkout_flow.sff`, `exemplo/order_orchestration_flow.sff`
-- Comando utilizado:
-  - `python -m core.cli validate exemplo/checkout_flow.sff`
   - `python -m core.cli validate exemplo/order_orchestration_flow.sff`
 - Saída esperada: `Validação estrutural OK`
-- Logs registrados em `logs/layout_engine.log`:
-  - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./exemplo/checkout_flow.sff`
   - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
   - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./exemplo/order_orchestration_flow.sff`
   - `2026-02-27 16:22:02 | INFO  | Validação estrutural OK`
 
+---
+## Fase 3: Validação Lógica e Compilação (2026-02-27)
+- Implementado comando CLI `compile` para validação lógica e geração de índices prev/next.
+- Regras lógicas cobertas: start único, ends válidos, edges coerentes, nós alcançáveis, decisões booleanas corretas.
+- Exemplo de uso:
+  - `python -m core.cli compile exemplo/checkout_flow.sff` (válido)
+  - `python -m core.cli compile exemplo/invalid_logic.sff` (inválido)
+- Saída esperada: `Compilação OK!` ou lista de erros lógicos.
+- Logs detalhados em `logs/layout_engine.log`.
+
+---
 ---
 ## Checklist de Entrega (Task 01/02)
 - [x] Estrutura e arquitetura documentadas

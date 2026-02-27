@@ -1,77 +1,91 @@
-# README — Teste e Validação Inicial do SFF
 
-Este projeto implementa o núcleo do Structured Flow Format (SFF) para leitura, validação e logging de arquivos .sff (JSON).
+# Structured Flow Format (SFF) — Guia Visual e Prático
 
----
-
-## Validação Terminal — Guia Completo
-
-### 1. Comando de validação
-Execute na raiz do projeto:
-```
-python -m core.cli validate <caminho_para_arquivo.sff>
-```
-Exemplo:
-```
-python -m core.cli validate exemplo/checkout_flow.sff
-python -m core.cli validate exemplo/order_orchestration_flow.sff
-```
-
-### 2. Saída esperada
-- Se o arquivo estiver correto: `Validação estrutural OK`
-- Se houver erro estrutural: lista de erros exibida e registrada em log
-
-### 3. Logs
-- Todos os eventos são registrados em `logs/layout_engine.log`
-- Exemplo de log:
-   - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./exemplo/checkout_flow.sff`
-   - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
-- Mensagens de erro seguem o padrão:
-   - `2026-02-27 16:16:48 | ERROR | Bloco obrigatório ausente: sff`
-
-### 4. Evidências de execução
-- Testes realizados com arquivos válidos e inválidos.
-- Logs e saídas conferidos conforme esperado.
-
-### 5. Como reproduzir
-1. Crie ou copie um arquivo `.sff` válido para a pasta desejada.
-2. Execute o comando de validação.
-3. Verifique a saída no terminal e o conteúdo do log.
-4. Para auditoria, mantenha os logs salvos.
+> **Automatize, valide e audite fluxos estruturados com SFF.**
 
 ---
 
-## Estrutura do Core
+## 🚀 O que é este projeto?
+Este repositório implementa o núcleo do SFF: um formato declarativo para modelar, validar e compilar fluxogramas de processos de forma determinística, auditável e automatizável.
 
 ---
 
-## Como testar a validação
+## 🧭 Fluxo de uso — do zero ao log
 
-1. Certifique-se de ter Python 3.8+ instalado.
-2. Navegue até a raiz do projeto:
+1. **Crie ou edite um arquivo `.sff` (JSON) representando seu fluxo.**
+2. **Valide a estrutura:**
+   ```sh
+   python -m core.cli validate <caminho_para_arquivo.sff>
    ```
-   cd Structured Flow Format
+   Exemplo:
+   ```sh
+   python -m core.cli validate exemplo/checkout_flow.sff
+   python -m core.cli validate exemplo/order_orchestration_flow.sff
    ```
-3. Execute o comando de validação:
+   - Saída esperada: `Validação estrutural OK` ou lista de erros estruturais.
+3. **Compile e valide regras lógicas:**
+   ```sh
+   python -m core.cli compile <caminho_para_arquivo.sff>
    ```
-   python -m core.cli validate docs/model/example.sff.json
+   Exemplo:
+   ```sh
+   python -m core.cli compile exemplo/checkout_flow.sff
+   python -m core.cli compile exemplo/invalid_logic.sff
    ```
+   - Saída esperada: `Compilação OK!` e índices prev/next, ou lista de erros lógicos.
+4. **Confira os logs:**
+   - Todos os eventos são registrados em `logs/layout_engine.log`.
+   - Exemplo:
+     ```
+     2026-02-27 17:00:00 | INFO  | Compilando arquivo exemplo/checkout_flow.sff
+     2026-02-27 17:00:00 | INFO  | Compilação OK
+     2026-02-27 17:01:00 | INFO  | Compilando arquivo exemplo/invalid_logic.sff
+     2026-02-27 17:01:00 | ERROR | Nó 'end1' não pode ter edges de saída.
+     ```
 
-### Saída esperada
-- "Validação estrutural OK" se o arquivo estiver correto.
-- Em caso de erro, serão exibidas mensagens de erro e registradas em `logs/layout_engine.log`.
+---
 
-### Logs
-- Os logs são persistidos em `logs/layout_engine.log`.
-- Mensagens INFO, ERROR e WARN são registradas conforme execução.
+## 🧪 Exemplos práticos
 
-## Estrutura de arquivos para teste
-- Utilize o arquivo de exemplo: `docs/model/example.sff.json`
+### Exemplo válido
+- `exemplo/checkout_flow.sff` — fluxo correto, passa em todas as validações.
 
-## Troubleshooting
+### Exemplo inválido lógico
+- `exemplo/invalid_logic.sff` — possui erro de lógica (end com saída, nó isolado).
+
+---
+
+## 📋 O que é validado?
+
+- Estrutura mínima (blocos obrigatórios: sff, entry, lanes, nodes, edges)
+- Regras lógicas:
+  - Exatamente 1 nó start, coerente com entry.start
+  - Pelo menos 1 end, todos em entry.ends
+  - Start sem entrada, end sem saída
+  - Todos os nós alcançáveis a partir do start
+  - Não permite nós isolados
+  - Decision boolean: branches true/false obrigatórios, next existente, edges coerentes
+
+---
+
+## 🛠️ Troubleshooting
+
 - Se ocorrer erro de import, verifique se o diretório `core` possui os arquivos `__init__.py`.
 - Se o log não for criado, verifique permissões da pasta `logs/`.
+- Para auditoria, mantenha os logs salvos.
 
 ---
 
-Qualquer dúvida ou erro, consulte os logs e reporte na documentação.
+## 📚 Estrutura do Core
+
+- `core/reader/reader.py`: Leitura de arquivos .sff
+- `core/validator/validator.py`: Validação estrutural e lógica
+- `core/compiler/compiler.py`: Geração de índices prev/next e validação
+- `core/logger/logger.py`: Logging persistente
+- `core/cli/cli.py`: Interface de linha de comando
+
+---
+
+## 🤝 Contribua ou evolua
+
+Sugestões, dúvidas ou melhorias? Consulte a documentação, abra uma issue ou contribua diretamente!
