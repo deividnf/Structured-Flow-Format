@@ -17,3 +17,10 @@
 2026-02-27 16:37:38 | ERROR | Nó 'end' ('end1') não pode ter edges de saída.
 2026-02-27 16:37:38 | ERROR | Nó 'isolated' não é alcançável a partir do start.
 2026-02-27 16:37:38 | ERROR | Nó 'isolated' está isolado (sem entrada e sem saída).
+2026-02-27 16:52:35 | INFO  | Validando arquivo exemplo/checkout_flow.sff
+2026-02-27 16:52:35 | INFO  | Validação estrutural OK
+2026-02-27 16:55:23 | INFO  | Compilando arquivo exemplo/checkout_flow.sff
+2026-02-27 16:55:23 | INFO  | Compilação OK
+2026-02-27 16:55:23 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-27 16:55:32 | INFO  | Preview do layout do arquivo exemplo/checkout_flow.sff
+2026-02-27 16:55:32 | INFO  | Preview gerado com sucesso

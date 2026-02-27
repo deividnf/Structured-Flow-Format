@@ -12,6 +12,31 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
 
 ## 🧭 Fluxo de uso — do zero ao log
 
+5. **Visualize o layout do fluxo (preview):**
+    ```sh
+    python -m core.cli preview <caminho_para_arquivo.sff>
+    ```
+    Exemplo:
+    ```sh
+    python -m core.cli preview exemplo/checkout_flow.sff
+    ```
+    - Saída esperada:
+       ```
+       direction: TB
+       lanes: ['user', 'pc']
+       ranks:
+          Rank 0: start (user)
+          Rank 1: press_power (user)
+          ...
+       edges:
+          start → press_power
+          ...
+       Preview ASCII (simplificado):
+       start    .
+       press_power   .
+       ...
+       ```
+
 1. **Crie ou edite um arquivo `.sff` (JSON) representando seu fluxo.**
 2. **Valide a estrutura:**
    ```sh
@@ -46,6 +71,60 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
 ---
 
 ## 🧪 Exemplos práticos
+
+### Preview CLI — exemplos de saída
+
+#### Fluxo simples
+```
+direction: TB
+lanes: ['user', 'pc']
+ranks:
+   Rank 0: start (user)
+   Rank 1: press_power (user)
+   Rank 2: wait_boot (pc)
+edges:
+   start → press_power
+   press_power → wait_boot
+Preview ASCII (simplificado):
+start    .
+press_power   .
+    .   wait_boot
+```
+
+#### Fluxo com decision boolean
+```
+direction: TB
+lanes: ['user']
+ranks:
+   Rank 0: start (user)
+   Rank 1: decision1 (user)
+   Rank 2: end_true (user), end_false (user)
+edges:
+   start → decision1
+   decision1 → end_true [branch=true]
+   decision1 → end_false [branch=false]
+Preview ASCII (simplificado):
+start
+decision1
+end_true   end_false
+```
+
+#### Fluxo com múltiplas lanes
+```
+direction: TB
+lanes: ['user', 'system']
+ranks:
+   Rank 0: start (user)
+   Rank 1: process1 (system)
+   Rank 2: end1 (user)
+edges:
+   start → process1
+   process1 → end1
+Preview ASCII (simplificado):
+start   .
+    .   process1
+end1    .
+```
 
 ### Exemplo válido
 - `exemplo/checkout_flow.sff` — fluxo correto, passa em todas as validações.
