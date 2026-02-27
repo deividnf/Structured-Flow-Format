@@ -5,6 +5,7 @@ Interface de linha de comando para validação e leitura de arquivos SFF.
 import sys
 
 
+import os
 from core.reader.reader import read_sff_file
 from core.validator.validator import validate_sff_structure
 from core.compiler.compiler import compile_sff
@@ -156,11 +157,26 @@ def main():
                 output = export_dot(data, layout)
             elif export_format == 'json':
                 output = export_json(data, compiled, layout)
+            elif export_format == 'svg':
+                from core.exporters.svg_exporter import export_svg
+                output = export_svg(data, layout)
+                # Salvar arquivo SVG em export/
+                input_name = os.path.splitext(os.path.basename(filepath))[0]
+                out_path = os.path.join('export', f'{input_name}.svg')
+                try:
+                    with open(out_path, 'w', encoding='utf-8') as f:
+                        f.write(output)
+                    logger.info(f"[SVG Export] SVG salvo em {out_path}")
+                except Exception as e:
+                    logger.error(f"[SVG Export] Falha ao salvar SVG: {e}")
+                    print(f"Erro ao salvar SVG: {e}")
+                    sys.exit(2)
             else:
                 logger.error(f"Formato de exportação inválido: {export_format}")
                 print(f"Formato de exportação inválido: {export_format}")
                 sys.exit(1)
-            print(output)
+            if export_format != 'svg':
+                print(output)
             logger.info(f"Export gerado com sucesso: output={export_format}")
             sys.exit(0)
         except Exception as e:

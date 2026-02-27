@@ -1,4 +1,3 @@
-
 # Structured Flow Format (SFF) — Guia Visual e Prático
 
 > **Automatize, valide e audite fluxos estruturados com SFF.**
@@ -17,11 +16,13 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
     python -m core.cli export <caminho_para_arquivo.sff> --format mermaid
     python -m core.cli export <caminho_para_arquivo.sff> --format dot
     python -m core.cli export <caminho_para_arquivo.sff> --format json
+    python -m core.cli export <caminho_para_arquivo.sff> --format svg
     ```
     - Saída esperada:
        - Mermaid: flowchart TB/LR, lanes agrupadas, decisões com labels Sim/Não
        - DOT: arquivo DOT com rankdir, clusters por lane, labels
        - JSON: objeto compilado + layout
+       - SVG: diagrama visual real, auto-size, lanes, nodes, edges ortogonais
 
 5. **Visualize o layout do fluxo (preview):**
     ```sh
@@ -127,6 +128,18 @@ digraph G {
 }
 ```
 
+#### SVG
+```xml
+<svg ...>
+  <rect ... /> <!-- lane -->
+  <polygon ... /> <!-- decision -->
+  <circle ... /> <!-- start/end -->
+  <rect ... /> <!-- process/delay -->
+  <polyline ... /> <!-- edge -->
+  <text ...>Label</text>
+</svg>
+```
+
 ### Preview CLI — exemplos de saída
 
 #### Fluxo simples
@@ -207,6 +220,10 @@ end1    .
 - Se ocorrer erro de import, verifique se o diretório `core` possui os arquivos `__init__.py`.
 - Se o log não for criado, verifique permissões da pasta `logs/`.
 - Para auditoria, mantenha os logs salvos.
+- Se o SVG ficar muito grande, verifique se os labels dos nós/edges estão longos ou se há muitos elementos.
+- Se algum elemento for cortado, confira o log para bounding box e padding.
+- Se o log mostrar WARN de escala, o exportador ajustou o tamanho para evitar overflow.
+- Se o arquivo não aparecer em export/, verifique permissões da pasta ou erros no log.
 
 ---
 

@@ -26,3 +26,30 @@
 2026-02-27 16:55:32 | INFO  | Preview gerado com sucesso
 2026-02-27 17:03:25 | INFO  | Export iniciado: formato=mermaid, arquivo=.\exemplo\checkout_flow.sff
 2026-02-27 17:03:25 | INFO  | Export gerado com sucesso: output=mermaid
+2026-02-27 17:17:08 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff
+2026-02-27 17:17:08 | INFO  | [SVG Export] Iniciando exportação SVG para <output>
+2026-02-27 17:17:08 | ERROR | [SVG Export] Falha ao gerar SVG: '<' not supported between instances of 'tuple' and 'int'
+2026-02-27 17:17:08 | ERROR | name 'os' is not defined
+2026-02-27 17:17:20 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff
+2026-02-27 17:17:20 | INFO  | [SVG Export] Iniciando exportação SVG para <output>
+2026-02-27 17:17:20 | ERROR | [SVG Export] Falha ao gerar SVG: '<' not supported between instances of 'tuple' and 'int'
+2026-02-27 17:17:20 | ERROR | [SVG Export] Falha ao salvar SVG: write() argument must be str, not None
+2026-02-27 17:18:03 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff
+2026-02-27 17:18:03 | INFO  | [SVG Export] Iniciando exportação SVG para <output>
+2026-02-27 17:18:03 | ERROR | [SVG Export] Falha ao gerar SVG: name 'svg' is not defined
+2026-02-27 17:18:03 | INFO  | [SVG Export] SVG salvo em export\checkout_flow.svg
+2026-02-27 17:18:03 | INFO  | Export gerado com sucesso: output=svg
+2026-02-27 17:18:07 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff
+2026-02-27 17:18:07 | INFO  | [SVG Export] Iniciando exportação SVG para <output>
+2026-02-27 17:18:07 | ERROR | [SVG Export] Falha ao gerar SVG: name 'svg' is not defined
+2026-02-27 17:18:07 | INFO  | [SVG Export] SVG salvo em export\checkout_flow.svg
+2026-02-27 17:18:07 | INFO  | Export gerado com sucesso: output=svg
+2026-02-27 17:19:19 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff
+2026-02-27 17:19:19 | INFO  | [SVG Export] Iniciando exportação SVG para <output>
+2026-02-27 17:19:19 | ERROR | [SVG Export] Falha ao gerar SVG: name 'svg' is not defined
+2026-02-27 17:19:19 | INFO  | [SVG Export] SVG salvo em export\checkout_flow.svg
+2026-02-27 17:19:19 | INFO  | Export gerado com sucesso: output=svg
+2026-02-27 17:19:43 | INFO  | Export iniciado: formato=mermaid, arquivo=.\exemplo\checkout_flow.sff
+2026-02-27 17:19:43 | INFO  | Export gerado com sucesso: output=mermaid
+2026-02-27 17:19:58 | INFO  | Export iniciado: formato=json, arquivo=.\exemplo\checkout_flow.sff
+2026-02-27 17:19:58 | ERROR | keys must be str, int, float, bool or None, not tuple
