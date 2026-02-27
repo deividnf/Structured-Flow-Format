@@ -232,6 +232,26 @@ Sempre incluir uma seção como:
 > A validação deve ser executável por qualquer pessoa do time sem conhecimento prévio do histórico.
 
 ---
+## Evidências e Instruções Finais (2026-02-27)
+- Testes realizados com arquivos válidos: `exemplo/checkout_flow.sff`, `exemplo/order_orchestration_flow.sff`
+- Comando utilizado:
+  - `python -m core.cli validate exemplo/checkout_flow.sff`
+  - `python -m core.cli validate exemplo/order_orchestration_flow.sff`
+- Saída esperada: `Validação estrutural OK`
+- Logs registrados em `logs/layout_engine.log`:
+  - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./exemplo/checkout_flow.sff`
+  - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
+  - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./exemplo/order_orchestration_flow.sff`
+  - `2026-02-27 16:22:02 | INFO  | Validação estrutural OK`
+
+---
+## Checklist Final de Entrega
+- [x] Documentação e arquitetura atualizadas
+- [x] Validação terminal reproduzível
+- [x] Logs e evidências registradas
+- [x] README e instruções de uso claros
+
+---
 
 ## 12) Encerramento
 
