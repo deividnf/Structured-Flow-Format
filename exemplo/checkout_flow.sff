@@ -1,0 +1,131 @@
+{
+  "sff": {
+    "version": "1.0",
+    "id": "checkout_flow",
+    "title": "Fluxo de Checkout Simplificado",
+    "direction": "TB"
+  },
+
+  "entry": {
+    "start": "start_checkout",
+    "ends": ["end_success", "end_failure"]
+  },
+
+  "lanes": {
+    "user": {
+      "title": "Usuário",
+      "order": 1,
+      "description": "Interações feitas pelo cliente"
+    },
+    "system": {
+      "title": "Sistema",
+      "order": 2,
+      "description": "Processamentos internos"
+    },
+    "gateway": {
+      "title": "Gateway de Pagamento",
+      "order": 3
+    }
+  },
+
+  "nodes": {
+    "start_checkout": {
+      "type": "start",
+      "lane": "user",
+      "label": "Iniciar checkout"
+    },
+
+    "fill_data": {
+      "type": "process",
+      "lane": "user",
+      "label": "Preencher dados de pagamento"
+    },
+
+    "validate_data": {
+      "type": "process",
+      "lane": "system",
+      "label": "Validar dados informados"
+    },
+
+    "data_valid": {
+      "type": "decision",
+      "lane": "system",
+      "label": "Dados válidos?",
+      "decision": {
+        "kind": "boolean"
+      },
+      "branches": {
+        "true": {
+          "label": "Sim",
+          "next": "send_to_gateway"
+        },
+        "false": {
+          "label": "Não",
+          "next": "end_failure"
+        }
+      }
+    },
+
+    "send_to_gateway": {
+      "type": "process",
+      "lane": "gateway",
+      "label": "Enviar pagamento ao gateway"
+    },
+
+    "wait_gateway": {
+      "type": "delay",
+      "lane": "gateway",
+      "label": "Aguardar resposta do gateway",
+      "delay": {
+        "min_seconds": 1,
+        "max_seconds": 5
+      }
+    },
+
+    "payment_approved": {
+      "type": "decision",
+      "lane": "gateway",
+      "label": "Pagamento aprovado?",
+      "decision": {
+        "kind": "boolean"
+      },
+      "branches": {
+        "true": {
+          "label": "Sim",
+          "next": "end_success"
+        },
+        "false": {
+          "label": "Não",
+          "next": "end_failure"
+        }
+      }
+    },
+
+    "end_success": {
+      "type": "end",
+      "lane": "system",
+      "label": "Compra concluída com sucesso"
+    },
+
+    "end_failure": {
+      "type": "end",
+      "lane": "system",
+      "label": "Falha no checkout"
+    }
+  },
+
+  "edges": [
+    { "from": "start_checkout", "to": "fill_data" },
+    { "from": "fill_data", "to": "validate_data" },
+    { "from": "validate_data", "to": "data_valid" },
+
+    { "from": "data_valid", "to": "send_to_gateway", "branch": "true", "label": "Sim" },
+    { "from": "data_valid", "to": "end_failure", "branch": "false", "label": "Não" },
+
+    { "from": "send_to_gateway", "to": "wait_gateway" },
+    { "from": "wait_gateway", "to": "payment_approved" },
+
+    { "from": "payment_approved", "to": "end_success", "branch": "true", "label": "Aprovado" },
+    { "from": "payment_approved", "to": "end_failure", "branch": "false", "label": "Negado" }
+  ]
+}

@@ -3,11 +3,46 @@
 ## 1. Objetivo
 Formalizar a arquitetura lógica do layout visual dos fluxogramas SFF, tornando possível a geração automática, determinística e validável de layouts, conforme Task 01.
 
+---
+
+## Resumo Executivo (Task 01)
+Esta seção consolida a arquitetura lógica do layout visual SFF, integrando requisitos, camadas, regras e critérios de aceite, conforme Task 01 e especificação oficial.
+
+### Princípios Fundamentais
+- Estrutural, determinístico, validável, independente de runtime, não ambíguo, compilável.
+- Layout gerado automaticamente, sem necessidade de posicionamento manual.
+- Conexões sempre ortogonais (segmentos retos, 90°).
+- Suporte a direção TB (Top-Bottom) e LR (Left-Right).
+- Respeito a lanes, nodes, edges e entry.
+
+---
+
 ## 2. Estrutura Geral
 O layout visual é composto por três camadas lógicas:
 - **Camada Estrutural (Grafo):** representação do fluxo via nodes, edges, branches e entry.
 - **Camada de Layout (Posicionamento):** cálculo automático de ranks (níveis), posições e agrupamento por lanes.
 - **Camada de Roteamento de Arestas:** definição dos caminhos ortogonais das conexões, respeitando portas e evitando sobreposição.
+
+### 2.1 Camada Estrutural (Grafo)
+- Fonte de verdade: nodes, edges, decision.branches, entry
+- O fluxo inicia em entry.start e termina em entry.ends
+- edges definem conexões explícitas; branches são ramificações oficiais
+- Grafo deve ser acíclico (MVP sem loops complexos)
+- Saída esperada: índice prev/next compilado
+
+### 2.2 Camada de Layout (Posicionamento)
+- Direção definida em sff.direction ("TB" ou "LR")
+- Cada nó recebe um "rank" (nível) conforme distância do start/profundidade
+- Nós no mesmo nível compartilham rank (coluna para LR, linha para TB)
+- Ordenação interna minimiza cruzamento de arestas, prioriza dependências e agrupa por lane
+- Elimina necessidade de posicionamento manual
+
+### 2.3 Camada de Roteamento de Arestas
+- Todas as conexões são ortogonais (segmentos retos, 90°)
+- Conexões saem de portas fixas (ver regras de portas)
+- Não cruzar nós; desviar por "corredores invisíveis"; usar canais paralelos se necessário
+
+---
 
 ## 3. Camada Estrutural (Grafo)
 - Fonte de verdade: `nodes`, `edges`, `decision.branches`, `entry`.
@@ -38,6 +73,25 @@ O layout visual é composto por três camadas lógicas:
   - false → lado esquerdo (LR) ou inferior esquerdo (TB)
   - join → convergência central
 
+---
+## 6.1 Regras Formais de Portas
+Se direction = TB:
+- Entrada principal: topo
+- Saída principal: base
+- Desvios: laterais
+
+Se direction = LR:
+- Entrada principal: esquerda
+- Saída principal: direita
+- Desvios: topo/base
+
+Para nodes do tipo decision:
+- true → lado direito (LR) ou inferior direito (TB)
+- false → lado esquerdo (LR) ou inferior esquerdo (TB)
+- join → convergência central
+
+---
+
 ## 7. Integração com Lanes
 - Lanes não alteram lógica, apenas organização visual.
 - Cada lane é uma faixa (swimlane); nodes são posicionados dentro da lane correspondente.
@@ -57,6 +111,18 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 - `positions[node_id]`: coordenada lógica (grid)
 - `routing[edge_id]`: lista de segmentos ortogonais
 
+---
+## 8.1 Exemplo de Estrutura Gerada
+```json
+"layout": {
+  "ranks": {"start": 0, "press_power": 1, ...},
+  "positions": {"start": [0,0], "press_power": [1,0], ...},
+  "routing": {"edge1": [[0,0],[1,0],[1,1]], ...}
+}
+```
+
+---
+
 ## 9. Critérios de Aceite
 - Definição clara de ranks
 - Regra formal de portas
@@ -66,6 +132,19 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 - Layout funciona para TB e LR
 - Documentação atualizada
 - Preview via terminal (mesmo que simples)
+
+---
+## 9.1 Checklist de Aceite (Task 01)
+- [x] Definição clara de ranks
+- [x] Regra formal de portas
+- [x] Regra formal de roteamento ortogonal
+- [x] Lanes respeitadas visualmente
+- [x] Sem necessidade de posicionamento manual
+- [x] Layout funciona para TB e LR
+- [x] Documentação atualizada
+- [ ] Preview via terminal (mesmo que simples)
+
+---
 
 ## 10. Validação e Logs
 - Toda execução do engine/layout deve ser validável via terminal.
@@ -82,6 +161,17 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 - Toda alteração nesta arquitetura deve ser registrada neste arquivo.
 - Mudanças operacionais/fluxo: atualizar também `docs/context.md`.
 - Sempre incluir seção "Como validar" em toda entrega.
+
+---
+## Como validar (Task 01)
+1. Gerar fluxo simples (exemplo.sff.json)
+2. Conferir ranks, posições e roteamento no bloco "layout"
+3. Validar que não há linhas curvas suaves nem sobreposição
+4. Garantir que o layout é determinístico (mesmo input → mesmo output)
+5. Conferir documentação atualizada neste arquivo
+6. (Quando implementado) Rodar preview via terminal e conferir logs
+
+---
 
 ## 12. Fora de Escopo
 - Renderização SVG/Canvas

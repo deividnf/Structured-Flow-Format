@@ -1,5 +1,5 @@
 {
-  "pyflow": { "version": "0.3", "id": "power_on_pc", "title": "Ligar o computador", "direction": "TB" },
+  "sf": { "version": "0.3", "id": "power_on_pc", "title": "Ligar o computador", "direction": "TB" },
 
   "entry": {
     "start": "start",

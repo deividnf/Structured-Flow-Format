@@ -1,0 +1,8 @@
+2026-02-27 16:16:48 | INFO  | Validando arquivo docs/model/example.sff.json
+2026-02-27 16:16:48 | ERROR | Bloco obrigatório ausente: sff
+2026-02-27 16:17:19 | INFO  | Validando arquivo docs/model/example.sff
+2026-02-27 16:17:19 | ERROR | Bloco obrigatório ausente: sff
+2026-02-27 16:17:57 | INFO  | Validando arquivo docs/model/example.sff
+2026-02-27 16:17:57 | ERROR | Bloco obrigatório ausente: sff
+2026-02-27 16:19:29 | INFO  | Validando arquivo .\exemplo\checkout_flow.sff
+2026-02-27 16:19:29 | INFO  | Validação estrutural OK
