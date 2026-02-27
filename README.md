@@ -2,13 +2,48 @@
 
 Este projeto implementa o núcleo do Structured Flow Format (SFF) para leitura, validação e logging de arquivos .sff (JSON).
 
+---
+
+## Validação Terminal — Guia Completo
+
+### 1. Comando de validação
+Execute na raiz do projeto:
+```
+python -m core.cli validate <caminho_para_arquivo.sff>
+```
+Exemplo:
+```
+python -m core.cli validate exemplo/checkout_flow.sff
+python -m core.cli validate exemplo/order_orchestration_flow.sff
+```
+
+### 2. Saída esperada
+- Se o arquivo estiver correto: `Validação estrutural OK`
+- Se houver erro estrutural: lista de erros exibida e registrada em log
+
+### 3. Logs
+- Todos os eventos são registrados em `logs/layout_engine.log`
+- Exemplo de log:
+   - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./exemplo/checkout_flow.sff`
+   - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
+- Mensagens de erro seguem o padrão:
+   - `2026-02-27 16:16:48 | ERROR | Bloco obrigatório ausente: sff`
+
+### 4. Evidências de execução
+- Testes realizados com arquivos válidos e inválidos.
+- Logs e saídas conferidos conforme esperado.
+
+### 5. Como reproduzir
+1. Crie ou copie um arquivo `.sff` válido para a pasta desejada.
+2. Execute o comando de validação.
+3. Verifique a saída no terminal e o conteúdo do log.
+4. Para auditoria, mantenha os logs salvos.
+
+---
+
 ## Estrutura do Core
-- `core/reader/reader.py`: Leitura de arquivos .sff
-- `core/validator/validator.py`: Validação estrutural
-- `core/compiler/compiler.py`: Geração de índices prev/next
-- `core/layout/layout.py`: Estrutura base para layout
-- `core/logger/logger.py`: Logging persistente
-- `core/cli/cli.py`: Interface de linha de comando
+
+---
 
 ## Como testar a validação
 
