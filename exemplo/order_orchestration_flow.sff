@@ -1,0 +1,185 @@
+{
+  "sff": {
+    "version": "1.0",
+    "id": "order_orchestration_flow",
+    "title": "Orquestração Completa de Pedido com Validações e Retry",
+    "direction": "TB"
+  },
+
+  "entry": {
+    "start": "start_order",
+    "ends": [
+      "end_success",
+      "end_payment_failed",
+      "end_stock_failed",
+      "end_validation_failed"
+    ]
+  },
+
+  "lanes": {
+    "customer": { "title": "Cliente", "order": 1 },
+    "frontend": { "title": "Frontend", "order": 2 },
+    "backend": { "title": "Backend", "order": 3 },
+    "inventory": { "title": "Estoque", "order": 4 },
+    "payment": { "title": "Gateway Pagamento", "order": 5 }
+  },
+
+  "nodes": {
+
+    "start_order": {
+      "type": "start",
+      "lane": "customer",
+      "label": "Cliente inicia pedido"
+    },
+
+    "submit_order": {
+      "type": "process",
+      "lane": "frontend",
+      "label": "Enviar pedido ao backend"
+    },
+
+    "validate_schema": {
+      "type": "process",
+      "lane": "backend",
+      "label": "Validar estrutura do pedido"
+    },
+
+    "schema_valid": {
+      "type": "decision",
+      "lane": "backend",
+      "label": "Pedido estruturalmente válido?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "check_stock" },
+        "false": { "label": "Não", "next": "end_validation_failed" }
+      }
+    },
+
+    "check_stock": {
+      "type": "process",
+      "lane": "inventory",
+      "label": "Consultar disponibilidade de estoque"
+    },
+
+    "stock_available": {
+      "type": "decision",
+      "lane": "inventory",
+      "label": "Estoque disponível?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "reserve_stock" },
+        "false": { "label": "Não", "next": "end_stock_failed" },
+        "join": { "type": "merge", "node": "post_stock_check" }
+      }
+    },
+
+    "reserve_stock": {
+      "type": "process",
+      "lane": "inventory",
+      "label": "Reservar itens no estoque"
+    },
+
+    "post_stock_check": {
+      "type": "process",
+      "lane": "backend",
+      "label": "Atualizar status interno após validação de estoque"
+    },
+
+    "send_payment": {
+      "type": "process",
+      "lane": "payment",
+      "label": "Enviar pagamento ao gateway"
+    },
+
+    "wait_payment": {
+      "type": "delay",
+      "lane": "payment",
+      "label": "Aguardar resposta do gateway",
+      "delay": {
+        "min_seconds": 2,
+        "max_seconds": 10
+      }
+    },
+
+    "payment_approved": {
+      "type": "decision",
+      "lane": "payment",
+      "label": "Pagamento aprovado?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "confirm_order" },
+        "false": { "label": "Não", "next": "retry_payment" }
+      }
+    },
+
+    "retry_payment": {
+      "type": "decision",
+      "lane": "backend",
+      "label": "Permitir nova tentativa?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "send_payment" },
+        "false": { "label": "Não", "next": "end_payment_failed" }
+      }
+    },
+
+    "confirm_order": {
+      "type": "process",
+      "lane": "backend",
+      "label": "Confirmar pedido e emitir nota"
+    },
+
+    "end_success": {
+      "type": "end",
+      "lane": "backend",
+      "label": "Pedido concluído com sucesso"
+    },
+
+    "end_payment_failed": {
+      "type": "end",
+      "lane": "backend",
+      "label": "Falha no pagamento"
+    },
+
+    "end_stock_failed": {
+      "type": "end",
+      "lane": "inventory",
+      "label": "Falha por indisponibilidade de estoque"
+    },
+
+    "end_validation_failed": {
+      "type": "end",
+      "lane": "backend",
+      "label": "Pedido inválido"
+    }
+  },
+
+  "edges": [
+    { "from": "start_order", "to": "submit_order" },
+    { "from": "submit_order", "to": "validate_schema" },
+    { "from": "validate_schema", "to": "schema_valid" },
+
+    { "from": "schema_valid", "to": "check_stock", "branch": "true", "label": "Sim" },
+    { "from": "schema_valid", "to": "end_validation_failed", "branch": "false", "label": "Não" },
+
+    { "from": "check_stock", "to": "stock_available" },
+
+    { "from": "stock_available", "to": "reserve_stock", "branch": "true", "label": "Sim" },
+    { "from": "stock_available", "to": "end_stock_failed", "branch": "false", "label": "Não" },
+    { "from": "stock_available", "to": "post_stock_check", "branch": "join", "label": "Merge" },
+
+    { "from": "reserve_stock", "to": "post_stock_check" },
+
+    { "from": "post_stock_check", "to": "send_payment" },
+    { "from": "send_payment", "to": "wait_payment" },
+    { "from": "wait_payment", "to": "payment_approved" },
+
+    { "from": "payment_approved", "to": "confirm_order", "branch": "true", "label": "Aprovado" },
+    { "from": "payment_approved", "to": "retry_payment", "branch": "false", "label": "Negado" },
+
+    { "from": "retry_payment", "to": "send_payment", "branch": "true", "label": "Nova tentativa" },
+    { "from": "retry_payment", "to": "end_payment_failed", "branch": "false", "label": "Encerrar" },
+
+    { "from": "confirm_order", "to": "end_success" }
+  ]
+}

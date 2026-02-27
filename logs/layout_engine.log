@@ -6,3 +6,5 @@
 2026-02-27 16:17:57 | ERROR | Bloco obrigatório ausente: sff
 2026-02-27 16:19:29 | INFO  | Validando arquivo .\exemplo\checkout_flow.sff
 2026-02-27 16:19:29 | INFO  | Validação estrutural OK
+2026-02-27 16:22:02 | INFO  | Validando arquivo .\exemplo\order_orchestration_flow.sff
+2026-02-27 16:22:02 | INFO  | Validação estrutural OK
