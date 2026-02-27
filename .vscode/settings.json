@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git clone https://github\\.com/deividnf/strutured-flow-format\\.git$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

@@ -1,0 +1,127 @@
+{
+  "pyflow": { "version": "0.3", "id": "power_on_pc", "title": "Ligar o computador", "direction": "TB" },
+
+  "entry": {
+    "start": "start",
+    "ends": ["success", "end_issue"]
+  },
+
+  "lanes": {
+    "user": { "title": "Usuário", "order": 1 },
+    "pc": { "title": "Computador", "order": 2 }
+  },
+
+  "nodes": {
+    "start": { "type": "start", "lane": "user", "label": "Início" },
+    "press_power": { "type": "process", "lane": "user", "label": "Pressionar o botão de ligar" },
+    "wait_boot": { "type": "delay", "lane": "pc", "label": "Aguardar carregamento inicial", "delay": { "min_seconds": 5, "max_seconds": 30 } },
+
+    "check_red_light": {
+      "type": "decision",
+      "lane": "user",
+      "label": "Apareceu luz vermelha?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "red_light_action" },
+        "false": { "label": "Não", "next": "check_screen_on" },
+        "join": { "type": "merge", "node": "post_checks" }
+      }
+    },
+
+    "red_light_action": { "type": "process", "lane": "user", "label": "Registrar alerta e verificar conexões" },
+    "check_screen_on": {
+      "type": "decision",
+      "lane": "user",
+      "label": "A tela acendeu?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "check_strange_noise" },
+        "false": { "label": "Não", "next": "screen_off_action" },
+        "join": { "type": "merge", "node": "post_checks" }
+      }
+    },
+
+    "screen_off_action": { "type": "process", "lane": "user", "label": "Verificar monitor e cabo de vídeo" },
+    "check_strange_noise": {
+      "type": "decision",
+      "lane": "user",
+      "label": "Há barulho estranho?",
+      "decision": { "kind": "boolean" },
+      "branches": {
+        "true": { "label": "Sim", "next": "noise_action" },
+        "false": { "label": "Não", "next": "success" }
+      }
+    },
+
+    "noise_action": { "type": "process", "lane": "user", "label": "Desligar e investigar barulho" },
+
+    "post_checks": { "type": "process", "lane": "pc", "label": "Pós-checagens (estado atual do boot)" },
+
+    "success": { "type": "end", "lane": "pc", "label": "Computador ligado e operacional" },
+    "end_issue": { "type": "end", "lane": "user", "label": "Finalizar com pendência" }
+  },
+
+  "edges": [
+    { "from": "start", "to": "press_power" },
+    { "from": "press_power", "to": "wait_boot" },
+    { "from": "wait_boot", "to": "check_red_light" },
+
+    { "from": "check_red_light", "to": "red_light_action", "branch": "true", "label": "Sim" },
+    { "from": "check_red_light", "to": "check_screen_on", "branch": "false", "label": "Não" },
+
+    { "from": "red_light_action", "to": "end_issue", "label": "Encerrar e revisar" },
+    { "from": "check_screen_on", "to": "check_strange_noise", "branch": "true", "label": "Sim" },
+    { "from": "check_screen_on", "to": "screen_off_action", "branch": "false", "label": "Não" },
+    { "from": "screen_off_action", "to": "end_issue", "label": "Encerrar e revisar" },
+
+    { "from": "check_strange_noise", "to": "noise_action", "branch": "true", "label": "Sim" },
+    { "from": "check_strange_noise", "to": "success", "branch": "false", "label": "Não" },
+
+    { "from": "noise_action", "to": "end_issue", "label": "Encerrar e revisar" },
+
+    { "from": "check_red_light", "to": "post_checks", "branch": "join", "label": "Merge" },
+    { "from": "check_screen_on", "to": "post_checks", "branch": "join", "label": "Merge" }
+  ],
+
+  "compiled": {
+    "index": {
+      "prev": {
+        "start": [],
+        "press_power": ["start"],
+        "wait_boot": ["press_power"],
+        "check_red_light": ["wait_boot"],
+        "red_light_action": ["check_red_light"],
+        "check_screen_on": ["check_red_light"],
+        "screen_off_action": ["check_screen_on"],
+        "check_strange_noise": ["check_screen_on"],
+        "noise_action": ["check_strange_noise"],
+        "post_checks": ["check_red_light", "check_screen_on"],
+        "success": ["check_strange_noise"],
+        "end_issue": ["red_light_action", "screen_off_action", "noise_action"]
+      },
+      "next": {
+        "start": ["press_power"],
+        "press_power": ["wait_boot"],
+        "wait_boot": ["check_red_light"],
+        "check_red_light": ["red_light_action", "check_screen_on", "post_checks"],
+        "red_light_action": ["end_issue"],
+        "check_screen_on": ["check_strange_noise", "screen_off_action", "post_checks"],
+        "screen_off_action": ["end_issue"],
+        "check_strange_noise": ["noise_action", "success"],
+        "noise_action": ["end_issue"],
+        "post_checks": [],
+        "success": [],
+        "end_issue": []
+      }
+    },
+    "validation": {
+      "errors": [],
+      "warnings": [
+        {
+          "code": "W_MAINLINE_UNSET",
+          "message": "Nenhum caminho principal foi definido. (Opcional) Você pode marcar um 'mainPath' depois."
+        }
+      ]
+    }
+  }
+}
