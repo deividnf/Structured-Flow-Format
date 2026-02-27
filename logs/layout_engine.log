@@ -26,3 +26,7 @@
 2026-02-27 16:55:32 | INFO  | Preview gerado com sucesso
 2026-02-27 17:03:25 | INFO  | Export iniciado: formato=mermaid, arquivo=.\exemplo\checkout_flow.sff
 2026-02-27 17:03:25 | INFO  | Export gerado com sucesso: output=mermaid
+2026-02-27 18:12:29 | INFO  | Preview do layout do arquivo exemplo/checkout_flow.sff
+2026-02-27 18:12:29 | INFO  | Preview gerado com sucesso
+2026-02-27 18:12:39 | INFO  | Export iniciado: formato=mermaid, arquivo=.\exemplo\checkout_flow.sff
+2026-02-27 18:12:39 | INFO  | Export gerado com sucesso: output=mermaid
