@@ -3,11 +3,11 @@
 
 Após rodar o comando:
 ```sh
-python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only
+python -m core.cli export data/example/checkout_flow.sff --format svg --lanes-only
 ```
 O arquivo será salvo automaticamente em:
 ```
-export/checkout_flow.svg
+data/export/checkout_flow.svg
 ```
 Abra o arquivo gerado no VS Code (basta clicar) ou arraste para o navegador. Você verá um bloco único dividido em faixas, com títulos na esquerda (TB) ou topo (LR).
 
@@ -17,11 +17,11 @@ Exemplo visual TB:
 Exemplo visual LR:
 ![lanes-only LR](docs/screenshots/lanes_only_lr.png)
 
-Se preferir, use o comando `code export/checkout_flow.svg` para abrir direto no VS Code.
+Se preferir, use o comando `code data/export/checkout_flow.svg` para abrir direto no VS Code.
 
 ### Exportando para caminho customizado
 ```sh
-python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only --out export/meu_arquivo.svg
+python -m core.cli export data/example/checkout_flow.sff --format svg --lanes-only --out data/export/meu_arquivo.svg
 ```
 O arquivo será salvo exatamente no caminho informado.
 
@@ -33,7 +33,7 @@ O arquivo será salvo exatamente no caminho informado.
 [LANES-ONLY] Lane system TB: x=24, y=264, w=956, h=240, title="Sistema"
 [LANES-ONLY] Lane gateway TB: x=24, y=504, w=956, h=240, title="Gateway"
 [LANES-ONLY] TB: total_width=1004, total_height=768
-Export OK → export/checkout_flow.svg
+Export OK → data/export/checkout_flow.svg
 ```
 7. **Exportar apenas as lanes (boxes/baias) em SVG:**
     ```sh
@@ -55,7 +55,7 @@ Export OK → export/checkout_flow.svg
 1. Use um .sff com 3 lanes (user/system/gateway)
 2. Execute:
    ```sh
-   python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only > export/lanes_only_tb.svg
+   python -m core.cli export data/example/checkout_flow.sff --format svg --lanes-only > data/export/lanes_only_tb.svg
    ```
 3. Abra o SVG gerado (ex: VS Code, navegador)
 4. Confirme:
@@ -68,7 +68,7 @@ Export OK → export/checkout_flow.svg
 1. Use um .sff com direction=LR
 2. Execute:
    ```sh
-   python -m core.cli export exemplo/checkout_flow_lr.sff --format svg --lanes-only > export/lanes_only_lr.svg
+   python -m core.cli export data/example/checkout_flow_lr.sff --format svg --lanes-only > data/export/lanes_only_lr.svg
    ```
 3. Abra o SVG gerado
 4. Confirme:
@@ -136,7 +136,7 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
     ```
     Exemplo:
     ```sh
-    python -m core.cli preview exemplo/checkout_flow.sff
+    python -m core.cli preview data/example/checkout_flow.sff
     ```
     - Saída esperada:
        ```
@@ -162,8 +162,8 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
    ```
    Exemplo:
    ```sh
-   python -m core.cli validate exemplo/checkout_flow.sff
-   python -m core.cli validate exemplo/order_orchestration_flow.sff
+   python -m core.cli validate data/example/checkout_flow.sff
+   python -m core.cli validate data/example/order_orchestration_flow.sff
    ```
    - Saída esperada: `Validação estrutural OK` ou lista de erros estruturais.
 3. **Compile e valide regras lógicas:**
@@ -172,17 +172,17 @@ Este repositório implementa o núcleo do SFF: um formato declarativo para model
    ```
    Exemplo:
    ```sh
-   python -m core.cli compile exemplo/checkout_flow.sff
-   python -m core.cli compile exemplo/invalid_logic.sff
+   python -m core.cli compile data/example/checkout_flow.sff
+   python -m core.cli compile data/example/invalid_logic.sff
    ```
    - Saída esperada: `Compilação OK!` e índices prev/next, ou lista de erros lógicos.
 4. **Confira os logs:**
    - Todos os eventos são registrados em `logs/layout_engine.log`.
    - Exemplo:
      ```
-     2026-02-27 17:00:00 | INFO  | Compilando arquivo exemplo/checkout_flow.sff
+     2026-02-27 17:00:00 | INFO  | Compilando arquivo data/example/checkout_flow.sff
      2026-02-27 17:00:00 | INFO  | Compilação OK
-     2026-02-27 17:01:00 | INFO  | Compilando arquivo exemplo/invalid_logic.sff
+     2026-02-27 17:01:00 | INFO  | Compilando arquivo data/example/invalid_logic.sff
      2026-02-27 17:01:00 | ERROR | Nó 'end1' não pode ter edges de saída.
      ```
 
@@ -289,10 +289,10 @@ end1    .
 ```
 
 ### Exemplo válido
-- `exemplo/checkout_flow.sff` — fluxo correto, passa em todas as validações.
+- `data/example/checkout_flow.sff` — fluxo correto, passa em todas as validações.
 
 ### Exemplo inválido lógico
-- `exemplo/invalid_logic.sff` — possui erro de lógica (end com saída, nó isolado).
+- `data/example/invalid_logic.sff` — possui erro de lógica (end com saída, nó isolado).
 
 ---
 

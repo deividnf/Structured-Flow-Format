@@ -10,7 +10,7 @@
 
 Corrigir a lógica de exportação e geração de SVG para garantir:
 
-- Salvamento automático correto na pasta `export/`
+- Salvamento automático correto na pasta `data/export/`
 - Suporte a caminho personalizado via parâmetro
 - SVG com viewBox correto (sem achatamento ou corte)
 - Modo `--lanes-only` realmente renderizando apenas lanes
@@ -23,7 +23,7 @@ Esta task é estrutural e crítica para a estabilidade visual do projeto.
 
 # 2. Problemas Identificados
 
-## 2.1 Export não respeita pasta `export/`
+## 2.1 Export não respeita pasta `data/export/`
 Atualmente depende de redirect `>` no terminal.
 Isso não é comportamento correto do sistema.
 
@@ -56,25 +56,25 @@ Salvar automaticamente em:
 
 ```
 
-export/<basename>.<ext>
+data/export/<basename>.<ext>
 
 ```
 
 Exemplo:
 ```
 
-python -m core.cli export import/checkout_flow.sff --format svg
+python -m core.cli export data/input/checkout_flow.sff --format svg
 
 ```
 
 Resultado:
 ```
 
-export/checkout_flow.svg
+data/export/checkout_flow.svg
 
 ```
 
-Se a pasta `export/` não existir:
+Se a pasta `data/export/` não existir:
 - Criar automaticamente.
 
 ---
@@ -83,14 +83,14 @@ Se a pasta `export/` não existir:
 
 ```
 
---out export/
+--out data/export/
 
 ```
 
 Salvar como:
 ```
 
-export/<basename>.<ext>
+data/export/<basename>.<ext>
 
 ```
 
@@ -112,7 +112,7 @@ Salvar exatamente nesse caminho.
 
 ```
 
-Export OK → export/checkout_flow.svg
+Export OK → data/export/checkout_flow.svg
 
 ```
 
@@ -225,12 +225,12 @@ apareçam corretamente.
 
 ```
 
-python -m core.cli export import/checkout_flow.sff --format svg
+python -m core.cli export data/input/checkout_flow.sff --format svg
 
 ```
 
 Checklist:
-- [ ] Arquivo salvo em export/
+- [ ] Arquivo salvo em data/export/
 - [ ] SVG abre sem cortes
 - [ ] Texto com acentuação correta
 
@@ -240,7 +240,7 @@ Checklist:
 
 ```
 
-python -m core.cli export import/checkout_flow.sff --format svg --out export/teste.svg
+python -m core.cli export data/input/checkout_flow.sff --format svg --out data/export/teste.svg
 
 ```
 
@@ -254,7 +254,7 @@ Checklist:
 
 ```
 
-python -m core.cli export import/checkout_flow.sff --format svg --lanes-only
+python -m core.cli export data/input/checkout_flow.sff --format svg --lanes-only
 
 ```
 
@@ -268,7 +268,7 @@ Checklist:
 # 9. Critério de Aceite (DoD)
 
 - [ ] `--out` implementado corretamente
-- [ ] export automático para `export/`
+- [ ] export automático para `data/export/`
 - [ ] Pasta criada se inexistente
 - [ ] viewBox correto (sem corte)
 - [ ] Sem achatamento

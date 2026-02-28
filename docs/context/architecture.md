@@ -17,30 +17,16 @@ Esta seção consolida a arquitetura lógica do layout visual SFF, integrando re
 
 ---
 
-## 2. Estrutura Geral
-O layout visual é composto por três camadas lógicas:
-- **Camada Estrutural (Grafo):** representação do fluxo via nodes, edges, branches e entry.
-- **Camada de Layout (Posicionamento):** cálculo automático de ranks (níveis), posições e agrupamento por lanes.
-- **Camada de Roteamento de Arestas:** definição dos caminhos ortogonais das conexões, respeitando portas e evitando sobreposição.
+## 2. Estrutura Geral (Pipeline CFF)
+O pipeline visual agora é composto por um fluxo estrito de compilação (Task 11 / MD11+):
 
-### 2.1 Camada Estrutural (Grafo)
-- Fonte de verdade: nodes, edges, decision.branches, entry
-- O fluxo inicia em entry.start e termina em entry.ends
-- edges definem conexões explícitas; branches são ramificações oficiais
-- Grafo deve ser acíclico (MVP sem loops complexos)
-- Saída esperada: índice prev/next compilado
+1. **SFF Source**: Formato declarativo, humano e base.
+2. **Compilador CFF (Compiled Flow Format - MD11/MD12)**: Transforma o SFF em uma estrutura matemática explícita, resolvendo prev/next, determinando ranks, analisando futuros e classificando branches e edges.
+3. **Layout Engine Determinístico (MD13)**: Transforma a estrutura do CFF lógico em posições geométricas puras dentro de um sistema formal de tracks (MD14).
+4. **Roteador Ortogonal (MD15)**: Traça caminhos V-H-V e H-V-H estritos no grid, garantindo zero cruzamento e sobreposição, com suporte a loops (MD17/MD18).
+5. **Monitoramento Global (MD16)**: Detecção de congestionamento e balanceamento estrutural.
 
-### 2.2 Camada de Layout (Posicionamento)
-- Direção definida em sff.direction ("TB" ou "LR")
-- Cada nó recebe um "rank" (nível) conforme distância do start/profundidade
-- Nós no mesmo nível compartilham rank (coluna para LR, linha para TB)
-- Ordenação interna minimiza cruzamento de arestas, prioriza dependências e agrupa por lane
-- Elimina necessidade de posicionamento manual
-
-### 2.3 Camada de Roteamento de Arestas
-- Todas as conexões são ortogonais (segmentos retos, 90°)
-- Conexões saem de portas fixas (ver regras de portas)
-- Não cruzar nós; desviar por "corredores invisíveis"; usar canais paralelos se necessário
+> **Princípio Central**: Nenhum renderizador deve inferir regras, e o layout não deve interpretar negócios. Toda inteligência estrutural reside no **CFF**.
 
 ---
 
@@ -140,11 +126,11 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 ## 11. Evidências e Documentação
 
 ## Evidências de Execução e Logs (2026-02-27)
-- Testes realizados com arquivos válidos: `exemplo/checkout_flow.sff`, `exemplo/order_orchestration_flow.sff`
-  - `python -m core.cli validate exemplo/order_orchestration_flow.sff`
+- Testes realizados com arquivos válidos: `data/example/checkout_flow.sff`, `data/example/order_orchestration_flow.sff`
+  - `python -m core.cli validate data/example/order_orchestration_flow.sff`
 - Saída esperada: `Validação estrutural OK`
   - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
-  - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./exemplo/order_orchestration_flow.sff`
+  - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./data/example/order_orchestration_flow.sff`
   - `2026-02-27 16:22:02 | INFO  | Validação estrutural OK`
 
 ---
@@ -152,8 +138,8 @@ O engine/compilador deve gerar uma estrutura auxiliar:
 - Implementado comando CLI `compile` para validação lógica e geração de índices prev/next.
 - Regras lógicas cobertas: start único, ends válidos, edges coerentes, nós alcançáveis, decisões booleanas corretas.
 - Exemplo de uso:
-  - `python -m core.cli compile exemplo/checkout_flow.sff` (válido)
-  - `python -m core.cli compile exemplo/invalid_logic.sff` (inválido)
+  - `python -m core.cli compile data/example/checkout_flow.sff` (válido)
+  - `python -m core.cli compile data/example/invalid_logic.sff` (inválido)
 - Saída esperada: `Compilação OK!` ou lista de erros lógicos.
 - Logs detalhados em `logs/layout_engine.log`.
 

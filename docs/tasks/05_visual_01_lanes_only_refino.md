@@ -124,7 +124,7 @@ Isso reforça visualmente “um único bloco”.
 ### 7.1 Validação Visual (TB)
 Rodar:
 ```bash
-python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only
+python -m core.cli export data/example/checkout_flow.sff --format svg --lanes-only
 ````
 
 Checklist:
@@ -142,7 +142,7 @@ Checklist:
 Alterar direction para LR em um exemplo e rodar:
 
 ```bash
-python -m core.cli export exemplo/<arquivo_LR>.sff --format svg --lanes-only
+python -m core.cli export data/example/<arquivo_LR>.sff --format svg --lanes-only
 ```
 
 Checklist:

@@ -183,7 +183,7 @@ Nenhum elemento pode ser cortado.
 Rodar:
 
 ```bash
-python -m core.cli export exemplo/checkout_flow.sff --format svg
+python -m core.cli export data/example/checkout_flow.sff --format svg
 ```
 
 Validar visualmente:

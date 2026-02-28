@@ -10,7 +10,7 @@ Este documento define **como os agentes devem trabalhar** neste repositório: co
 
 ### 1.1 Ordem de leitura (sempre que iniciar uma task)
 1. **`model/`** → leia a árvore de pastas e arquivos para entender a estrutura existente.
-2. **`docs/`** → procure guias, decisões e padrões.
+2. **`docs/`** → procure guias, decisões e padrões. Principalmente `docs/tasks/11 Reestruturação da Contrução Visual/` para as especificações formais matemáticas (MD11 a MD19).
 3. **`docs/context/`** → verifique documentação operacional e de arquitetura (fonte de verdade para o “como trabalhar”).
 4. **Arquivos raiz** (se existirem) → `README`, `CONTRIBUTING`, `CHANGELOG`, `Makefile`, `pyproject`, `package.json`, etc.
 
@@ -233,15 +233,15 @@ Sempre incluir uma seção como:
 
 ---
 ## Evidências e Instruções Finais (2026-02-27)
-- Testes realizados com arquivos válidos: `exemplo/checkout_flow.sff`, `exemplo/order_orchestration_flow.sff`
+- Testes realizados com arquivos válidos: `data/example/checkout_flow.sff`, `data/example/order_orchestration_flow.sff`
 - Comando utilizado:
-  - `python -m core.cli validate exemplo/checkout_flow.sff`
-  - `python -m core.cli validate exemplo/order_orchestration_flow.sff`
+  - `python -m core.cli validate data/example/checkout_flow.sff`
+  - `python -m core.cli validate data/example/order_orchestration_flow.sff`
 - Saída esperada: `Validação estrutural OK`
 - Logs registrados em `logs/layout_engine.log`:
-  - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./exemplo/checkout_flow.sff`
+  - `2026-02-27 16:19:29 | INFO  | Validando arquivo ./data/example/checkout_flow.sff`
   - `2026-02-27 16:19:29 | INFO  | Validação estrutural OK`
-  - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./exemplo/order_orchestration_flow.sff`
+  - `2026-02-27 16:22:02 | INFO  | Validando arquivo ./data/example/order_orchestration_flow.sff`
   - `2026-02-27 16:22:02 | INFO  | Validação estrutural OK`
 
 ---

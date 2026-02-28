@@ -75,6 +75,35 @@ def main():
                 for err in errors:
                     print(f"- {err}")
                 sys.exit(1)
+                
+            # MD11/MD12: Export to CFF Formal Format
+            if '--to-cff' in sys.argv:
+                from core.compiler.cff_compiler import CFFCompiler
+                import json
+                import os
+                
+                cff_compiler = CFFCompiler(data)
+                cff_data = cff_compiler.compile()
+                
+                output_file = filepath.replace('.sff', '.cpff')
+                if out_flag:
+                    idx = sys.argv.index(out_flag)
+                    if len(sys.argv) > idx + 1:
+                        out_val = sys.argv[idx + 1]
+                        if os.path.isdir(out_val):
+                            base_name = os.path.splitext(os.path.basename(filepath))[0]
+                            output_file = os.path.join(out_val, f"{base_name}.cpff")
+                        else:
+                            output_file = out_val
+                            
+                os.makedirs(os.path.dirname(os.path.abspath(output_file)), exist_ok=True)
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(cff_data, f, indent=2, ensure_ascii=False)
+                    
+                logger.info(f"Compilação CFF OK! Salvo em: {output_file}")
+                print(f"Compilação CFF OK! Salvo: {output_file}")
+                sys.exit(0)
+                
             else:
                 logger.info("Compilação OK")
                 print("Compilação OK!")
@@ -166,10 +195,10 @@ def main():
                         output_path = out_value
                 else:
                     # Fallback (não deveria ocorrer se CLI validado)
-                    output_path = os.path.join('export', f"{base_name}.{ext}")
+                    output_path = os.path.join('data', 'export', f"{base_name}.{ext}")
             else:
                 # Caso 1: Usuário NÃO passa --out
-                output_path = os.path.join('export', f"{base_name}.{ext}")
+                output_path = os.path.join('data', 'export', f"{base_name}.{ext}")
 
             # 2. Garantir que o diretório de saída existe
             out_dir = os.path.dirname(output_path)
@@ -177,8 +206,29 @@ def main():
                 os.makedirs(out_dir, exist_ok=True)
 
             # 3. Ler e processar arquivo
-            data = read_sff_file(filepath)
-            compiled = compile_sff(data)
+            if filepath.endswith('.cpff'):
+                import json
+                from core.layout.cff_engine import CFFEngine
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    cpff_data = json.load(f)
+                engine = CFFEngine(cpff_data)
+                layout = engine.generate()
+                data = cpff_data["sff_source"] # mock original data for exporters
+                compiled = {'validation': {'errors': [], 'warnings': []}} # mock for exporters
+            else:
+                data = read_sff_file(filepath)
+                compiled = compile_sff(data)
+
+                if compiled['validation']['errors']:
+                    for err in compiled['validation']['errors']:
+                        logger.error(err)
+                    print("Erros de validação lógica encontrados:")
+                    for err in compiled['validation']['errors']:
+                        print(f"- {err}")
+                    sys.exit(1)
+                
+                from core.layout.layout import generate_layout
+                layout = generate_layout(data, compiled)
             
             if compiled['validation']['errors']:
                 for err in compiled['validation']['errors']:
@@ -191,22 +241,17 @@ def main():
             # 4. Gerar saída conforme formato
             output = None
             if export_format == 'svg':
-                layout = generate_layout(data, compiled)
                 from core.exporters.svg_exporter import export_svg
-                # Note: lanes_only_exporter é usado por export_svg ou diretamente
                 if lanes_only:
                     output = export_lanes_only(data, lanes_only=True)
                 else:
                     output = export_svg(data, layout)
             elif export_format == 'mermaid':
-                layout = generate_layout(data, compiled)
                 output = export_mermaid(data, layout)
             elif export_format == 'dot':
-                layout = generate_layout(data, compiled)
                 output = export_dot(data, layout)
             elif export_format == 'json':
-                layout = generate_layout(data, compiled)
-                output = export_json(data, compiled, layout)
+                output = export_json(data, compiled if not filepath.endswith('.cpff') else None, layout)
             else:
                 logger.error(f"Formato de exportação inválido: {export_format}")
                 print(f"Formato de exportação inválido: {export_format}")

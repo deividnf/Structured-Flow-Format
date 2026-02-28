@@ -1,0 +1,766 @@
+{
+  "sff_source": {
+    "sff": {
+      "version": "1.0",
+      "id": "checkout_flow",
+      "title": "Fluxo de Checkout Simplificado",
+      "direction": "TB"
+    },
+    "entry": {
+      "start": "start_checkout",
+      "ends": [
+        "end_success",
+        "end_failure"
+      ]
+    },
+    "lanes": {
+      "user": {
+        "title": "Usuário",
+        "order": 1,
+        "description": "Interações feitas pelo cliente"
+      },
+      "system": {
+        "title": "Sistema",
+        "order": 2,
+        "description": "Processamentos internos"
+      },
+      "gateway": {
+        "title": "Gateway de Pagamento",
+        "order": 3
+      }
+    },
+    "nodes": {
+      "start_checkout": {
+        "type": "start",
+        "lane": "user",
+        "label": "Iniciar checkout"
+      },
+      "fill_data": {
+        "type": "process",
+        "lane": "user",
+        "label": "Preencher dados de pagamento"
+      },
+      "validate_data": {
+        "type": "process",
+        "lane": "system",
+        "label": "Validar dados informados"
+      },
+      "data_valid": {
+        "type": "decision",
+        "lane": "system",
+        "label": "Dados válidos?",
+        "decision": {
+          "kind": "boolean"
+        },
+        "branches": {
+          "true": {
+            "label": "Sim",
+            "next": "send_to_gateway"
+          },
+          "false": {
+            "label": "Não",
+            "next": "end_failure"
+          }
+        }
+      },
+      "send_to_gateway": {
+        "type": "process",
+        "lane": "gateway",
+        "label": "Enviar pagamento ao gateway"
+      },
+      "wait_gateway": {
+        "type": "delay",
+        "lane": "gateway",
+        "label": "Aguardar resposta do gateway",
+        "delay": {
+          "min_seconds": 1,
+          "max_seconds": 5
+        }
+      },
+      "payment_approved": {
+        "type": "decision",
+        "lane": "gateway",
+        "label": "Pagamento aprovado?",
+        "decision": {
+          "kind": "boolean"
+        },
+        "branches": {
+          "true": {
+            "label": "Sim",
+            "next": "end_success"
+          },
+          "false": {
+            "label": "Não",
+            "next": "end_failure"
+          }
+        }
+      },
+      "end_success": {
+        "type": "end",
+        "lane": "system",
+        "label": "Compra concluída com sucesso"
+      },
+      "end_failure": {
+        "type": "end",
+        "lane": "system",
+        "label": "Falha no checkout"
+      }
+    },
+    "edges": [
+      {
+        "from": "start_checkout",
+        "to": "fill_data"
+      },
+      {
+        "from": "fill_data",
+        "to": "validate_data"
+      },
+      {
+        "from": "validate_data",
+        "to": "data_valid"
+      },
+      {
+        "from": "data_valid",
+        "to": "send_to_gateway",
+        "branch": "true",
+        "label": "Sim"
+      },
+      {
+        "from": "data_valid",
+        "to": "end_failure",
+        "branch": "false",
+        "label": "Não"
+      },
+      {
+        "from": "send_to_gateway",
+        "to": "wait_gateway"
+      },
+      {
+        "from": "wait_gateway",
+        "to": "payment_approved"
+      },
+      {
+        "from": "payment_approved",
+        "to": "end_success",
+        "branch": "true",
+        "label": "Aprovado"
+      },
+      {
+        "from": "payment_approved",
+        "to": "end_failure",
+        "branch": "false",
+        "label": "Negado"
+      }
+    ]
+  },
+  "cff": {
+    "version": "1.0",
+    "stats": {
+      "max_depth": 8,
+      "nodes_total": 9,
+      "edges_total": 9,
+      "lanes_total": 3,
+      "decision_nodes": 2,
+      "branch_edges": 2,
+      "joins": 1,
+      "max_branch_depth": 2
+    },
+    "graph": {},
+    "layout_context": {}
+  },
+  "lanes": {
+    "user": {
+      "title": "Usuário",
+      "order": 1,
+      "tracks_total": 13,
+      "center_track": 7,
+      "expansion_factor": 1.2
+    },
+    "system": {
+      "title": "Sistema",
+      "order": 2,
+      "tracks_total": 13,
+      "center_track": 7,
+      "expansion_factor": 1.2
+    },
+    "gateway": {
+      "title": "Gateway de Pagamento",
+      "order": 3,
+      "tracks_total": 13,
+      "center_track": 7,
+      "expansion_factor": 1.2
+    }
+  },
+  "nodes": {
+    "start_checkout": {
+      "id": "start_checkout",
+      "type": "start",
+      "lane": "user",
+      "label": "Iniciar checkout",
+      "rank": {
+        "global": 1,
+        "lane": 1,
+        "depth": 0,
+        "branch_depth": 0
+      },
+      "links": {
+        "prev_nodes": [],
+        "next_nodes": [
+          "fill_data"
+        ],
+        "in_edges": [],
+        "out_edges": [
+          "e1"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 8,
+        "future_decisions": 2,
+        "cross_lane_ahead": 3,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      }
+    },
+    "fill_data": {
+      "id": "fill_data",
+      "type": "process",
+      "lane": "user",
+      "label": "Preencher dados de pagamento",
+      "rank": {
+        "global": 2,
+        "lane": 2,
+        "depth": 1,
+        "branch_depth": 0
+      },
+      "links": {
+        "prev_nodes": [
+          "start_checkout"
+        ],
+        "next_nodes": [
+          "validate_data"
+        ],
+        "in_edges": [
+          "e1"
+        ],
+        "out_edges": [
+          "e2"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 7,
+        "future_decisions": 2,
+        "cross_lane_ahead": 3,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      }
+    },
+    "validate_data": {
+      "id": "validate_data",
+      "type": "process",
+      "lane": "system",
+      "label": "Validar dados informados",
+      "rank": {
+        "global": 3,
+        "lane": 1,
+        "depth": 2,
+        "branch_depth": 0
+      },
+      "links": {
+        "prev_nodes": [
+          "fill_data"
+        ],
+        "next_nodes": [
+          "data_valid"
+        ],
+        "in_edges": [
+          "e2"
+        ],
+        "out_edges": [
+          "e3"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 6,
+        "future_decisions": 2,
+        "cross_lane_ahead": 2,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      }
+    },
+    "data_valid": {
+      "id": "data_valid",
+      "type": "decision",
+      "lane": "system",
+      "label": "Dados válidos?",
+      "rank": {
+        "global": 4,
+        "lane": 2,
+        "depth": 3,
+        "branch_depth": 0
+      },
+      "links": {
+        "prev_nodes": [
+          "validate_data"
+        ],
+        "next_nodes": [
+          "send_to_gateway",
+          "end_failure"
+        ],
+        "in_edges": [
+          "e3"
+        ],
+        "out_edges": [
+          "e4",
+          "e5"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 5,
+        "future_decisions": 1,
+        "cross_lane_ahead": 2,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      }
+    },
+    "send_to_gateway": {
+      "id": "send_to_gateway",
+      "type": "process",
+      "lane": "gateway",
+      "label": "Enviar pagamento ao gateway",
+      "rank": {
+        "global": 5,
+        "lane": 1,
+        "depth": 4,
+        "branch_depth": 1
+      },
+      "links": {
+        "prev_nodes": [
+          "data_valid"
+        ],
+        "next_nodes": [
+          "wait_gateway"
+        ],
+        "in_edges": [
+          "e4"
+        ],
+        "out_edges": [
+          "e6"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 3,
+        "future_decisions": 1,
+        "cross_lane_ahead": 1,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      },
+      "branch_context": {
+        "root_decision": "data_valid",
+        "branch_label": "",
+        "terminates_soon": false
+      }
+    },
+    "wait_gateway": {
+      "id": "wait_gateway",
+      "type": "delay",
+      "lane": "gateway",
+      "label": "Aguardar resposta do gateway",
+      "rank": {
+        "global": 6,
+        "lane": 2,
+        "depth": 5,
+        "branch_depth": 1
+      },
+      "links": {
+        "prev_nodes": [
+          "send_to_gateway"
+        ],
+        "next_nodes": [
+          "payment_approved"
+        ],
+        "in_edges": [
+          "e6"
+        ],
+        "out_edges": [
+          "e7"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 2,
+        "future_decisions": 1,
+        "cross_lane_ahead": 1,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      },
+      "branch_context": {
+        "root_decision": "data_valid",
+        "branch_label": "",
+        "terminates_soon": false
+      }
+    },
+    "payment_approved": {
+      "id": "payment_approved",
+      "type": "decision",
+      "lane": "gateway",
+      "label": "Pagamento aprovado?",
+      "rank": {
+        "global": 7,
+        "lane": 3,
+        "depth": 6,
+        "branch_depth": 1
+      },
+      "links": {
+        "prev_nodes": [
+          "wait_gateway"
+        ],
+        "next_nodes": [
+          "end_success",
+          "end_failure"
+        ],
+        "in_edges": [
+          "e7"
+        ],
+        "out_edges": [
+          "e8",
+          "e9"
+        ]
+      },
+      "future_metrics": {
+        "future_steps": 1,
+        "future_decisions": 0,
+        "cross_lane_ahead": 1,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      },
+      "branch_context": {
+        "root_decision": "data_valid",
+        "branch_label": "",
+        "terminates_soon": false
+      }
+    },
+    "end_success": {
+      "id": "end_success",
+      "type": "end",
+      "lane": "system",
+      "label": "Compra concluída com sucesso",
+      "rank": {
+        "global": 8,
+        "lane": 4,
+        "depth": 7,
+        "branch_depth": 2
+      },
+      "links": {
+        "prev_nodes": [
+          "payment_approved"
+        ],
+        "next_nodes": [],
+        "in_edges": [
+          "e8"
+        ],
+        "out_edges": []
+      },
+      "future_metrics": {
+        "future_steps": 0,
+        "future_decisions": 0,
+        "cross_lane_ahead": 0,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      },
+      "branch_context": {
+        "root_decision": "payment_approved",
+        "branch_label": "",
+        "terminates_soon": false
+      }
+    },
+    "end_failure": {
+      "id": "end_failure",
+      "type": "end",
+      "lane": "system",
+      "label": "Falha no checkout",
+      "rank": {
+        "global": 5,
+        "lane": 3,
+        "depth": 4,
+        "branch_depth": 1
+      },
+      "links": {
+        "prev_nodes": [
+          "data_valid",
+          "payment_approved"
+        ],
+        "next_nodes": [],
+        "in_edges": [
+          "e5",
+          "e9"
+        ],
+        "out_edges": []
+      },
+      "future_metrics": {
+        "future_steps": 0,
+        "future_decisions": 0,
+        "cross_lane_ahead": 0,
+        "next_lane_target": ""
+      },
+      "layout_hints": {
+        "is_main_path": false,
+        "routing_priority": 0,
+        "preferred_exit_side": "",
+        "preferred_entry_side": ""
+      },
+      "branch_context": {
+        "root_decision": "data_valid",
+        "branch_label": "",
+        "terminates_soon": false
+      }
+    }
+  },
+  "edges": {
+    "e1": {
+      "id": "e1",
+      "from": "start_checkout",
+      "to": "fill_data",
+      "branch": null,
+      "classification": {
+        "kind": "main_path",
+        "is_cross_lane": false,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 100,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e2": {
+      "id": "e2",
+      "from": "fill_data",
+      "to": "validate_data",
+      "branch": null,
+      "classification": {
+        "kind": "cross_lane",
+        "is_cross_lane": true,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 60,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e3": {
+      "id": "e3",
+      "from": "validate_data",
+      "to": "data_valid",
+      "branch": null,
+      "classification": {
+        "kind": "main_path",
+        "is_cross_lane": false,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 100,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e4": {
+      "id": "e4",
+      "from": "data_valid",
+      "to": "send_to_gateway",
+      "branch": "true",
+      "classification": {
+        "kind": "branch",
+        "is_cross_lane": true,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 80,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e5": {
+      "id": "e5",
+      "from": "data_valid",
+      "to": "end_failure",
+      "branch": "false",
+      "classification": {
+        "kind": "join",
+        "is_cross_lane": false,
+        "is_return": false,
+        "is_join": true
+      },
+      "priority": 30,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e6": {
+      "id": "e6",
+      "from": "send_to_gateway",
+      "to": "wait_gateway",
+      "branch": null,
+      "classification": {
+        "kind": "main_path",
+        "is_cross_lane": false,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 100,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e7": {
+      "id": "e7",
+      "from": "wait_gateway",
+      "to": "payment_approved",
+      "branch": null,
+      "classification": {
+        "kind": "main_path",
+        "is_cross_lane": false,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 100,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e8": {
+      "id": "e8",
+      "from": "payment_approved",
+      "to": "end_success",
+      "branch": "true",
+      "classification": {
+        "kind": "branch",
+        "is_cross_lane": true,
+        "is_return": false,
+        "is_join": false
+      },
+      "priority": 80,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    },
+    "e9": {
+      "id": "e9",
+      "from": "payment_approved",
+      "to": "end_failure",
+      "branch": "false",
+      "classification": {
+        "kind": "return",
+        "is_cross_lane": true,
+        "is_return": true,
+        "is_join": false
+      },
+      "priority": 40,
+      "routing_constraints": {
+        "no_overlap": true,
+        "no_cross": true,
+        "min_separation": 16
+      },
+      "routing_hints": {
+        "backbone_lane": "",
+        "last_mile": true,
+        "preferred_channel": 0
+      }
+    }
+  }
+}

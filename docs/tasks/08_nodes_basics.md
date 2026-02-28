@@ -23,7 +23,7 @@ Evoluir a renderização para incluir **nodes dentro das lanes** com qualidade m
 
 # 2. Pré-requisitos
 
-- Task 07 concluída (export salva em export/ por padrão, viewBox correto, UTF-8 OK, lanes-only funciona)
+- Task 07 concluída (export salva em data/export/ por padrão, viewBox correto, UTF-8 OK, lanes-only funciona)
 - Lanes renderizadas sem gap e com bordas retas (BPMN-like)
 
 ---
@@ -132,7 +132,7 @@ Se o texto for grande:
 Gerar SVG:
 
 ```bash
-python -m core.cli export import/checkout_flow.sff --format svg
+python -m core.cli export data/input/checkout_flow.sff --format svg
 ````
 
 Checklist:

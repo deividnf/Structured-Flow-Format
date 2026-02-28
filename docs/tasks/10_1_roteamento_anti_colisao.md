@@ -213,13 +213,13 @@ Adicionar logs em `layout_engine.log` (nível INFO/WARN):
 ## 8) Como Validar (passo a passo)
 
 ### 8.1 Arquivos alvo
-1) `exemplo/checkout_flow.sff` (TB)  
-2) `import/test_lr_dag.sff` (LR)
+1) `data/example/checkout_flow.sff` (TB)  
+2) `data/input/test_lr_dag.sff` (LR)
 
 ### 8.2 Rodar export
 ```bash
-python -m core.cli export exemplo/checkout_flow.sff --format svg
-python -m core.cli export import/test_lr_dag.sff --format svg
+python -m core.cli export data/example/checkout_flow.sff --format svg
+python -m core.cli export data/input/test_lr_dag.sff --format svg
 ````
 
 ### 8.3 Conferir logs

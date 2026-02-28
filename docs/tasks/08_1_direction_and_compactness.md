@@ -102,7 +102,7 @@ Corrigir o comportamento de direção para que **lanes e nodes sigam a mesma ori
 ## 4.1 TB (checkout_flow)
 Comando:
 ```bash
-python -m core.cli export import/checkout_flow.sff --format svg
+python -m core.cli export data/input/checkout_flow.sff --format svg
 ````
 
 Checklist:
@@ -117,7 +117,7 @@ Checklist:
 Comando:
 
 ```bash
-python -m core.cli export import/<arquivo_lr>.sff --format svg
+python -m core.cli export data/input/<arquivo_lr>.sff --format svg
 ```
 
 Checklist:
