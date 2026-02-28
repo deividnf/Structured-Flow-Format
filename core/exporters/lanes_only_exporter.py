@@ -5,25 +5,28 @@ import math
 from core.logger.logger import Logger
 logger = Logger()
 
-# Parâmetros fixos (Task 08)
-LANE_GAP = 0
-PADDING = 24
-CANVAS_PADDING = 24
-TITLE_BAR = 56
-FONT_TITLE = 20
+# Parâmetros Espaçosos (Task 08.3)
+LANE_GAP = 8
+PADDING = 40
+CANVAS_PADDING = 40
+TITLE_BAR = 50
+FONT_TITLE = 18
 NODE_W = 220
-NODE_H = 64
+NODE_H = 60
+NODE_GAP = 50
 START_END_R = 26
-DECISION_SIZE = 90
+DECISION_SIZE = 80
 DECISION_W = DECISION_SIZE
 DECISION_H = DECISION_SIZE
 FONT_NODE = 13
-COL_GAP = 280  # NODE_W + NODE_GAP
-ROW_GAP = 124  # NODE_H + NODE_GAP
-LANE_PADDING = 24
-RANK_GAP = 160 # Ajustado para acomodar nodes + gap
-LANE_BODY_W = 400
-LANE_BODY_H = 150
+# Gaps entre slots
+COL_GAP = NODE_W + NODE_GAP
+ROW_GAP = NODE_H + 80 # Mais espaço vertical
+LANE_PADDING = 40
+RANK_GAP_TB = 130 # Mais espaço
+RANK_GAP_LR = 180
+LANE_MIN_W = 400
+LANE_MIN_H = 150
 
 def wrap_text(text, max_chars):
     words = text.split()
@@ -53,75 +56,88 @@ def export_lanes_only(data, lanes_only=False):
     layout = data.get('layout', {})
     node_positions = layout.get('positions', {})
 
-    # 2. Calcular dimensões das lanes (Primeiro por conteúdo)
-    lane_content_size = {} 
+    # 2. Calcular dimensões das lanes por conteúdo e centralização (Task 08.4)
+    lane_content_size = {} # lane -> (max_col, max_row)
+    lane_content_pixels = {} # lane -> (content_w, content_h)
     
+    global_max_col = 0
+    global_max_row = 0
+
     for lane in lanes_sorted:
         lane_id = lane['id']
         lane_nodes = [nid for nid, n in nodes.items() if n.get('lane') == lane_id]
-        
-        max_col = 0
-        max_row = 0
-        
+        max_col, max_row = 0, 0
         if lane_nodes:
             for nid in lane_nodes:
-                if nid in node_positions:
-                    gx, gy = node_positions[nid]
+                if nid in node_positions: gx, gy = node_positions[nid]
                 else:
                     gx = nodes[nid].get('col_index', 0)
-                    # Task 08 pede linear sequence, mas se houver layout usamos gy
                     gy = nodes[nid].get('rank_global', nodes[nid].get('row_index', 0))
-                max_col = max(max_col, gx)
-                max_row = max(max_row, gy)
+                max_col, max_row = max(max_col, gx), max(max_row, gy)
         
         lane_content_size[lane_id] = (max_col, max_row)
-
-    # Encontrar dimensão máxima para UNIFORMIZAÇÃO (Task 08)
-    max_w_needed = LANE_BODY_W
-    max_h_needed = LANE_BODY_H
-
-    for lane_id, (max_col, max_row) in lane_content_size.items():
-        if direction == 'TB':
-            w = (max_col + 1) * COL_GAP + LANE_PADDING * 2
-            h = (max_row + 1) * RANK_GAP + LANE_PADDING * 2
-        else:
-            w = (max_col + 1) * RANK_GAP + LANE_PADDING * 2
-            h = (max_row + 1) * ROW_GAP + LANE_PADDING * 2
+        global_max_col, global_max_row = max(global_max_col, max_col), max(global_max_row, max_row)
         
-        max_w_needed = max(max_w_needed, w)
-        max_h_needed = max(max_h_needed, h)
-
-    lane_widths = {}
-    lane_heights = {}
-    
-    for lane in lanes_sorted:
-        lane_id = lane['id']
+        # Pixels reais do conteúdo nesta lane
         if direction == 'TB':
-            lane_widths[lane_id] = TITLE_BAR + max_w_needed
-            lane_heights[lane_id] = max_h_needed
+            lane_content_pixels[lane_id] = (max_col * COL_GAP + NODE_W, max_row * RANK_GAP_TB + NODE_H)
         else:
-            lane_widths[lane_id] = max_w_needed
-            lane_heights[lane_id] = TITLE_BAR + max_h_needed
+            lane_content_pixels[lane_id] = (max_col * RANK_GAP_LR + NODE_W, max_row * ROW_GAP + NODE_H)
 
-    # 3. Calcular offsets das lanes
+    # UNIFORMIZAÇÃO Inteligente (Task 08.4)
+    # A dimensão paralela ao fluxo é UNIFORME (para alinhar ranks).
+    # A dimensão perpendicular ao fluxo é DINÂMICA (conforme conteúdo e título).
+    global_max_content_h = global_max_row * RANK_GAP_TB + NODE_H
+    global_max_content_w = global_max_col * RANK_GAP_LR + NODE_W
+
+    lane_widths, lane_heights = {}, {}
+    for lane in lanes_sorted:
+        lid = lane['id']
+        title = lane.get('title', lid)
+        cw, ch = lane_content_pixels[lid]
+        
+        # Estimar tamanho do texto (simples)
+        title_len = len(title) * 10 
+
+        if direction == 'TB':
+            # TB: Colunas Verticais. Altura é compartilhada. Largura é dinâmica.
+            lane_widths[lid] = max(LANE_MIN_W, cw + LANE_PADDING * 2, title_len + LANE_PADDING * 2)
+            lane_heights[lid] = TITLE_BAR + max(LANE_MIN_H, global_max_content_h + LANE_PADDING * 2)
+        else:
+            # LR: Linhas Horizontais. Largura é compartilhada. Altura é dinâmica.
+            lane_widths[lid] = TITLE_BAR + max(LANE_MIN_W, global_max_content_w + LANE_PADDING * 2)
+            lane_heights[lid] = max(LANE_MIN_H, ch + LANE_PADDING * 2, title_len + LANE_PADDING * 2)
+
+    # 3. Calcular offsets das lanes e de centralização interna
     lane_offsets = {}
-    current_offset = PADDING
+    content_centering_offsets = {} # lane -> (off_x, off_y)
+    current_offset = CANVAS_PADDING
     
     for lane in lanes_sorted:
         lane_id = lane['id']
         lane_offsets[lane_id] = current_offset
+        cw, ch = lane_content_pixels[lane_id]
+        
         if direction == 'TB':
-            current_offset += lane_heights[lane_id]
+            # Centralizar horizontalmente dentro da PRÓPRIA largura da lane
+            off_x = (lane_widths[lane_id] - cw) / 2
+            # Centralizar bloco verticalmente na altura compartilhada (descontando o TITLE_BAR)
+            off_y = TITLE_BAR + (lane_heights[lane_id] - TITLE_BAR - (global_max_row * RANK_GAP_TB + NODE_H)) / 2
+            content_centering_offsets[lane_id] = (off_x, off_y)
+            current_offset += lane_widths[lane_id] + LANE_GAP
         else:
-            current_offset += lane_widths[lane_id]
+            # Centralizar verticalmente dentro da PRÓPRIA altura da lane
+            off_y = (lane_heights[lane_id] - ch) / 2
+            # Centralizar bloco horizontalmente na largura compartilhada (descontando o TITLE_BAR)
+            off_x = TITLE_BAR + (lane_widths[lane_id] - TITLE_BAR - (global_max_col * RANK_GAP_LR + NODE_W)) / 2
+            content_centering_offsets[lane_id] = (off_x, off_y)
+            current_offset += lane_heights[lane_id] + LANE_GAP
 
     # 4. Bounding Box Global
     if direction == 'TB':
-        max_x = max(lane_widths.values()) + PADDING * 2
-        max_y = current_offset + PADDING
+        max_x, max_y = current_offset + CANVAS_PADDING - LANE_GAP, max(lane_heights.values()) + CANVAS_PADDING * 2
     else:
-        max_x = current_offset + PADDING
-        max_y = max(lane_heights.values()) + PADDING * 2
+        max_x, max_y = max(lane_widths.values()) + CANVAS_PADDING * 2, current_offset + CANVAS_PADDING - LANE_GAP
 
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{max_x}" height="{max_y}" viewBox="0 0 {max_x} {max_y}">']
     svg.append(f'<rect x="0" y="0" width="{max_x}" height="{max_y}" fill="#ffffff" />')
@@ -130,19 +146,24 @@ def export_lanes_only(data, lanes_only=False):
     for lane in lanes_sorted:
         lane_id = lane['id']
         title = lane.get('title', lane_id)
-        lx, ly = (PADDING, lane_offsets[lane_id]) if direction == 'TB' else (lane_offsets[lane_id], PADDING)
+        # lx, ly dependem se empilhamos em X (TB) ou Y (LR)
+        lx, ly = (lane_offsets[lane_id], CANVAS_PADDING) if direction == 'TB' else (CANVAS_PADDING, lane_offsets[lane_id])
         lw, lh = lane_widths[lane_id], lane_heights[lane_id]
         
-        svg.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" fill="#fdfdfd" stroke="#666" stroke-width="2" />')
+        # Lane Body
+        svg.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{lh}" fill="#fff" stroke="#444" stroke-width="1.5" />')
         
+        # Lane Title Area
         if direction == 'TB':
-            svg.append(f'<rect x="{lx}" y="{ly}" width="{TITLE_BAR}" height="{lh}" fill="#eee" stroke="#666" stroke-width="2" />')
-            tx, ty = lx + TITLE_BAR // 2, ly + lh // 2
-            svg.append(f'<text x="{tx}" y="{ty}" font-size="{FONT_TITLE}" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 {tx},{ty})">{title}</text>')
-        else:
-            svg.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{TITLE_BAR}" fill="#eee" stroke="#666" stroke-width="2" />')
+            # Título no topo (Horizontal)
+            svg.append(f'<rect x="{lx}" y="{ly}" width="{lw}" height="{TITLE_BAR}" fill="#eee" stroke="#444" stroke-width="1.5" />')
             tx, ty = lx + lw // 2, ly + TITLE_BAR // 2
-            svg.append(f'<text x="{tx}" y="{ty}" font-size="{FONT_TITLE}" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">{title}</text>')
+            svg.append(f'<text x="{tx}" y="{ty}" font-family="sans-serif" font-size="{FONT_TITLE}" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">{title}</text>')
+        else:
+            # Título na esquerda (Vertical rotacionado)
+            svg.append(f'<rect x="{lx}" y="{ly}" width="{TITLE_BAR}" height="{lh}" fill="#eee" stroke="#444" stroke-width="1.5" />')
+            tx, ty = lx + TITLE_BAR // 2, ly + lh // 2
+            svg.append(f'<text x="{tx}" y="{ty}" font-family="sans-serif" font-size="{FONT_TITLE}" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 {tx},{ty})">{title}</text>')
 
     # 6. Desenhar Nodes (se não for lanes_only)
     if not lanes_only:
@@ -166,12 +187,15 @@ def export_lanes_only(data, lanes_only=False):
                 else: gy += 1
             occupied_slots[(gx, gy, lane_id)] = node_id
 
+            off_x, off_y = content_centering_offsets[lane_id]
+            lx, ly = (lane_offsets[lane_id], CANVAS_PADDING) if direction == 'TB' else (CANVAS_PADDING, lane_offsets[lane_id])
+
             if direction == 'TB':
-                nx = PADDING + TITLE_BAR + LANE_PADDING + gx * COL_GAP + NODE_W // 2
-                ny = lane_offsets[lane_id] + LANE_PADDING + gy * RANK_GAP + NODE_H // 2
+                nx = lx + off_x + gx * COL_GAP + NODE_W // 2
+                ny = ly + off_y + gy * RANK_GAP_TB + NODE_H // 2
             else:
-                nx = lane_offsets[lane_id] + LANE_PADDING + gx * RANK_GAP + NODE_W // 2
-                ny = PADDING + TITLE_BAR + LANE_PADDING + gy * ROW_GAP + NODE_H // 2
+                nx = lx + off_x + gx * RANK_GAP_LR + NODE_W // 2
+                ny = ly + off_y + gy * ROW_GAP + NODE_H // 2
 
             # Desenhar Shape
             shape_type = node.get('type', 'process')

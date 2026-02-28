@@ -849,3 +849,58 @@
 2026-02-27 21:12:38 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
 2026-02-27 21:12:38 | INFO  | [EXPORT] SVG gerado: 992x4032, lanes_only=False
 2026-02-27 21:12:38 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:16:21 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:16:21 | INFO  | [EXPORT] SVG gerado: 4032x524, lanes_only=False
+2026-02-27 21:16:21 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:16:56 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:16:56 | INFO  | [EXPORT] SVG gerado: 992x4032, lanes_only=False
+2026-02-27 21:16:56 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:32:49 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:32:49 | ERROR | name 'lane_content_size' is not defined
+2026-02-27 21:32:51 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:32:51 | ERROR | name 'lane_content_size' is not defined
+2026-02-27 21:33:15 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:33:15 | INFO  | [EXPORT] SVG gerado: 948x2046, lanes_only=False
+2026-02-27 21:33:15 | INFO  | Export OK → export/task08_1_checkout.svg
+2026-02-27 21:33:17 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:33:17 | INFO  | [EXPORT] SVG gerado: 1752x358, lanes_only=False
+2026-02-27 21:33:17 | INFO  | Export OK → export/task08_1_lr.svg
+2026-02-27 21:34:29 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:34:29 | INFO  | [EXPORT] SVG gerado: 948x2046, lanes_only=False
+2026-02-27 21:34:29 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:37:17 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:37:17 | INFO  | [EXPORT] SVG gerado: 1796x1018, lanes_only=False
+2026-02-27 21:37:17 | INFO  | Export OK → export/task08_1_fixed_checkout.svg
+2026-02-27 21:37:20 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:37:20 | INFO  | [EXPORT] SVG gerado: 1038x462, lanes_only=False
+2026-02-27 21:37:20 | INFO  | Export OK → export/task08_1_fixed_lr.svg
+2026-02-27 21:43:36 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:43:36 | INFO  | [EXPORT] SVG gerado: 1796x1018, lanes_only=False
+2026-02-27 21:43:36 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:44:01 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:44:01 | INFO  | [EXPORT] SVG gerado: 1578x836, lanes_only=False
+2026-02-27 21:44:01 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:48:14 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:48:14 | INFO  | [EXPORT] SVG gerado: 1618x686, lanes_only=False
+2026-02-27 21:48:14 | INFO  | Export OK → export/task08_2_centered_tb.svg
+2026-02-27 21:48:16 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:48:16 | INFO  | [EXPORT] SVG gerado: 1078x362, lanes_only=False
+2026-02-27 21:48:16 | INFO  | Export OK → export/task08_2_centered_lr.svg
+2026-02-27 21:51:57 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:51:57 | INFO  | [EXPORT] SVG gerado: 1618x686, lanes_only=False
+2026-02-27 21:51:57 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:52:12 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:52:12 | INFO  | [EXPORT] SVG gerado: 1686x968, lanes_only=False
+2026-02-27 21:52:12 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 22:00:34 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 22:00:34 | INFO  | [EXPORT] SVG gerado: 2616x1180, lanes_only=False
+2026-02-27 22:00:34 | INFO  | Export OK → export/task08_3_spacious_tb.svg
+2026-02-27 22:00:37 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 22:00:37 | INFO  | [EXPORT] SVG gerado: 1150x648, lanes_only=False
+2026-02-27 22:00:37 | INFO  | Export OK → export/task08_3_spacious_lr.svg
+2026-02-27 22:07:06 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 22:07:06 | INFO  | [EXPORT] SVG gerado: 1906x1180, lanes_only=False
+2026-02-27 22:07:06 | INFO  | Export OK → export/task08_4_dynamic_tb.svg
+2026-02-27 22:07:09 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 22:07:09 | INFO  | [EXPORT] SVG gerado: 1150x518, lanes_only=False
+2026-02-27 22:07:09 | INFO  | Export OK → export/task08_4_dynamic_lr.svg
