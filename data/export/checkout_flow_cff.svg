@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 1040.0 1020.0">
+  <style>
+    .lane { fill: #f8f9fa; stroke: #dee2e6; stroke-width: 2; }
+    .node { fill: #ffffff; stroke: #333333; stroke-width: 2; }
+    .label { font-family: sans-serif; font-size: 14px; text-anchor: middle; fill: #333; }
+    .edge { fill: none; stroke: #666; stroke-width: 2; }
+    path { marker-end: url(#arrow); }
+  </style>
+  <defs><marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#666"/></marker></defs>
+  <rect class="lane" x="0" y="-100" width="300" height="1020.0" />
+  <text class="label" x="150.0" y="-70">user</text>
+  <rect class="lane" x="300" y="-100" width="300" height="1020.0" />
+  <text class="label" x="450.0" y="-70">system</text>
+  <rect class="lane" x="600" y="-100" width="300" height="1020.0" />
+  <text class="label" x="750.0" y="-70">gateway</text>
+  <path class="edge" d="M 750.0,625.0 L 750.0,675.0 L 750.0,675.0 L 750.0,670.0" />
+  <path class="edge" d="M 750.0,525.0 L 750.0,575.0 L 750.0,575.0 L 750.0,575.0" />
+  <path class="edge" d="M 450.0,325.0 L 450.0,375.0 L 450.0,375.0 L 450.0,370.0" />
+  <path class="edge" d="M 150.0,120.0 L 150.0,170.0 L 150.0,170.0 L 150.0,175.0" />
+  <path class="edge" d="M 750.0,730.0 L 750.0,780.0 L 450.0,780.0 L 450.0,780.0" />
+  <path class="edge" d="M 450.0,430.0 L 450.0,480.0 L 750.0,480.0 L 750.0,475.0" />
+  <path class="edge" d="M 150.0,225.0 L 150.0,275.0 L 450.0,275.0 L 450.0,275.0" />
+  <path class="edge" d="M 780.0,700 L 880.0,700 L 570.0,500 L 470.0,500" />
+  <path class="edge" d="M 450.0,430.0 L 450.0,480.0 L 450.0,480.0 L 450.0,480.0" />
+  <circle class="node" cx="150.0" cy="100" r="20.0" />
+  <text class="label" x="150.0" y="140.0">Iniciar checkout</text>
+  <rect class="node" x="60.0" y="175.0" width="180" height="50" rx="8" />
+  <text class="label" x="150.0" y="205">Preencher dados de pagamento</text>
+  <rect class="node" x="360.0" y="275.0" width="180" height="50" rx="8" />
+  <text class="label" x="450.0" y="305">Validar dados informados</text>
+  <polygon class="node" points="450.0,370.0 480.0,400 450.0,430.0 420.0,400" />
+  <text class="label" x="450.0" y="450.0">Dados válidos?</text>
+  <rect class="node" x="660.0" y="475.0" width="180" height="50" rx="8" />
+  <text class="label" x="750.0" y="505">Enviar pagamento ao gateway</text>
+  <rect class="node" x="660.0" y="575.0" width="180" height="50" rx="8" />
+  <text class="label" x="750.0" y="605">Aguardar resposta do gateway</text>
+  <polygon class="node" points="750.0,670.0 780.0,700 750.0,730.0 720.0,700" />
+  <text class="label" x="750.0" y="750.0">Pagamento aprovado?</text>
+  <circle class="node" cx="450.0" cy="800" r="20.0" />
+  <circle cx="450.0" cy="800" r="16.0" fill="none" stroke="#333" stroke-width="2"/>
+  <text class="label" x="450.0" y="840.0">Compra concluída com sucesso</text>
+  <circle class="node" cx="450.0" cy="500" r="20.0" />
+  <circle cx="450.0" cy="500" r="16.0" fill="none" stroke="#333" stroke-width="2"/>
+  <text class="label" x="450.0" y="540.0">Falha no checkout</text>
+</svg>

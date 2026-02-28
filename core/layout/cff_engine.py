@@ -44,10 +44,12 @@ class CFFEngine:
             width = self.LANE_WIDTH
             self.track_system.lanes[l_id]["lane_start_offset"] = current_offset + (width / 2) # Center of lane
             self.layout_lanes[l_id] = {
-                "start": current_offset,
-                "end": current_offset + width,
-                "center": current_offset + (width / 2)
+                "x_start": current_offset,
+                "x_end": current_offset + width,
+                "tracks_total": self.track_system.lanes[l_id]["tracks_total"]
             }
+            # Keep an internal hidden center for nodes
+            self.layout_lanes[l_id]["_center"] = current_offset + (width / 2)
             current_offset += width
 
     def _position_nodes(self):
@@ -57,7 +59,7 @@ class CFFEngine:
             rank = node.get("rank", {})
             r_global = rank.get("global", 1)
             
-            lane_center = self.layout_lanes[lane_id]["center"]
+            lane_center = self.layout_lanes[lane_id]["_center"]
             track_diff = self.track_system.get_track_offset(lane_id, self.track_system.lanes[lane_id]["center_track"])
             # Assuming main path takes center_track (0 diff)
             base_primary = lane_center + track_diff
@@ -96,7 +98,9 @@ class CFFEngine:
             e_id = e["id"]
             src_node = self.layout_nodes[e["from"]]
             dst_node = self.layout_nodes[e["to"]]
-            points = router.route_edge(e, src_node, dst_node)
+            orig_src = self.nodes.get(e["from"], {})
+            orig_dst = self.nodes.get(e["to"], {})
+            points = router.route_edge(e, src_node, dst_node, orig_src, orig_dst)
             self.layout_edges[e_id] = {
                 "points": points
             }

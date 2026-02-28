@@ -1635,3 +1635,12 @@
 2026-02-28 17:16:01 | INFO  | Compilação CFF OK! Salvo em: exemplo/checkout_flow.cpff
 2026-02-28 17:28:15 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
 2026-02-28 17:28:15 | ERROR | None
+2026-02-28 17:28:41 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:28:41 | ERROR | None
+2026-02-28 17:30:36 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:30:36 | ERROR | None
+2026-02-28 17:31:22 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:32:32 | INFO  | Export iniciado: formato=svg, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:32:32 | INFO  | Export OK → data/export/checkout_flow_cff.svg
+2026-02-28 17:37:16 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:39:48 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False

@@ -3,11 +3,11 @@ class CFFRouter:
         self.ts = track_system
         self.direction = direction
 
-    def route_edge(self, edge, src_node, dst_node):
+    def route_edge(self, edge, src_node, dst_node, orig_src, orig_dst):
         # Implement MD15 (V-H-V or H-V-H)
         points = []
-        lane_src = src_node.get("lane")
-        lane_dst = dst_node.get("lane")
+        lane_src = orig_src.get("lane")
+        lane_dst = orig_dst.get("lane")
 
         if self.direction == "TB":
             # Output from bottom of source

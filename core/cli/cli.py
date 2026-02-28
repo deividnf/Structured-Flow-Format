@@ -241,11 +241,15 @@ def main():
             # 4. Gerar saída conforme formato
             output = None
             if export_format == 'svg':
-                from core.exporters.svg_exporter import export_svg
-                if lanes_only:
-                    output = export_lanes_only(data, lanes_only=True)
+                if filepath.endswith('.cpff'):
+                    from core.exporters.cff_svg_exporter import export_cff_svg
+                    output = export_cff_svg(data, layout)
                 else:
-                    output = export_svg(data, layout)
+                    from core.exporters.svg_exporter import export_svg
+                    if lanes_only:
+                        output = export_lanes_only(data, lanes_only=True)
+                    else:
+                        output = export_svg(data, layout)
             elif export_format == 'mermaid':
                 output = export_mermaid(data, layout)
             elif export_format == 'dot':
@@ -275,6 +279,8 @@ def main():
                 sys.exit(0)
 
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             logger.error(str(e))
             print(f"Erro: {e}")
             sys.exit(3)
