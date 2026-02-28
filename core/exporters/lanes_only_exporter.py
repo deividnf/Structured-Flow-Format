@@ -25,6 +25,18 @@ LANE_PADDING = 40
 LANE_MIN_W = 400
 LANE_MIN_H = 150
 
+# Roteamento Anti-Colisão (Task 10.1 & v3)
+EDGE_CHANNEL_GAP = 12
+EDGE_NODE_CLEARANCE = 28
+EDGE_MAX_K = 8
+EDGE_MIN_SEP = 16               # distância mínima "saudável" entre linhas paralelas (px)
+EDGE_MIN_PAR_LEN = 40           # comprimento mínimo para considerar "paralelo colado"
+W_NODE_HIT = 2000
+W_OVERLAP = 200
+W_BEND = 50
+W_PAR_CLOSE = 600
+W_DIST = 1
+
 def wrap_text(text, max_chars):
     if not text: return [""]
     words = text.split()
@@ -89,6 +101,268 @@ def assign_tracks(nodes, edges):
         if nid not in node_tracks: node_tracks[nid] = 0
             
     return node_tracks
+
+def get_port(node_id, geom, direction, edge_data=None, is_input=False):
+    """Calcula coordenadas da porta (anchor) do node (Task 10 & 10.1)"""
+    nx, ny = geom['nx'], geom['ny']
+    st = geom['shape_type']
+    
+    # Decisão: Portas laterais para branches booleanos (Task 10.1)
+    branch = (edge_data.get('branch') or '').lower() if edge_data else ''
+    
+    if direction == 'TB':
+        if st == 'decision' and not is_input and branch in ['true', 'yes', 'sim']:
+            return (nx + DECISION_SIZE//2, ny) # Saída direita
+        if st == 'decision' and not is_input and branch in ['false', 'no', 'não']:
+            return (nx - DECISION_SIZE//2, ny) # Saída esquerda
+            
+        # Saída: Bottom, Entrada: Top
+        if is_input:
+            y = ny - (START_END_R if st in ['start', 'end'] else (DECISION_SIZE//2 if st == 'decision' else NODE_H//2))
+            return (nx, y)
+        else:
+            y = ny + (START_END_R if st in ['start', 'end'] else (DECISION_SIZE//2 if st == 'decision' else NODE_H//2))
+            return (nx, y)
+    else:
+        if st == 'decision' and not is_input and branch in ['true', 'yes', 'sim']:
+            return (nx, ny - DECISION_SIZE//2) # Saída topo
+        if st == 'decision' and not is_input and branch in ['false', 'no', 'não']:
+            return (nx, ny + DECISION_SIZE//2) # Saída baixo
+
+        # Saída: Right, Entrada: Left
+        if is_input:
+            x = nx - (START_END_R if st in ['start', 'end'] else (DECISION_SIZE//2 if st == 'decision' else NODE_W//2))
+            return (x, ny)
+        else:
+            x = nx + (START_END_R if st in ['start', 'end'] else (DECISION_SIZE//2 if st == 'decision' else NODE_W//2))
+            return (x, ny)
+
+def manhattan_len(pts):
+    total = 0
+    for i in range(len(pts)-1):
+        total += abs(pts[i+1][0] - pts[i][0]) + abs(pts[i+1][1] - pts[i][1])
+    return total
+
+def bends_count(pts):
+    bends = 0
+    for i in range(1, len(pts)-1):
+        x0,y0 = pts[i-1]
+        x1,y1 = pts[i]
+        x2,y2 = pts[i+1]
+        d1 = (x1-x0, y1-y0)
+        d2 = (x2-x1, y2-y1)
+        if (d1[0] == 0) != (d2[0] == 0):
+            bends += 1
+    return bends
+
+def segments_from_pts(pts):
+    segs = []
+    for i in range(len(pts)-1):
+        x1,y1 = pts[i]
+        x2,y2 = pts[i+1]
+        if x1 == x2:
+            y_min, y_max = (y1,y2) if y1 <= y2 else (y2,y1)
+            segs.append({"ori":"V","x":x1,"y1":y_min,"y2":y_max})
+        else:
+            x_min, x_max = (x1,x2) if x1 <= x2 else (x2,x1)
+            segs.append({"ori":"H","y":y1,"x1":x_min,"x2":x_max})
+    return segs
+
+def interval_overlap(a1,a2,b1,b2):
+    lo = max(a1,b1)
+    hi = min(a2,b2)
+    return max(0, hi - lo)
+
+def within(v, lo, hi):
+    return lo <= v <= hi
+
+def overlaps_count(segs, occupied_h, occupied_v):
+    overlaps = 0
+    for s in segs:
+        if s["ori"] == "H":
+            for (oy, ox1, ox2), edge_ids in occupied_h.items():
+                if oy == s["y"] and interval_overlap(s["x1"], s["x2"], ox1, ox2) > 0:
+                    overlaps += len(edge_ids)
+        else:
+            for (ox, oy1, oy2), edge_ids in occupied_v.items():
+                if ox == s["x"] and interval_overlap(s["y1"], s["y2"], oy1, oy2) > 0:
+                    overlaps += len(edge_ids)
+    return overlaps
+
+def parallel_close_hits(segs, occupied_h, occupied_v):
+    hits = 0
+
+    def sum_neighbor_overlap_H(y, x1, x2):
+        nonlocal hits
+        for dy in [EDGE_CHANNEL_GAP, 2*EDGE_CHANNEL_GAP]:
+            for y2 in [y - dy, y + dy]:
+                if abs(y2 - y) < EDGE_MIN_SEP: continue
+                for (oy, ox1, ox2), edge_ids in occupied_h.items():
+                    if oy == y2:
+                        shared = interval_overlap(x1, x2, ox1, ox2)
+                        if shared >= EDGE_MIN_PAR_LEN:
+                            hits += len(edge_ids)
+
+    def sum_neighbor_overlap_V(x, y1, y2):
+        nonlocal hits
+        for dx in [EDGE_CHANNEL_GAP, 2*EDGE_CHANNEL_GAP]:
+            for x2 in [x - dx, x + dx]:
+                if abs(x2 - x) < EDGE_MIN_SEP: continue
+                for (ox, oy1, oy2), edge_ids in occupied_v.items():
+                    if ox == x2:
+                        shared = interval_overlap(y1, y2, oy1, oy2)
+                        if shared >= EDGE_MIN_PAR_LEN:
+                            hits += len(edge_ids)
+
+    for s in segs:
+        if s["ori"] == "H":
+            sum_neighbor_overlap_H(s["y"], s["x1"], s["x2"])
+        else:
+            sum_neighbor_overlap_V(s["x"], s["y1"], s["y2"])
+
+    return hits
+
+def node_hits_count(segs, bboxes, exclude_ids):
+    hits = 0
+    for s in segs:
+        for nid, ox1, oy1, ox2, oy2 in bboxes:
+            if nid in exclude_ids: continue
+            
+            x1, y1 = ox1 - EDGE_NODE_CLEARANCE, oy1 - EDGE_NODE_CLEARANCE
+            x2, y2 = ox2 + EDGE_NODE_CLEARANCE, oy2 + EDGE_NODE_CLEARANCE
+            
+            if s["ori"] == "H":
+                if within(s["y"], y1, y2) and interval_overlap(s["x1"], s["x2"], x1, x2) > 0:
+                    hits += 1
+            else:
+                if within(s["x"], x1, x2) and interval_overlap(s["y1"], s["y2"], y1, y2) > 0:
+                    hits += 1
+    return hits
+
+def generate_k_values(edge_kind=None):
+    ks = [0]
+    for i in range(1, EDGE_MAX_K+1):
+        ks.append(+i)
+        ks.append(-i)
+
+    if edge_kind in ["true", "yes", "sim"]:
+        ks = [0] + [k for k in ks if k > 0] + [k for k in ks if k < 0]
+    elif edge_kind in ["false", "no", "não"]:
+        ks = [0] + [k for k in ks if k < 0] + [k for k in ks if k > 0]
+
+    seen = set()
+    out = []
+    for k in ks:
+        if k not in seen:
+            seen.add(k)
+            out.append(k)
+    return out
+
+def clamp_mid_tb(y_mid, y_src, y_dst):
+    lo = min(y_src, y_dst) + EDGE_CHANNEL_GAP
+    hi = max(y_src, y_dst) - EDGE_CHANNEL_GAP
+    if lo >= hi: return (y_src + y_dst) / 2
+    return max(lo, min(hi, y_mid))
+
+def clamp_mid_lr(x_mid, x_src, x_dst):
+    lo = min(x_src, x_dst) + EDGE_CHANNEL_GAP
+    hi = max(x_src, x_dst) - EDGE_CHANNEL_GAP
+    if lo >= hi: return (x_src + x_dst) / 2
+    return max(lo, min(hi, x_mid))
+
+def route_edge_v3(edge, direction, node_geometry, bboxes, grid_x, grid_y, rank_gap, occupied_h, occupied_v):
+    src_id, dst_id = edge['from'], edge['to']
+    edge_id = f"{src_id}->{dst_id}"
+    edge_kind = (edge.get('branch') or '').lower()
+    
+    p_start = get_port(src_id, node_geometry[src_id], direction, edge, is_input=False)
+    p_end = get_port(dst_id, node_geometry[dst_id], direction, edge, is_input=True)
+    
+    x_src, y_src = p_start
+    x_dst, y_dst = p_end
+    
+    ks = generate_k_values(edge_kind)
+    best = None
+    
+    if direction == "TB":
+        base_mid = y_src + (rank_gap / 2)
+        
+        for k in ks:
+            y_mid = base_mid + (k * EDGE_CHANNEL_GAP)
+            y_mid = clamp_mid_tb(y_mid, y_src, y_dst)
+            
+            pts = [(x_src,y_src), (x_src,y_mid), (x_dst,y_mid), (x_dst,y_dst)]
+            segs = segments_from_pts(pts)
+            
+            dist = manhattan_len(pts)
+            bends = bends_count(pts)
+            node_hits = node_hits_count(segs, bboxes, [src_id, dst_id])
+            overlaps = overlaps_count(segs, occupied_h, occupied_v)
+            par_close = parallel_close_hits(segs, occupied_h, occupied_v)
+            
+            cost = (dist * W_DIST) + (node_hits * W_NODE_HIT) + (overlaps * W_OVERLAP) + (bends * W_BEND) + (par_close * W_PAR_CLOSE)
+            
+            variant_name = "base" if k == 0 else f"offset_{k}"
+            logger.info(f"[ROUTE_TRY] edge_id={edge_id}, variant={variant_name}, cost={cost}, overlaps={overlaps}, par_close={par_close}, node_hits={node_hits}")
+            
+            if node_hits == 0 and overlaps == 0 and par_close == 0:
+                best = {"pts": pts, "cost": cost, "variant": variant_name}
+                break
+                
+            if best is None or cost < best["cost"]:
+                best = {"pts": pts, "cost": cost, "variant": variant_name}
+    else:
+        base_mid = x_src + (rank_gap / 2)
+        
+        for k in ks:
+            x_mid = base_mid + (k * EDGE_CHANNEL_GAP)
+            x_mid = clamp_mid_lr(x_mid, x_src, x_dst)
+            
+            pts = [(x_src,y_src), (x_mid,y_src), (x_mid,y_dst), (x_dst,y_dst)]
+            segs = segments_from_pts(pts)
+            
+            dist = manhattan_len(pts)
+            bends = bends_count(pts)
+            node_hits = node_hits_count(segs, bboxes, [src_id, dst_id])
+            overlaps = overlaps_count(segs, occupied_h, occupied_v)
+            par_close = parallel_close_hits(segs, occupied_h, occupied_v)
+            
+            cost = (dist * W_DIST) + (node_hits * W_NODE_HIT) + (overlaps * W_OVERLAP) + (bends * W_BEND) + (par_close * W_PAR_CLOSE)
+            
+            variant_name = "base" if k == 0 else f"offset_{k}"
+            logger.info(f"[ROUTE_TRY] edge_id={edge_id}, variant={variant_name}, cost={cost}, overlaps={overlaps}, par_close={par_close}, node_hits={node_hits}")
+            
+            if node_hits == 0 and overlaps == 0 and par_close == 0:
+                best = {"pts": pts, "cost": cost, "variant": variant_name}
+                break
+                
+            if best is None or cost < best["cost"]:
+                best = {"pts": pts, "cost": cost, "variant": variant_name}
+
+    logger.info(f"[ROUTE_PICK] edge_id={edge_id}, chosen={best['variant']}, cost={best['cost']}")
+    
+    # Reservar
+    segs = segments_from_pts(best['pts'])
+    for s in segs:
+        if s["ori"] == "H":
+            key = (s["y"], s["x1"], s["x2"])
+            if key not in occupied_h: occupied_h[key] = []
+            occupied_h[key].append(edge_id)
+            logger.info(f"[OCCUPY] edge_id={edge_id}, segment=H, y={s['y']}, x1={s['x1']}, x2={s['x2']}")
+        else:
+            key = (s["x"], s["y1"], s["y2"])
+            if key not in occupied_v: occupied_v[key] = []
+            occupied_v[key].append(edge_id)
+            logger.info(f"[OCCUPY] edge_id={edge_id}, segment=V, x={s['x']}, y1={s['y1']}, y2={s['y2']}")
+
+    # Label Pos
+    pts = best['pts']
+    label_pos = None
+    if edge.get('branch'):
+        if direction == 'TB': label_pos = (pts[1][0] + (pts[2][0]-pts[1][0])/2, pts[1][1] - 8)
+        else: label_pos = (pts[1][0]+8, pts[1][1] + (pts[2][1]-pts[1][1])/2)
+
+    return pts, label_pos
 
 def export_lanes_only(data, lanes_only=False):
     sff = data.get('sff', {})
@@ -339,6 +613,11 @@ def export_lanes_only(data, lanes_only=False):
     logger.info(f"[CANVAS] bbox=({gmin_x},{gmin_y},{gmax_x},{gmax_y}) width={final_w} height={final_h}")
 
     svg = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{final_w}" height="{final_h}" viewBox="{vb_x} {vb_y} {final_w} {final_h}">']
+    svg.append('<defs>')
+    svg.append('<marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">')
+    svg.append('<polygon points="0 0, 10 3.5, 0 7" fill="#666" />')
+    svg.append('</marker>')
+    svg.append('</defs>')
     svg.append(f'<rect x="{vb_x}" y="{vb_y}" width="{final_w}" height="{final_h}" fill="#ffffff" />')
 
     # 5. Desenhar Lanes
@@ -359,7 +638,47 @@ def export_lanes_only(data, lanes_only=False):
             tx, ty = lx + TITLE_BAR // 2, ly + lh // 2
             svg.append(f'<text x="{tx}" y="{ty}" font-family="sans-serif" font-size="{FONT_TITLE}" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 {tx},{ty})">{title}</text>')
 
-    # 6. Desenhar Nodes (se não for lanes_only) e Textos
+    # 6. Desenhar Edges (Task 10 & 10.1)
+    if not lanes_only:
+        occupied_h = {} # (y, x1, x2) -> [edge_id]
+        occupied_v = {} # (x, y1, y2) -> [edge_id]
+
+        # Ordenação de Edges: Main Path (track=0) primeiro
+        def edge_priority(e):
+            src_track = node_tracks.get(e['from'], 0)
+            dst_track = node_tracks.get(e['to'], 0)
+            src_rank = nodes.get(e['from'], {}).get('rank_global', 0)
+            dst_rank = nodes.get(e['to'], {}).get('rank_global', 0)
+            # Prioridade 0: main path linear
+            if src_track == 0 and dst_track == 0 and dst_rank > src_rank: return 0
+            # Prioridade 1: branches saindo do track 0
+            if src_track == 0: return 1
+            # Prioridade 2: lane change
+            if nodes.get(e['from'], {}).get('lane') != nodes.get(e['to'], {}).get('lane'): return 2
+            return 3
+
+        edges_sorted = sorted(edges, key=edge_priority)
+
+        svg_edges = []
+        svg_edge_labels = []
+        for edge in edges_sorted:
+            pts, label_pos = route_edge_v3(edge, direction, node_geometry, bboxes, GRID_X, GRID_Y, RANK_GAP, occupied_h, occupied_v)
+            if not pts: continue
+            
+            d = f"M {pts[0][0]} {pts[0][1]}"
+            for p in pts[1:]:
+                d += f" L {p[0]} {p[1]}"
+            
+            svg_edges.append(f'<path d="{d}" fill="none" stroke="#666" stroke-width="1.5" marker-end="url(#arrowhead)" stroke-linejoin="round" />')
+            
+            if label_pos:
+                label = edge.get('branch', '')
+                svg_edge_labels.append(f'<text x="{label_pos[0]}" y="{label_pos[1]}" font-family="sans-serif" font-size="11" font-weight="bold" fill="#555" text-anchor="middle">{label}</text>')
+        
+        svg.extend(svg_edges)
+        svg.extend(svg_edge_labels)
+
+    # 7. Desenhar Nodes e Textos (por cima das edges)
     if not lanes_only:
         svg_processes = []
         svg_decisions = []

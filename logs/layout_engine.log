@@ -1024,3 +1024,602 @@
 2026-02-28 00:25:51 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
 2026-02-28 00:25:51 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
 2026-02-28 00:25:51 | INFO  | Export OK → export/task09_3_lr.svg
+2026-02-28 14:29:29 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 14:29:29 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 14:29:29 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 14:29:29 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 14:29:29 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 14:29:29 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 14:29:29 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 14:29:29 | INFO  | Export OK → export/task10_tb.svg
+2026-02-28 14:29:35 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 14:29:35 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 14:29:35 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 14:29:35 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 14:29:35 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 14:29:35 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 14:29:35 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 14:29:35 | INFO  | Export OK → export/task10_lr.svg
+2026-02-28 14:34:07 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 14:34:07 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 14:34:07 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 14:34:07 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 14:34:07 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 14:34:07 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=start_checkout->fill_data, from=start_checkout, to=fill_data, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=fill_data->validate_data, from=fill_data, to=validate_data, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=validate_data->data_valid, from=validate_data, to=data_valid, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=data_valid->send_to_gateway, from=data_valid, to=send_to_gateway, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=data_valid->end_failure, from=data_valid, to=end_failure, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=send_to_gateway->wait_gateway, from=send_to_gateway, to=wait_gateway, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=wait_gateway->payment_approved, from=wait_gateway, to=payment_approved, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=payment_approved->end_success, from=payment_approved, to=end_success, pts=4
+2026-02-28 14:34:07 | INFO  | [ROUTE_EDGE] edge_id=payment_approved->end_failure, from=payment_approved, to=end_failure, pts=4
+2026-02-28 14:34:07 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 14:34:07 | INFO  | Export OK → export/task10_tb.svg
+2026-02-28 14:34:10 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 14:34:10 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 14:34:10 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 14:34:10 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 14:34:10 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 14:34:10 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 14:34:10 | INFO  | [ROUTE_EDGE] edge_id=start->input, from=start, to=input, pts=4
+2026-02-28 14:34:10 | INFO  | [ROUTE_EDGE] edge_id=input->verify, from=input, to=verify, pts=4
+2026-02-28 14:34:10 | INFO  | [ROUTE_EDGE] edge_id=verify->process, from=verify, to=process, pts=4
+2026-02-28 14:34:10 | WARN  | [ROUTE_DETOUR] edge_id=verify->end_fail, reason=bbox_collision, tries=1
+2026-02-28 14:34:10 | INFO  | [ROUTE_EDGE] edge_id=verify->end_fail, from=verify, to=end_fail, pts=4
+2026-02-28 14:34:10 | INFO  | [ROUTE_EDGE] edge_id=process->end, from=process, to=end, pts=4
+2026-02-28 14:34:10 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 14:34:10 | INFO  | Export OK → export/task10_lr.svg
+2026-02-28 14:46:32 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 14:46:32 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 14:46:32 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 14:46:32 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 14:46:32 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 14:46:32 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=base, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_1, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_-1, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_2, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_-2, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=start_checkout->fill_data, chosen=base, cost=138.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=194, y2=274.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=H, y=274.0, x1=240, x2=240
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=274.0, y2=282
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=base, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_1, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_-1, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_2, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_-2, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=fill_data->validate_data, chosen=base, cost=568.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=240, y1=342, y2=422.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=H, y=422.0, x1=240, x2=600
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=600, y1=422.0, y2=450
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=base, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_-1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_-2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=validate_data->data_valid, chosen=base, cost=148.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=510, y2=590.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=H, y=590.0, x1=600, x2=600
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=608
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=base, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_1, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_-1, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_2, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_-2, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=data_valid->send_to_gateway, chosen=base, cost=814.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=640, y1=648, y2=728.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=H, y=728.0, x1=640, x2=1240
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=1240, y1=728.0, y2=762
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=base, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_1, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_-1, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_2, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_-2, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=send_to_gateway->wait_gateway, chosen=base, cost=158.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=822, y2=902.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=H, y=902.0, x1=1240, x2=1240
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=930
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=base, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_-1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_-2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=wait_gateway->payment_approved, chosen=base, cost=148.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=990, y2=1070.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=H, y=1070.0, x1=1240, x2=1240
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1088
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=base, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_1, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-1, cost=898.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_2, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-2, cost=898.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_success, chosen=offset_-1, cost=898.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=1280, y1=1128, y2=1196.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=H, y=1196.0, x1=600, x2=1280
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=600, y1=1196.0, y2=1246
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=base, cost=1218.0, overlaps=1, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_1, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-1, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_2, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-2, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=data_valid->end_failure, chosen=offset_1, cost=1018.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=560, y1=648, y2=740.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=H, y=740.0, x1=560, x2=880
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=880, y1=740.0, y2=1246
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=base, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_1, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-1, cost=938.0, overlaps=2, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_2, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-2, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 14:46:32 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_failure, chosen=base, cost=738.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=1200, y1=1128, y2=1208.0
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=H, y=1208.0, x1=880, x2=1200
+2026-02-28 14:46:32 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=880, y1=1208.0, y2=1246
+2026-02-28 14:46:32 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 14:46:32 | INFO  | Export OK → export/task10_1_tb.svg
+2026-02-28 14:46:34 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 14:46:34 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 14:46:34 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 14:46:34 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 14:46:34 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 14:46:34 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=base, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_1, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_-1, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_2, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_-2, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_PICK] edge_id=start->input, chosen=base, cost=234.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=266, x2=416.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=416.0, x2=416.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=416.0, x2=450
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=base, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_1, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_-1, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_2, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_-2, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_PICK] edge_id=input->verify, chosen=base, cost=662.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=120, x1=670, x2=735.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=input->verify, segment=V, x=735.0, y1=120, y2=552
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=552, x1=735.0, x2=800
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=base, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_1, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_-1, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_2, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_-2, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_PICK] edge_id=verify->process, chosen=base, cost=310.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=512, x1=840, x2=990.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->process, segment=V, x=990.0, y1=512, y2=552
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=552, x1=990.0, x2=1010
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=base, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_1, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_-1, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_2, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_-2, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_PICK] edge_id=process->end, chosen=base, cost=716.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=552, x1=1230, x2=1380.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=process->end, segment=V, x=1380.0, y1=120, y2=552
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=120, x1=1380.0, x2=1414
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=base, cost=4906.0, overlaps=1, node_hits=2
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_1, cost=4706.0, overlaps=0, node_hits=2
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_-1, cost=706.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_2, cost=4706.0, overlaps=0, node_hits=2
+2026-02-28 14:46:34 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_-2, cost=706.0, overlaps=0, node_hits=0
+2026-02-28 14:46:34 | INFO  | [ROUTE_PICK] edge_id=verify->end_fail, chosen=offset_-1, cost=706.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=592, x1=840, x2=978.0
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=V, x=978.0, y1=240, y2=592
+2026-02-28 14:46:34 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=240, x1=978.0, x2=1094
+2026-02-28 14:46:34 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 14:46:34 | INFO  | Export OK → export/task10_1_lr.svg
+2026-02-28 15:00:49 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 15:00:49 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 15:00:49 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 15:00:50 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 15:00:50 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 15:00:50 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 15:00:50 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 15:00:50 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=base, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_1, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_-1, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_2, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=offset_-2, cost=138.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=start_checkout->fill_data, chosen=base, cost=138.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=194, y2=274.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=H, y=274.0, x1=240, x2=240
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=274.0, y2=282
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=base, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_1, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_-1, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_2, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=offset_-2, cost=568.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=fill_data->validate_data, chosen=base, cost=568.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=240, y1=342, y2=422.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=H, y=422.0, x1=240, x2=600
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=600, y1=422.0, y2=450
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=base, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_-1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=offset_-2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=validate_data->data_valid, chosen=base, cost=148.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=510, y2=590.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=H, y=590.0, x1=600, x2=600
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=608
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=base, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_1, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_-1, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_2, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=offset_-2, cost=814.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=data_valid->send_to_gateway, chosen=base, cost=814.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=640, y1=648, y2=728.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=H, y=728.0, x1=640, x2=1240
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=1240, y1=728.0, y2=762
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=base, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_1, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_-1, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_2, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=offset_-2, cost=158.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=send_to_gateway->wait_gateway, chosen=base, cost=158.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=822, y2=902.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=H, y=902.0, x1=1240, x2=1240
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=930
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=base, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_-1, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=offset_-2, cost=148.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=wait_gateway->payment_approved, chosen=base, cost=148.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=990, y2=1070.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=H, y=1070.0, x1=1240, x2=1240
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1088
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=base, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_1, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-1, cost=898.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_2, cost=2898.0, overlaps=0, node_hits=1
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-2, cost=898.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_success, chosen=offset_-1, cost=898.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=1280, y1=1128, y2=1196.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=H, y=1196.0, x1=600, x2=1280
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=600, y1=1196.0, y2=1246
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=base, cost=1218.0, overlaps=1, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_1, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-1, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_2, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-2, cost=1018.0, overlaps=0, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=data_valid->end_failure, chosen=offset_1, cost=1018.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=560, y1=648, y2=740.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=H, y=740.0, x1=560, x2=880
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=880, y1=740.0, y2=1246
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=base, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_1, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-1, cost=938.0, overlaps=2, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_2, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-2, cost=738.0, overlaps=1, node_hits=0
+2026-02-28 15:00:50 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_failure, chosen=base, cost=738.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=1200, y1=1128, y2=1208.0
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=H, y=1208.0, x1=880, x2=1200
+2026-02-28 15:00:50 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=880, y1=1208.0, y2=1246
+2026-02-28 15:00:50 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 15:00:50 | INFO  | Export OK → export/task10_1_tb.svg
+2026-02-28 15:00:56 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 15:00:56 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 15:00:56 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 15:00:56 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 15:00:56 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 15:00:56 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=base, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_1, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_-1, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_2, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=offset_-2, cost=234.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_PICK] edge_id=start->input, chosen=base, cost=234.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=266, x2=416.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=416.0, x2=416.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=416.0, x2=450
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=base, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_1, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_-1, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_2, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=offset_-2, cost=662.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_PICK] edge_id=input->verify, chosen=base, cost=662.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=120, x1=670, x2=735.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=input->verify, segment=V, x=735.0, y1=120, y2=552
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=552, x1=735.0, x2=800
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=base, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_1, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_-1, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_2, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=offset_-2, cost=310.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_PICK] edge_id=verify->process, chosen=base, cost=310.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=512, x1=840, x2=990.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->process, segment=V, x=990.0, y1=512, y2=552
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=552, x1=990.0, x2=1010
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=base, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_1, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_-1, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_2, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=offset_-2, cost=716.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_PICK] edge_id=process->end, chosen=base, cost=716.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=552, x1=1230, x2=1380.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=process->end, segment=V, x=1380.0, y1=120, y2=552
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=120, x1=1380.0, x2=1414
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=base, cost=4906.0, overlaps=1, node_hits=2
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_1, cost=4706.0, overlaps=0, node_hits=2
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_-1, cost=706.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_2, cost=4706.0, overlaps=0, node_hits=2
+2026-02-28 15:00:56 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_-2, cost=706.0, overlaps=0, node_hits=0
+2026-02-28 15:00:56 | INFO  | [ROUTE_PICK] edge_id=verify->end_fail, chosen=offset_-1, cost=706.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=592, x1=840, x2=978.0
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=V, x=978.0, y1=240, y2=592
+2026-02-28 15:00:56 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=240, x1=978.0, x2=1094
+2026-02-28 15:00:56 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 15:00:56 | INFO  | Export OK → export/task10_1_lr.svg
+2026-02-28 15:22:23 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 15:22:23 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 15:22:23 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 15:22:23 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 15:22:23 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 15:22:23 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=base, cost=88, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=start_checkout->fill_data, chosen=base, cost=88
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=194, y2=270
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=270, y2=270
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=270, y2=282
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=base, cost=568.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=fill_data->validate_data, chosen=base, cost=568.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=240, y1=342, y2=422.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=H, y=422.0, x1=240, x2=600
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=600, y1=422.0, y2=450
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=base, cost=98.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=validate_data->data_valid, chosen=base, cost=98.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=510, y2=590.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=590.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=608
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=base, cost=814.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=data_valid->send_to_gateway, chosen=base, cost=814.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=640, y1=648, y2=728.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=H, y=728.0, x1=640, x2=1240
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=1240, y1=728.0, y2=762
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=base, cost=108.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=send_to_gateway->wait_gateway, chosen=base, cost=108.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=822, y2=902.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=902.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=930
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=base, cost=98.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=wait_gateway->payment_approved, chosen=base, cost=98.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=990, y2=1070.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1070.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1088
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=base, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_1, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_2, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_3, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_4, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_5, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_6, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_7, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_8, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-1, cost=898.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_success, chosen=offset_-1, cost=898.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=1280, y1=1128, y2=1196.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=H, y=1196.0, x1=600, x2=1280
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=600, y1=1196.0, y2=1246
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=base, cost=1218.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-1, cost=1018.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=data_valid->end_failure, chosen=offset_-1, cost=1018.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=560, y1=648, y2=716.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=H, y=716.0, x1=560, x2=880
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=880, y1=716.0, y2=1246
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=base, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-1, cost=938.0, overlaps=2, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-2, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-3, cost=1338.0, overlaps=1, par_close=1, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-4, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-5, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-6, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-7, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-8, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_1, cost=1338.0, overlaps=1, par_close=1, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_2, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_3, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_4, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_5, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_6, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_7, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_8, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 15:22:23 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_failure, chosen=base, cost=738.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=1200, y1=1128, y2=1208.0
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=H, y=1208.0, x1=880, x2=1200
+2026-02-28 15:22:23 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=880, y1=1208.0, y2=1246
+2026-02-28 15:22:23 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 15:22:23 | INFO  | Export OK → export/task10_1_tb.svg
+2026-02-28 15:22:25 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 15:22:25 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 15:22:25 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 15:22:25 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 15:22:25 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 15:22:25 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=start->input, variant=base, cost=284.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:25 | INFO  | [ROUTE_PICK] edge_id=start->input, chosen=base, cost=284.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=266, x2=416.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=start->input, segment=V, x=416.0, y1=120, y2=120
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=start->input, segment=H, y=120, x1=416.0, x2=450
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=input->verify, variant=base, cost=662, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:25 | INFO  | [ROUTE_PICK] edge_id=input->verify, chosen=base, cost=662
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=120, x1=670, x2=788
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=input->verify, segment=V, x=788, y1=120, y2=552
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=input->verify, segment=H, y=552, x1=788, x2=800
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=verify->process, variant=base, cost=310.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:25 | INFO  | [ROUTE_PICK] edge_id=verify->process, chosen=base, cost=310.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=512, x1=840, x2=990.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->process, segment=V, x=990.0, y1=512, y2=552
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->process, segment=H, y=552, x1=990.0, x2=1010
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=process->end, variant=base, cost=716.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:25 | INFO  | [ROUTE_PICK] edge_id=process->end, chosen=base, cost=716.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=552, x1=1230, x2=1380.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=process->end, segment=V, x=1380.0, y1=120, y2=552
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=process->end, segment=H, y=120, x1=1380.0, x2=1414
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=base, cost=4906.0, overlaps=1, par_close=0, node_hits=2
+2026-02-28 15:22:25 | INFO  | [ROUTE_TRY] edge_id=verify->end_fail, variant=offset_-1, cost=706.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 15:22:25 | INFO  | [ROUTE_PICK] edge_id=verify->end_fail, chosen=offset_-1, cost=706.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=592, x1=840, x2=978.0
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=V, x=978.0, y1=240, y2=592
+2026-02-28 15:22:25 | INFO  | [OCCUPY] edge_id=verify->end_fail, segment=H, y=240, x1=978.0, x2=1094
+2026-02-28 15:22:25 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 15:22:25 | INFO  | Export OK → export/task10_1_lr.svg
