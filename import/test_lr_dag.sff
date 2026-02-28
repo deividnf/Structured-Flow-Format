@@ -1,0 +1,37 @@
+{
+  "sff": {
+    "version": "1.0",
+    "direction": "LR"
+  },
+  "lanes": {
+    "user": { "title": "Usuário", "order": 0 },
+    "system": { "title": "Sistema", "order": 1 }
+  },
+  "nodes": {
+    "start": { "type": "start", "label": "Início do Processo", "lane": "user" },
+    "input": { "type": "process", "label": "Digita Dados", "lane": "user" },
+    "verify": {
+      "type": "decision",
+      "label": "Dados Válidos?",
+      "lane": "system",
+      "branches": {
+        "true": { "next": "process" },
+        "false": { "next": "end_fail" }
+      }
+    },
+    "process": { "type": "process", "label": "Processa Informação", "lane": "system" },
+    "end": { "type": "end", "label": "Fim", "lane": "user" },
+    "end_fail": { "type": "end", "label": "Fim Falha", "lane": "user" }
+  },
+  "edges": [
+    { "from": "start", "to": "input" },
+    { "from": "input", "to": "verify" },
+    { "from": "verify", "to": "process", "branch": "true" },
+    { "from": "verify", "to": "end_fail", "branch": "false" },
+    { "from": "process", "to": "end" }
+  ],
+  "entry": {
+    "start": "start",
+    "ends": ["end", "end_fail"]
+  }
+}

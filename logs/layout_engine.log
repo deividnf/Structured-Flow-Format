@@ -904,3 +904,123 @@
 2026-02-27 22:07:09 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
 2026-02-27 22:07:09 | INFO  | [EXPORT] SVG gerado: 1150x518, lanes_only=False
 2026-02-27 22:07:09 | INFO  | Export OK → export/task08_4_dynamic_lr.svg
+2026-02-27 22:54:00 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 22:54:00 | INFO  | [EXPORT] SVG gerado: 1906x1180, lanes_only=False
+2026-02-27 22:54:00 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 23:12:53 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 23:12:53 | INFO  | [EXPORT] SVG gerado: 1304x280, lanes_only=False
+2026-02-27 23:12:53 | INFO  | Export OK → export/task09_tracks_tb.svg
+2026-02-27 23:12:56 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 23:12:56 | INFO  | [EXPORT] SVG gerado: 530x692, lanes_only=False
+2026-02-27 23:12:56 | INFO  | Export OK → export/task09_tracks_lr.svg
+2026-02-27 23:49:36 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=data_valid, lane=system, rank=0, track=0
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=end_failure, lane=system, rank=0, track=1
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=end_success, lane=system, rank=0, track=-1
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=fill_data, lane=user, rank=0, track=0
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=payment_approved, lane=gateway, rank=0, track=0
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=0, track=1
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=1
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=validate_data, lane=system, rank=0, track=2
+2026-02-27 23:49:36 | INFO  | [TRACK_ASSIGN] node_id=wait_gateway, lane=gateway, rank=0, track=-1
+2026-02-27 23:49:36 | WARN  | [BBOX_COLLISION] Node fill_data sobrepoe visualmente start_checkout
+2026-02-27 23:49:36 | WARN  | [BBOX_COLLISION] Node wait_gateway sobrepoe visualmente send_to_gateway
+2026-02-27 23:49:36 | WARN  | [BBOX_COLLISION] Node payment_approved sobrepoe visualmente send_to_gateway
+2026-02-27 23:49:36 | WARN  | [BBOX_COLLISION] Node payment_approved sobrepoe visualmente wait_gateway
+2026-02-27 23:49:36 | WARN  | [BBOX_COLLISION] Node end_failure sobrepoe visualmente validate_data
+2026-02-27 23:49:36 | INFO  | [EXPORT] SVG gerado: 1554x280, lanes_only=False
+2026-02-27 23:49:36 | INFO  | Export OK → export/task09_1_tb.svg
+2026-02-27 23:49:39 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 23:49:39 | INFO  | [TRACK_ASSIGN] node_id=end, lane=user, rank=0, track=0
+2026-02-27 23:49:39 | INFO  | [TRACK_ASSIGN] node_id=input, lane=user, rank=0, track=1
+2026-02-27 23:49:39 | INFO  | [TRACK_ASSIGN] node_id=process, lane=system, rank=0, track=0
+2026-02-27 23:49:39 | INFO  | [TRACK_ASSIGN] node_id=start, lane=user, rank=0, track=-1
+2026-02-27 23:49:39 | INFO  | [TRACK_ASSIGN] node_id=verify, lane=system, rank=0, track=1
+2026-02-27 23:49:39 | INFO  | [EXPORT] SVG gerado: 530x962, lanes_only=False
+2026-02-27 23:49:39 | INFO  | Export OK → export/task09_1_lr.svg
+2026-02-28 00:03:55 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 00:03:55 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 00:03:55 | INFO  | [TRACK_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 00:03:55 | INFO  | [EXPORT] SVG gerado: 1304x1250, lanes_only=False
+2026-02-28 00:03:55 | INFO  | Export OK → export/task09_2_tb.svg
+2026-02-28 00:03:57 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-28 00:03:57 | ERROR | Cyclic dependency detected during rank assignment.
+2026-02-28 00:03:57 | ERROR | Pipeline abortado: Cíclo detectado (o fluxo não é um DAG).
+2026-02-28 00:04:29 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 00:04:29 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 00:04:29 | INFO  | [TRACK_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 00:04:29 | INFO  | [EXPORT] SVG gerado: 1310x782, lanes_only=False
+2026-02-28 00:04:29 | INFO  | Export OK → export/task09_2_lr_dag.svg
+2026-02-28 00:25:49 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 00:25:49 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 00:25:49 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 00:25:49 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 00:25:49 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 00:25:49 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 00:25:49 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 00:25:49 | INFO  | Export OK → export/task09_3_tb.svg
+2026-02-28 00:25:51 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr_dag.sff, lanes_only=False
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=start, rank=0
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=input, rank=1
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=verify, rank=2
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=process, rank=3
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=end_fail, rank=3
+2026-02-28 00:25:51 | INFO  | [RANK_ASSIGN] node_id=end, rank=4
+2026-02-28 00:25:51 | INFO  | [GRID] rank_gap=300, track_gap=140, grid=(40,24)
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=start, lane=user, rank=0, track=0
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=input, lane=user, rank=1, track=0
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=verify, lane=system, rank=2, track=0
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=end_fail, lane=user, rank=3, track=1
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=process, lane=system, rank=3, track=0
+2026-02-28 00:25:51 | INFO  | [SLOT_ASSIGN] node_id=end, lane=user, rank=4, track=0
+2026-02-28 00:25:51 | WARN  | [TEXT_WRAP] Node verify quebrado em 2 linhas
+2026-02-28 00:25:51 | INFO  | [CANVAS] bbox=(40,40,1590,792) width=1710 height=912
+2026-02-28 00:25:51 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1710,912
+2026-02-28 00:25:51 | INFO  | Export OK → export/task09_3_lr.svg

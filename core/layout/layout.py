@@ -12,23 +12,70 @@ def generate_layout(data: Dict[str, Any], compiled: Dict[str, Any]) -> Dict[str,
     lanes = data.get("lanes", {})
     entry = data.get("entry", {})
     direction = data.get("sff", {}).get("direction", "TB")
-    prev = compiled["index"]["prev"]
-    # 1. Calcular ranks (BFS)
-    ranks = {}
-    queue = collections.deque()
-    start = entry.get("start")
-    if start is None:
-        return {"ranks": {}, "positions": {}, "routing": {}}
-    ranks[start] = 0
-    queue.append(start)
+    from core.logger.logger import Logger
+    logger = Logger()
+    
+    # 1. Calcular ranks (Kahn's Topological Sort - Task 09.2)
+    start_node = entry.get("start")
+    if not start_node or start_node not in nodes:
+        logger.error(f"ENTRY START inválido: {start_node}")
+        raise ValueError("Pipeline abortado: Entry start inválido.")
+
+    # Achar nós alcançáveis a partir do start
+    reachable = set()
+    q = collections.deque([start_node])
+    reachable.add(start_node)
+    
+    full_adj = collections.defaultdict(list)
+    for e in edges:
+        full_adj[e["from"]].append(e["to"])
+        
+    while q:
+        curr = q.popleft()
+        for nxt in full_adj[curr]:
+            if nxt not in reachable:
+                reachable.add(nxt)
+                q.append(nxt)
+
+    # Construir indegree e adj apenas para o subgrafo alcançável
+    adj = collections.defaultdict(list)
+    in_degree = collections.defaultdict(int)
+    
+    for e in edges:
+        u, v = e["from"], e["to"]
+        if u in reachable and v in reachable:
+            adj[u].append(v)
+            in_degree[v] += 1
+            if u not in in_degree:
+                in_degree[u] = 0
+
+    in_degree[start_node] = 0
+    queue = collections.deque([start_node])
+    ranks = {start_node: 0}
+    topo_order = []
+
     while queue:
-        node = queue.popleft()
-        for e in edges:
-            if e["from"] == node:
-                to = e["to"]
-                if to not in ranks or ranks[to] > ranks[node] + 1:
-                    ranks[to] = ranks[node] + 1
-                    queue.append(to)
+        u = queue.popleft()
+        topo_order.append(u)
+        for v in adj[u]:
+            in_degree[v] -= 1
+            ranks[v] = max(ranks.get(v, 0), ranks[u] + 1)
+            if in_degree[v] == 0:
+                queue.append(v)
+
+    if len(topo_order) != len(reachable):
+        logger.error("Cyclic dependency detected during rank assignment.")
+        raise ValueError("Pipeline abortado: Cíclo detectado (o fluxo não é um DAG).")
+
+    if len(ranks) != len(nodes):
+        for nid in nodes:
+            if nid not in ranks:
+                logger.error(f"Node {nid} is unreachable or unranked.")
+        raise ValueError("Pipeline abortado: Existem nodes inalcançáveis a partir do start.")
+
+    for nid, r in ranks.items():
+        nodes[nid]['rank_global'] = r
+        logger.info(f"[RANK_ASSIGN] node_id={nid}, rank={r}")
     # 2. Ordenar lanes
     lane_order = sorted(lanes, key=lambda l: lanes[l].get("order", 0))
     lane_offsets = {lane: i for i, lane in enumerate(lane_order)}
