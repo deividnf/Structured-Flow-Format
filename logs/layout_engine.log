@@ -831,3 +831,21 @@
 2026-02-27 20:59:14 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
 2026-02-27 20:59:14 | INFO  | [EXPORT] SVG gerado: 668x1650, lanes_only=False
 2026-02-27 20:59:14 | INFO  | Export OK → test_output/custom_name.svg
+2026-02-27 21:01:38 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:01:38 | INFO  | [EXPORT] SVG gerado: 668x1650, lanes_only=False
+2026-02-27 21:01:38 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 21:09:54 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:09:54 | INFO  | [EXPORT] SVG gerado: 992x4032, lanes_only=False
+2026-02-27 21:09:54 | INFO  | Export OK → export/task08_checkout.svg
+2026-02-27 21:09:58 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:09:58 | ERROR | Nó 'end' ('end') não está listado em entry.ends.
+2026-02-27 21:09:58 | ERROR | Decision 'verify' deve ter branches 'true' e 'false'.
+2026-02-27 21:10:27 | INFO  | Export iniciado: formato=svg, arquivo=import/test_lr.sff, lanes_only=False
+2026-02-27 21:10:27 | INFO  | [EXPORT] SVG gerado: 1744x400, lanes_only=False
+2026-02-27 21:10:27 | INFO  | Export OK → export/task08_lr.svg
+2026-02-27 21:11:13 | INFO  | Export iniciado: formato=svg, arquivo=import/test_collision.sff, lanes_only=False
+2026-02-27 21:11:13 | INFO  | [EXPORT] SVG gerado: 504x736, lanes_only=False
+2026-02-27 21:11:13 | INFO  | Export OK → export/task08_collision.svg
+2026-02-27 21:12:38 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 21:12:38 | INFO  | [EXPORT] SVG gerado: 992x4032, lanes_only=False
+2026-02-27 21:12:38 | INFO  | Export OK → export\checkout_flow.svg

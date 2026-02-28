@@ -233,10 +233,6 @@ def main():
             logger.error(str(e))
             print(f"Erro: {e}")
             sys.exit(3)
-        except Exception as e:
-            logger.error(str(e))
-            print(f"Erro: {e}")
-            sys.exit(3)
     else:
         print(f"Comando desconhecido: {command}")
         sys.exit(1)

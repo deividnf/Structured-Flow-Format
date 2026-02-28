@@ -1,0 +1,16 @@
+{
+  "sff": { "version": "1.0", "direction": "TB" },
+  "entry": { "start": "start", "ends": ["end"] },
+  "lanes": { "lane1": { "title": "Lane 1", "order": 0 } },
+  "nodes": {
+    "start": { "type": "start", "label": "Start", "lane": "lane1" },
+    "node1": { "type": "process", "label": "Same Slot A", "lane": "lane1", "rank_global": 1, "col_index": 0 },
+    "node2": { "type": "process", "label": "Same Slot B", "lane": "lane1", "rank_global": 1, "col_index": 0 },
+    "end": { "type": "end", "label": "End", "lane": "lane1", "rank_global": 2, "col_index": 0 }
+  },
+  "edges": [
+    { "from": "start", "to": "node1" },
+    { "from": "node1", "to": "node2" },
+    { "from": "node2", "to": "end" }
+  ]
+}
