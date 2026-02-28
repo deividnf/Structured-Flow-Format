@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="584" height="588" viewBox="0 0 584 588">
+<rect x="0" y="0" width="584" height="588" fill="#ffffff" />
+<rect x="24" y="24" width="536" height="180" fill="#fcfcfc" stroke="#ccc" stroke-width="1" />
+<rect x="24" y="24" width="56" height="180" fill="#ececec" stroke="#ccc" stroke-width="1" />
+<text x="52" y="114" font-size="20" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 52,114)">Usuário</text>
+<rect x="24" y="204" width="536" height="180" fill="#fcfcfc" stroke="#ccc" stroke-width="1" />
+<rect x="24" y="204" width="56" height="180" fill="#ececec" stroke="#ccc" stroke-width="1" />
+<text x="52" y="294" font-size="20" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 52,294)">Sistema</text>
+<rect x="24" y="384" width="536" height="180" fill="#fcfcfc" stroke="#ccc" stroke-width="1" />
+<rect x="24" y="384" width="56" height="180" fill="#ececec" stroke="#ccc" stroke-width="1" />
+<text x="52" y="474" font-size="20" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 52,474)">Gateway de Pagamento</text>
+</svg>

@@ -1,10 +1,15 @@
 ## 🖼️ Como visualizar o SVG gerado (lanes-only)
 
+
 Após rodar o comando:
 ```sh
-python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only > export/lanes_only_tb.svg
+python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only
 ```
-Abra o arquivo export/lanes_only_tb.svg no VS Code (basta clicar) ou arraste para o navegador. Você verá um bloco único dividido em faixas, com títulos na esquerda (TB) ou topo (LR).
+O arquivo será salvo automaticamente em:
+```
+export/checkout_flow.svg
+```
+Abra o arquivo gerado no VS Code (basta clicar) ou arraste para o navegador. Você verá um bloco único dividido em faixas, com títulos na esquerda (TB) ou topo (LR).
 
 Exemplo visual TB:
 ![lanes-only TB](docs/screenshots/lanes_only_tb.png)
@@ -12,20 +17,27 @@ Exemplo visual TB:
 Exemplo visual LR:
 ![lanes-only LR](docs/screenshots/lanes_only_lr.png)
 
-Se preferir, use o comando `code export/lanes_only_tb.svg` para abrir direto no VS Code.
+Se preferir, use o comando `code export/checkout_flow.svg` para abrir direto no VS Code.
+
+### Exportando para caminho customizado
+```sh
+python -m core.cli export exemplo/checkout_flow.sff --format svg --lanes-only --out export/meu_arquivo.svg
+```
+O arquivo será salvo exatamente no caminho informado.
 
 ### Logs de exemplo (refino BPMN)
 ```
 [LANES-ONLY] direction=TB, n_lanes=3
-[LANES-ONLY] TB: container x=24, y=24, w=956, h=720
+[LANES-ONLY] TB: container x=24, y=24, w=956, h=240
 [LANES-ONLY] Lane user TB: x=24, y=24, w=956, h=240, title="Usuário"
 [LANES-ONLY] Lane system TB: x=24, y=264, w=956, h=240, title="Sistema"
 [LANES-ONLY] Lane gateway TB: x=24, y=504, w=956, h=240, title="Gateway"
 [LANES-ONLY] TB: total_width=1004, total_height=768
+Export OK → export/checkout_flow.svg
 ```
 7. **Exportar apenas as lanes (boxes/baias) em SVG:**
     ```sh
-    python -m core.cli export <caminho_para_arquivo.sff> --format svg --lanes-only > export/lanes_only.svg
+    python -m core.cli export <caminho_para_arquivo.sff> --format svg --lanes-only
     ```
     - Saída esperada:
        - SVG com apenas as lanes desenhadas, sem nodes/edges/routing
@@ -34,6 +46,7 @@ Se preferir, use o comando `code export/lanes_only_tb.svg` para abrir direto no 
        - Lanes “grudadas” (gap pequeno), viewBox auto-ajustado
     - Logs:
        - INFO direction, n_lanes, dimensões finais, posição/tamanho de cada lane
+       - INFO caminho final do arquivo
        - ERROR se direction inválida ou lanes vazias
 
 ## 🧪 Validação Visual Lanes-Only
@@ -72,9 +85,30 @@ Se preferir, use o comando `code export/lanes_only_tb.svg` para abrir direto no 
 [LANES-ONLY] Lane gateway TB: x=24, y=532, w=956, h=240, title="Gateway"
 ```
 
-# Structured Flow Format (SFF) — Guia Visual e Prático
+## 📝 Logs detalhados de nodes e validação visual
 
-> **Automatize, valide e audite fluxos estruturados com SFF.**
+Ao exportar para SVG, o sistema gera logs completos em `logs/layout_engine.log` para cada node, incluindo:
+- Posição (x, y)
+- Limites da lane
+- Se o node está dentro da lane
+- Distância para o próximo node
+
+Exemplo de log:
+```
+[NODE] fill_data label='Preencher dados de pagamento' lane='user' x=106 y=174 dentro_lane=True lane_top=80 lane_bottom=204 dist_next=22
+[NODE] validate_data label='Validar dados informados' lane='system' x=466 y=452 dentro_lane=True lane_top=260 lane_bottom=384 dist_next=24
+```
+Esses logs ajudam a auditar o layout, identificar nodes fora da faixa e ajustar o espaçamento.
+
+## 🧪 Validação visual responsiva
+- Todos os nodes devem aparecer dentro das faixas (lanes) no SVG.
+- Se algum node sair da lane, verifique os logs para identificar o problema.
+- Ajuste o modelo .sff ou os parâmetros de layout se necessário.
+
+## 🛠️ Troubleshooting layout SVG
+- Se nodes estiverem fora das lanes, confira os logs detalhados.
+- Verifique se o arquivo .sff está correto e se os ranks/lanes estão bem definidos.
+- Para auditoria, mantenha os logs salvos e compare com o visual do SVG.
 
 ---
 

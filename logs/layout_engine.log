@@ -30,3 +30,804 @@
 2026-02-27 18:12:29 | INFO  | Preview gerado com sucesso
 2026-02-27 18:12:39 | INFO  | Export iniciado: formato=mermaid, arquivo=.\exemplo\checkout_flow.sff
 2026-02-27 18:12:39 | INFO  | Export gerado com sucesso: output=mermaid
+2026-02-27 18:20:06 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 18:20:06 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:20:06 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=24, w=956, h=240, title="Usuário"
+2026-02-27 18:20:06 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=278, w=956, h=240, title="Sistema"
+2026-02-27 18:20:06 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=532, w=956, h=240, title="Gateway de Pagamento"
+2026-02-27 18:20:06 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 18:26:43 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 18:26:43 | INFO  | [LANES-ONLY] TB: container x=24, y=24, w=956, h=720
+2026-02-27 18:26:43 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=24, w=956, h=240, title="Usuário"
+2026-02-27 18:26:43 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=264, w=956, h=240, title="Sistema"
+2026-02-27 18:26:43 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=504, w=956, h=240, title="Gateway de Pagamento"
+2026-02-27 18:26:43 | INFO  | [LANES-ONLY] TB: total_width=1004, total_height=768
+2026-02-27 18:26:43 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 18:27:34 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\order_orchestration_flow.sff, lanes_only=True
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] TB: container x=24, y=24, w=956, h=1200
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=24, w=956, h=240, title="Cliente"
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=264, w=956, h=240, title="Frontend"
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=504, w=956, h=240, title="Backend"
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=744, w=956, h=240, title="Estoque"
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] Lane None TB: x=24, y=984, w=956, h=240, title="Gateway Pagamento"
+2026-02-27 18:27:34 | INFO  | [LANES-ONLY] TB: total_width=1004, total_height=1248
+2026-02-27 18:27:34 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 18:34:47 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\order_orchestration_flow.sff, lanes_only=True
+2026-02-27 18:34:47 | ERROR | 'id'
+2026-02-27 18:36:50 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:36:50 | ERROR | 'id'
+2026-02-27 18:39:25 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:39:25 | ERROR | name 'LANE_BODY_W' is not defined
+2026-02-27 18:40:30 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:40:30 | ERROR | name 'LANE_BODY_W' is not defined
+2026-02-27 18:41:04 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:41:04 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:41:04 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:41:04 | ERROR | 'charmap' codec can't encode character '\u23f3' in position 2830: character maps to <undefined>
+2026-02-27 18:48:05 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:48:05 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:48:05 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:48:05 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 18:51:28 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:51:28 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:51:28 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:52:05 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:52:05 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:52:05 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:52:10 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:52:10 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:52:10 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:52:32 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:52:32 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:52:32 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:52:52 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:52:52 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:52:52 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 18:53:40 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 18:53:40 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 18:53:40 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:06:53 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:06:53 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:06:53 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:06:56 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:06:56 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:06:56 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:07:56 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:07:56 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:07:56 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:08:14 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:08:14 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:08:14 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:09:17 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:09:17 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:09:17 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:09:17 | ERROR | expected str, bytes or os.PathLike object, not NoneType
+2026-02-27 19:10:00 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:10:00 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:10:00 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:10:00 | ERROR | expected str, bytes or os.PathLike object, not NoneType
+2026-02-27 19:10:36 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:10:36 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:10:36 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:10:36 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 19:10:44 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:10:44 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:10:44 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:11:16 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:11:16 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:11:16 | INFO  | Export OK → export/meu_arquivo.svg
+2026-02-27 19:11:16 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 19:11:47 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:11:47 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:11:47 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:12:11 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=False
+2026-02-27 19:12:11 | ERROR | No module named 'core.exporters.svg_exporter'
+2026-02-27 19:12:44 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:12:44 | ERROR | No module named 'core.exporters.svg_exporter'
+2026-02-27 19:13:52 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] container x=24, y=24, w=536, h=540
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:13:52 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:13:52 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:13:52 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:13:52 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:15:22 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:15:22 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:15:22 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:15:22 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:15:22 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:15:58 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=False
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:15:58 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:15:58 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:15:58 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:15:58 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:20:29 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:20:29 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:20:29 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:20:29 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:20:29 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:21:12 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:21:12 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:21:12 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:21:12 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:21:12 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:22:24 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:22:24 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:22:24 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:22:24 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:22:24 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:23:01 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=False
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=320, y=114, label=Iniciar checkout
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=320, y=114, label=Preencher dados de pagamento
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=500, y=114, label=Validar dados informados
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=500, y=114, label=Dados válidos?
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=680, y=114, label=Enviar pagamento ao gateway
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=680, y=114, label=Aguardar resposta do gateway
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=680, y=114, label=Pagamento aprovado?
+2026-02-27 19:23:01 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=500, y=114, label=Compra concluída com sucesso
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=500, y=114, label=Falha no checkout
+2026-02-27 19:23:01 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:23:01 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:23:01 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:24:24 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=114, label=Iniciar checkout
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=114, label=Preencher dados de pagamento
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=294, label=Validar dados informados
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=294, label=Dados válidos?
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=474, label=Enviar pagamento ao gateway
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=474, label=Aguardar resposta do gateway
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=474, label=Pagamento aprovado?
+2026-02-27 19:24:24 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=294, label=Compra concluída com sucesso
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=294, label=Falha no checkout
+2026-02-27 19:24:24 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:24:24 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:24:24 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:24:25 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=588
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:24:25 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:24:25 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:24:25 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 19:24:37 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=588
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:24:37 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:24:37 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:24:37 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 19:24:43 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=588
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:24:43 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:24:43 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:25:20 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=114, label=Iniciar checkout
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=114, label=Preencher dados de pagamento
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=294, label=Validar dados informados
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=294, label=Dados válidos?
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=474, label=Enviar pagamento ao gateway
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=474, label=Aguardar resposta do gateway
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=474, label=Pagamento aprovado?
+2026-02-27 19:25:20 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=294, label=Compra concluída com sucesso
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=294, label=Falha no checkout
+2026-02-27 19:25:20 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:25:20 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:25:20 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:26:17 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=58, label=Iniciar checkout
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=148, label=Preencher dados de pagamento
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=418, label=Validar dados informados
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=508, label=Dados válidos?
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=778, label=Enviar pagamento ao gateway
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=868, label=Aguardar resposta do gateway
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=958, label=Pagamento aprovado?
+2026-02-27 19:26:17 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=868, label=Compra concluída com sucesso
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=598, label=Falha no checkout
+2026-02-27 19:26:17 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:26:17 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:26:17 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:27:44 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\order_orchestration_flow.sff, lanes_only=True
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] direction=TB, n_lanes=5
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=948
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] Lane customer TB: x=24, y=24, w=536, h=180, title=Cliente
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] Lane frontend TB: x=24, y=204, w=536, h=180, title=Frontend
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] Lane backend TB: x=24, y=384, w=536, h=180, title=Backend
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] Lane inventory TB: x=24, y=564, w=536, h=180, title=Estoque
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] Lane payment TB: x=24, y=744, w=536, h=180, title=Gateway Pagamento
+2026-02-27 19:27:44 | INFO  | [LANES-ONLY] SVG finalizado com 18 elementos.
+2026-02-27 19:27:44 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:28:19 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=114, label=Iniciar checkout
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=204, label=Preencher dados de pagamento
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=474, label=Validar dados informados
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=564, label=Dados válidos?
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=834, label=Enviar pagamento ao gateway
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=924, label=Aguardar resposta do gateway
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=1014, label=Pagamento aprovado?
+2026-02-27 19:28:19 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=924, label=Compra concluída com sucesso
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=654, label=Falha no checkout
+2026-02-27 19:28:19 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:28:19 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:28:19 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:28:35 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\order_orchestration_flow.sff, lanes_only=True
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] direction=TB, n_lanes=5
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=948
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] Lane customer TB: x=24, y=24, w=536, h=180, title=Cliente
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] Lane frontend TB: x=24, y=204, w=536, h=180, title=Frontend
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] Lane backend TB: x=24, y=384, w=536, h=180, title=Backend
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] Lane inventory TB: x=24, y=564, w=536, h=180, title=Estoque
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] Lane payment TB: x=24, y=744, w=536, h=180, title=Gateway Pagamento
+2026-02-27 19:28:35 | INFO  | [LANES-ONLY] SVG finalizado com 18 elementos.
+2026-02-27 19:28:35 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:28:47 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=588
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:28:47 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:28:47 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:28:47 | INFO  | Export gerado com sucesso: output=svg, lanes_only=True
+2026-02-27 19:28:52 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=True
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] container x=0, y=0, w=584, h=588
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:28:52 | INFO  | [LANES-ONLY] SVG finalizado com 12 elementos.
+2026-02-27 19:28:52 | ERROR | 'charmap' codec can't encode character '\u2192' in position 10: character maps to <undefined>
+2026-02-27 19:29:01 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=False
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=114, label=Iniciar checkout
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=204, label=Preencher dados de pagamento
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=474, label=Validar dados informados
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=564, label=Dados válidos?
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=834, label=Enviar pagamento ao gateway
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=924, label=Aguardar resposta do gateway
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=1014, label=Pagamento aprovado?
+2026-02-27 19:29:01 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=924, label=Compra concluída com sucesso
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=654, label=Falha no checkout
+2026-02-27 19:29:01 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:29:01 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:29:01 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:29:12 | INFO  | Export iniciado: formato=svg, arquivo=.\exemplo\checkout_flow.sff, lanes_only=False
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node start_checkout: lane=user, x=92, y=114, label=Iniciar checkout
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=92, y=204, label=Preencher dados de pagamento
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'validate_data' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node validate_data: lane=system, x=272, y=474, label=Validar dados informados
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node data_valid: lane=system, x=272, y=564, label=Dados válidos?
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'send_to_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node send_to_gateway: lane=gateway, x=452, y=834, label=Enviar pagamento ao gateway
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'wait_gateway' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node wait_gateway: lane=gateway, x=452, y=924, label=Aguardar resposta do gateway
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=452, y=1014, label=Pagamento aprovado?
+2026-02-27 19:29:12 | WARN  | [LANES-ONLY] Label do node 'end_success' foi quebrado em 2 linhas.
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node end_success: lane=system, x=272, y=924, label=Compra concluída com sucesso
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=272, y=654, label=Falha no checkout
+2026-02-27 19:29:12 | INFO  | [LANES-ONLY] SVG finalizado com 55 elementos.
+2026-02-27 19:29:12 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:29:12 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:29:54 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:29:54 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=106, y=182, label=Preencher dados de pagamento
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=466, y=452, label=Falha no checkout
+2026-02-27 19:29:54 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=826, y=632, label=Pagamento aprovado?
+2026-02-27 19:29:54 | INFO  | [LANES-ONLY] SVG finalizado com 26 elementos.
+2026-02-27 19:29:54 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:29:54 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 19:31:33 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] direction=TB, n_lanes=3
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] container x=0, y=0, w=774, h=588
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Lane user TB: x=24, y=24, w=536, h=180, title=Usuário
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Lane system TB: x=24, y=204, w=536, h=180, title=Sistema
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Lane gateway TB: x=24, y=384, w=536, h=180, title=Gateway de Pagamento
+2026-02-27 19:31:33 | INFO  | [NODE] start_checkout label='Iniciar checkout' lane='user' x=92 y=114 dentro_lane=True lane_top=92 lane_bottom=192 dist_next=50
+2026-02-27 19:31:33 | INFO  | [NODE] fill_data label='Preencher dados de pagamento' lane='user' x=92 y=164 dentro_lane=True lane_top=92 lane_bottom=192 dist_next=None
+2026-02-27 19:31:33 | WARN  | [LANES-ONLY] Label do node 'fill_data' foi quebrado em 2 linhas.
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Node fill_data: lane=user, x=106, y=182, label=Preencher dados de pagamento
+2026-02-27 19:31:33 | INFO  | [NODE] validate_data label='Validar dados informados' lane='system' x=272 y=294 dentro_lane=True lane_top=272 lane_bottom=372 dist_next=25
+2026-02-27 19:31:33 | INFO  | [NODE] data_valid label='Dados válidos?' lane='system' x=272 y=319 dentro_lane=True lane_top=272 lane_bottom=372 dist_next=25
+2026-02-27 19:31:33 | INFO  | [NODE] end_success label='Compra concluída com sucesso' lane='system' x=272 y=344 dentro_lane=True lane_top=272 lane_bottom=372 dist_next=25
+2026-02-27 19:31:33 | INFO  | [NODE] end_failure label='Falha no checkout' lane='system' x=272 y=369 dentro_lane=False lane_top=272 lane_bottom=372 dist_next=None
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Node end_failure: lane=system, x=466, y=452, label=Falha no checkout
+2026-02-27 19:31:33 | INFO  | [NODE] send_to_gateway label='Enviar pagamento ao gateway' lane='gateway' x=452 y=474 dentro_lane=True lane_top=452 lane_bottom=552 dist_next=33
+2026-02-27 19:31:33 | INFO  | [NODE] wait_gateway label='Aguardar resposta do gateway' lane='gateway' x=452 y=507 dentro_lane=True lane_top=452 lane_bottom=552 dist_next=33
+2026-02-27 19:31:33 | INFO  | [NODE] payment_approved label='Pagamento aprovado?' lane='gateway' x=452 y=540 dentro_lane=False lane_top=452 lane_bottom=552 dist_next=None
+2026-02-27 19:31:33 | WARN  | [LANES-ONLY] Label do node 'payment_approved' foi quebrado em 2 linhas.
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] Node payment_approved: lane=gateway, x=826, y=632, label=Pagamento aprovado?
+2026-02-27 19:31:33 | INFO  | [LANES-ONLY] SVG finalizado com 26 elementos.
+2026-02-27 19:31:33 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 19:31:33 | INFO  | Export gerado com sucesso: output=svg, lanes_only=False
+2026-02-27 20:58:58 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 20:58:58 | INFO  | [EXPORT] SVG gerado: 668x1650, lanes_only=False
+2026-02-27 20:58:58 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 20:59:10 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=True
+2026-02-27 20:59:10 | INFO  | [EXPORT] SVG gerado: 584x588, lanes_only=True
+2026-02-27 20:59:10 | INFO  | Export OK → export\checkout_flow.svg
+2026-02-27 20:59:14 | INFO  | Export iniciado: formato=svg, arquivo=exemplo/checkout_flow.sff, lanes_only=False
+2026-02-27 20:59:14 | INFO  | [EXPORT] SVG gerado: 668x1650, lanes_only=False
+2026-02-27 20:59:14 | INFO  | Export OK → test_output/custom_name.svg

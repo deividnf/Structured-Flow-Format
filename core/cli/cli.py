@@ -23,10 +23,16 @@ def main():
         sys.exit(1)
     command = sys.argv[1]
     filepath = sys.argv[2]
+    output_path = None
+    out_flag = None
+    if '--out' in sys.argv:
+        out_flag = '--out'
+    elif '--output' in sys.argv:
+        out_flag = '--output'
     export_format = None
     lanes_only = False
+    # Detecta --format e --lanes-only ANTES de usar export_format
     if command == "export":
-        # Detecta --format
         if '--format' in sys.argv:
             idx = sys.argv.index('--format')
             if len(sys.argv) > idx + 1:
@@ -142,19 +148,56 @@ def main():
     elif command == "export":
         logger.info(f"Export iniciado: formato={export_format}, arquivo={filepath}, lanes_only={lanes_only}")
         try:
+            import os
+            # 1. Definir caminho de saída (Regras Task 07)
+            base_name = os.path.splitext(os.path.basename(filepath))[0]
+            ext = export_format if export_format else 'txt'
+            
+            if out_flag:
+                idx = sys.argv.index(out_flag)
+                out_value = sys.argv[idx + 1] if len(sys.argv) > idx + 1 else None
+                
+                if out_value:
+                    if os.path.isdir(out_value):
+                        # Caso 2: Usuário passa diretório
+                        output_path = os.path.join(out_value, f"{base_name}.{ext}")
+                    else:
+                        # Caso 3: Usuário passa arquivo completo
+                        output_path = out_value
+                else:
+                    # Fallback (não deveria ocorrer se CLI validado)
+                    output_path = os.path.join('export', f"{base_name}.{ext}")
+            else:
+                # Caso 1: Usuário NÃO passa --out
+                output_path = os.path.join('export', f"{base_name}.{ext}")
+
+            # 2. Garantir que o diretório de saída existe
+            out_dir = os.path.dirname(output_path)
+            if out_dir:
+                os.makedirs(out_dir, exist_ok=True)
+
+            # 3. Ler e processar arquivo
             data = read_sff_file(filepath)
             compiled = compile_sff(data)
-            errors = compiled['validation']['errors']
-            if errors:
-                for err in errors:
+            
+            if compiled['validation']['errors']:
+                for err in compiled['validation']['errors']:
                     logger.error(err)
                 print("Erros de validação lógica encontrados:")
-                for err in errors:
+                for err in compiled['validation']['errors']:
                     print(f"- {err}")
                 sys.exit(1)
+
+            # 4. Gerar saída conforme formato
             output = None
-            if export_format == 'svg' and lanes_only:
-                output = export_lanes_only(data)
+            if export_format == 'svg':
+                layout = generate_layout(data, compiled)
+                from core.exporters.svg_exporter import export_svg
+                # Note: lanes_only_exporter é usado por export_svg ou diretamente
+                if lanes_only:
+                    output = export_lanes_only(data, lanes_only=True)
+                else:
+                    output = export_svg(data, layout)
             elif export_format == 'mermaid':
                 layout = generate_layout(data, compiled)
                 output = export_mermaid(data, layout)
@@ -164,17 +207,32 @@ def main():
             elif export_format == 'json':
                 layout = generate_layout(data, compiled)
                 output = export_json(data, compiled, layout)
-            elif export_format == 'svg':
-                layout = generate_layout(data, compiled)
-                from core.exporters.svg_exporter import export_svg
-                output = export_svg(data, layout)
             else:
                 logger.error(f"Formato de exportação inválido: {export_format}")
                 print(f"Formato de exportação inválido: {export_format}")
                 sys.exit(1)
-            print(output)
-            logger.info(f"Export gerado com sucesso: output={export_format}, lanes_only={lanes_only}")
-            sys.exit(0)
+
+            # 5. Salvar e reportar
+            if export_format == 'svg' or (out_flag and output):
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    f.write(output)
+                print(f"Export OK → {output_path}")
+                logger.info(f"Export OK → {output_path}")
+                sys.exit(0)
+            else:
+                # Formatos que podem imprimir no stdout se não houver --out (opcional)
+                if out_flag:
+                    with open(output_path, 'w', encoding='utf-8') as f:
+                        f.write(output)
+                    print(f"Export OK → {output_path}")
+                else:
+                    print(output)
+                sys.exit(0)
+
+        except Exception as e:
+            logger.error(str(e))
+            print(f"Erro: {e}")
+            sys.exit(3)
         except Exception as e:
             logger.error(str(e))
             print(f"Erro: {e}")
