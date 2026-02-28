@@ -1,3 +1,10 @@
+"""
+core/layout/cff_router.py
+Roteador ortogonal para o Layout Engine Determinístico (MD13/MD15)
+Implementa V-H-V (TB) e H-V-H (LR) para edges, sem heurística visual.
+Versão: 1.0
+"""
+
 class CFFRouter:
     def __init__(self, track_system, direction="TB"):
         self.ts = track_system

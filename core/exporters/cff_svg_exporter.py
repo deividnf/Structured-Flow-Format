@@ -37,17 +37,21 @@ def export_cff_svg(data, layout):
     svg.append('  <defs><marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,-5L10,0L0,5" fill="#666"/></marker></defs>')
     
     # Draw Lanes
-    # Since TB and LR differ
+    # CFFEngine expõe lanes com x_start/x_end (MD13 Seção 5)
     if direction == "TB":
         for l_id, l_data in lanes.items():
-            lx = l_data["start"]
-            lw = l_data["end"] - l_data["start"]
+            if "x_start" not in l_data or "x_end" not in l_data:
+                continue
+            lx = l_data["x_start"]
+            lw = l_data["x_end"] - l_data["x_start"]
             svg.append(f'  <rect class="lane" x="{lx}" y="{min_y}" width="{lw}" height="{h}" />')
             svg.append(f'  <text class="label" x="{lx + lw/2}" y="{min_y + 30}">{l_id}</text>')
     else:
         for l_id, l_data in lanes.items():
-            ly = l_data["start"]
-            lh = l_data["end"] - l_data["start"]
+            if "x_start" not in l_data or "x_end" not in l_data:
+                continue
+            ly = l_data["x_start"]
+            lh = l_data["x_end"] - l_data["x_start"]
             svg.append(f'  <rect class="lane" x="{min_x}" y="{ly}" width="{w}" height="{lh}" />')
             svg.append(f'  <text class="label" x="{min_x + 30}" y="{ly + lh/2}" transform="rotate(-90 {min_x+30},{ly+lh/2})">{l_id}</text>')
 

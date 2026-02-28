@@ -1,3 +1,10 @@
+"""
+core/layout/track_system.py
+Sistema de tracks para o Layout Engine Determinístico (MD13/MD14)
+Gerencia tracks, ocupação, expansão dinâmica e conflitos.
+Versão: 1.0
+"""
+
 class TrackSystem:
     def __init__(self, lanes_data):
         self.lanes = {}

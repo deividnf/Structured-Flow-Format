@@ -1644,3 +1644,313 @@
 2026-02-28 17:32:32 | INFO  | Export OK → data/export/checkout_flow_cff.svg
 2026-02-28 17:37:16 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
 2026-02-28 17:39:48 | INFO  | Export iniciado: formato=json, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 17:49:09 | INFO  | Compilando arquivo data/input/test_lr.sff
+2026-02-28 17:49:09 | INFO  | Compilação OK
+2026-02-28 17:49:09 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 17:49:14 | INFO  | Export iniciado: formato=json, arquivo=data/input/test_lr.sff, lanes_only=False
+2026-02-28 17:49:14 | ERROR | Cyclic dependency detected during rank assignment.
+2026-02-28 17:49:14 | ERROR | Pipeline abortado: Cíclo detectado (o fluxo não é um DAG).
+2026-02-28 17:50:25 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:50:25 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:50:25 | ERROR | keys must be str, int, float, bool or None, not tuple
+2026-02-28 17:50:54 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:50:54 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:50:54 | ERROR | keys must be str, int, float, bool or None, not tuple
+2026-02-28 17:52:52 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:52:52 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:52:52 | INFO  | Export OK → data/compiled/checkout_flow.sff
+2026-02-28 17:53:21 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:53:21 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:53:38 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:53:38 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:53:38 | INFO  | Export OK → data/compiled/checkout_flow.cpff
+2026-02-28 17:58:31 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:58:31 | ERROR | 'NoneType' object has no attribute 'endswith'
+2026-02-28 17:58:42 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:58:42 | ERROR | 'NoneType' object has no attribute 'endswith'
+2026-02-28 17:58:47 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:58:47 | ERROR | 'NoneType' object has no attribute 'endswith'
+2026-02-28 17:58:53 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:58:53 | ERROR | 'NoneType' object has no attribute 'endswith'
+2026-02-28 17:59:58 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 17:59:58 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 17:59:58 | INFO  | Export OK → data/compiled/checkout_flow
+2026-02-28 18:00:02 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 18:00:02 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 18:00:02 | INFO  | Export OK → data/compiled/checkout_flow.sff
+2026-02-28 18:00:06 | INFO  | Export iniciado: formato=json, arquivo=.\data\example\checkout_flow.sff, lanes_only=False
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 18:00:06 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 18:00:06 | INFO  | Export OK → data/compiled/checkout_flow.cpff
+2026-02-28 18:07:33 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:07:33 | INFO  | Compilação OK
+2026-02-28 18:07:33 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:07:36 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:07:36 | INFO  | Compilação OK
+2026-02-28 18:07:36 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:07:39 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:07:39 | INFO  | Compilação OK
+2026-02-28 18:07:39 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:07:43 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:07:43 | INFO  | Compilação OK
+2026-02-28 18:07:43 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:07:46 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:07:46 | INFO  | Compilação OK
+2026-02-28 18:07:46 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:08:04 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:08:04 | INFO  | Compilação OK
+2026-02-28 18:08:04 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:09:37 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:09:37 | INFO  | Compilação OK
+2026-02-28 18:09:37 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:16:30 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:16:30 | INFO  | Compilação OK
+2026-02-28 18:16:30 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:16:43 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:16:43 | INFO  | Compilação OK
+2026-02-28 18:16:43 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:19:54 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:19:54 | INFO  | Compilação OK
+2026-02-28 18:19:54 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:20:12 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:20:12 | INFO  | Compilação OK
+2026-02-28 18:20:12 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:20:17 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:20:17 | INFO  | Compilação OK
+2026-02-28 18:20:17 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:20:50 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:20:50 | INFO  | Compilação OK! Salvo em: data\compiled\checkout_flow.cpff
+2026-02-28 18:20:55 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:20:55 | INFO  | Compilação OK
+2026-02-28 18:20:55 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:21:01 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:21:01 | INFO  | Compilação OK
+2026-02-28 18:21:01 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:21:06 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:21:06 | INFO  | Compilação OK
+2026-02-28 18:21:06 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:21:13 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:21:13 | INFO  | Compilação OK
+2026-02-28 18:21:13 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:21:20 | INFO  | Compilando arquivo .\data\example\checkout_flow.sff
+2026-02-28 18:21:20 | INFO  | Compilação OK
+2026-02-28 18:21:20 | WARN  | Nenhum caminho principal (mainPath) definido.
+2026-02-28 18:45:23 | INFO  | Compilando arquivo data/example/checkout_flow.sff
+2026-02-28 18:45:23 | INFO  | Compilação CFF OK! Salvo em: data/example/checkout_flow.cpff
+2026-02-28 18:46:02 | INFO  | Compilando arquivo data/example/checkout_flow.sff
+2026-02-28 18:46:02 | INFO  | Compilação CFF OK! Salvo em: data\compiled\checkout_flow.cpff
+2026-02-28 18:47:01 | INFO  | Compilando arquivo data/example/checkout_flow.sff
+2026-02-28 18:47:01 | INFO  | Compilação CFF OK! Salvo em: data\compiled\checkout_flow.cpff
+2026-02-28 18:48:02 | INFO  | Export iniciado: formato=None, arquivo=data/example/checkout_flow.sff, lanes_only=False
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 18:48:02 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 18:48:02 | ERROR | Formato de exportação inválido: None
+2026-02-28 18:48:17 | INFO  | Export iniciado: formato=svg, arquivo=data/example/checkout_flow.sff, lanes_only=True
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 18:48:17 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 18:48:17 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 18:48:17 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 18:48:17 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 18:48:17 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 18:48:17 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 18:48:17 | INFO  | Export OK → data\export\checkout_flow.svg
+2026-02-28 18:48:28 | INFO  | Export iniciado: formato=svg, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 18:48:28 | ERROR | 'start'
+2026-02-28 18:48:39 | INFO  | Compilando arquivo data/example/invalid_logic.sff
+2026-02-28 18:48:39 | ERROR | Nó 'end' ('end1') não pode ter edges de saída.
+2026-02-28 18:48:39 | ERROR | Nó 'isolated' não é alcançável a partir do start.
+2026-02-28 18:48:39 | ERROR | Nó 'isolated' está isolado (sem entrada e sem saída).
+2026-02-28 18:58:26 | INFO  | Export iniciado: formato=svg, arquivo=data/example/checkout_flow.sff, lanes_only=False
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=start_checkout, rank=0
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=fill_data, rank=1
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=validate_data, rank=2
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=data_valid, rank=3
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=send_to_gateway, rank=4
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=end_failure, rank=7
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=wait_gateway, rank=5
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=payment_approved, rank=6
+2026-02-28 18:58:26 | INFO  | [RANK_ASSIGN] node_id=end_success, rank=7
+2026-02-28 18:58:26 | INFO  | [GRID] rank_gap=160, track_gap=280, grid=(40,24)
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=start_checkout, lane=user, rank=0, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=fill_data, lane=user, rank=1, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=validate_data, lane=system, rank=2, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=data_valid, lane=system, rank=3, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=send_to_gateway, lane=gateway, rank=4, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=wait_gateway, lane=gateway, rank=5, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=payment_approved, lane=gateway, rank=6, track=0
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=end_failure, lane=system, rank=7, track=1
+2026-02-28 18:58:26 | INFO  | [SLOT_ASSIGN] node_id=end_success, lane=system, rank=7, track=0
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node fill_data quebrado em 2 linhas
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node validate_data quebrado em 2 linhas
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node data_valid quebrado em 2 linhas
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node send_to_gateway quebrado em 2 linhas
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node wait_gateway quebrado em 2 linhas
+2026-02-28 18:58:26 | WARN  | [TEXT_WRAP] Node payment_approved quebrado em 2 linhas
+2026-02-28 18:58:26 | INFO  | [CANVAS] bbox=(40,40,1444,1350) width=1564 height=1470
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=start_checkout->fill_data, variant=base, cost=88, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=start_checkout->fill_data, chosen=base, cost=88
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=194, y2=270
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=270, y2=270
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=start_checkout->fill_data, segment=V, x=240, y1=270, y2=282
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=fill_data->validate_data, variant=base, cost=568.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=fill_data->validate_data, chosen=base, cost=568.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=240, y1=342, y2=422.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=H, y=422.0, x1=240, x2=600
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=fill_data->validate_data, segment=V, x=600, y1=422.0, y2=450
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=validate_data->data_valid, variant=base, cost=98.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=validate_data->data_valid, chosen=base, cost=98.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=510, y2=590.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=590.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=validate_data->data_valid, segment=V, x=600, y1=590.0, y2=608
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=data_valid->send_to_gateway, variant=base, cost=814.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=data_valid->send_to_gateway, chosen=base, cost=814.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=640, y1=648, y2=728.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=H, y=728.0, x1=640, x2=1240
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->send_to_gateway, segment=V, x=1240, y1=728.0, y2=762
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=send_to_gateway->wait_gateway, variant=base, cost=108.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=send_to_gateway->wait_gateway, chosen=base, cost=108.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=822, y2=902.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=902.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=send_to_gateway->wait_gateway, segment=V, x=1240, y1=902.0, y2=930
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=wait_gateway->payment_approved, variant=base, cost=98.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=wait_gateway->payment_approved, chosen=base, cost=98.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=990, y2=1070.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1070.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=wait_gateway->payment_approved, segment=V, x=1240, y1=1070.0, y2=1088
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=base, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_1, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_2, cost=2898.0, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_3, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_4, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_5, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_6, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_7, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_8, cost=2898, overlaps=0, par_close=0, node_hits=1
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_success, variant=offset_-1, cost=898.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_success, chosen=offset_-1, cost=898.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=1280, y1=1128, y2=1196.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=H, y=1196.0, x1=600, x2=1280
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_success, segment=V, x=600, y1=1196.0, y2=1246
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=base, cost=1218.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=data_valid->end_failure, variant=offset_-1, cost=1018.0, overlaps=0, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=data_valid->end_failure, chosen=offset_-1, cost=1018.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=560, y1=648, y2=716.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=H, y=716.0, x1=560, x2=880
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=data_valid->end_failure, segment=V, x=880, y1=716.0, y2=1246
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=base, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-1, cost=938.0, overlaps=2, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-2, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-3, cost=1338.0, overlaps=1, par_close=1, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-4, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-5, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-6, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-7, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_-8, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_1, cost=1338.0, overlaps=1, par_close=1, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_2, cost=738.0, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_3, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_4, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_5, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_6, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_7, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_TRY] edge_id=payment_approved->end_failure, variant=offset_8, cost=738, overlaps=1, par_close=0, node_hits=0
+2026-02-28 18:58:26 | INFO  | [ROUTE_PICK] edge_id=payment_approved->end_failure, chosen=base, cost=738.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=1200, y1=1128, y2=1208.0
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=H, y=1208.0, x1=880, x2=1200
+2026-02-28 18:58:26 | INFO  | [OCCUPY] edge_id=payment_approved->end_failure, segment=V, x=880, y1=1208.0, y2=1246
+2026-02-28 18:58:26 | INFO  | [EXPORT] SVG gerado: view_box=-40,-40,1564,1470
+2026-02-28 18:58:26 | INFO  | Export OK → data\export\checkout_flow.svg
+2026-02-28 19:03:20 | INFO  | Compilando arquivo data/example/checkout_flow.sff
+2026-02-28 19:03:20 | INFO  | Compilação CFF OK! Salvo em: data\compiled\checkout_flow.cpff
+2026-02-28 19:09:00 | INFO  | Export iniciado: formato=svg, arquivo=data/compiled/checkout_flow.cpff, lanes_only=False
+2026-02-28 19:09:01 | INFO  | Export OK → data\export\checkout_flow.svg

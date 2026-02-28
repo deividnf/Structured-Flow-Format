@@ -1,5 +1,5 @@
 
-# CFF — Compiled Flow Format
+# cpff — Compiled Flow Format
 
 ### Especificação Formal v1.0 (Primeira Versão Estrutural)
 
@@ -7,7 +7,7 @@
 
 # 1. Introdução
 
-O **CFF (Compiled Flow Format)** é a representação expandida e determinística de um fluxo originalmente definido em `.sff`.
+O **cpff (Compiled Flow Format)** é a representação expandida e determinística de um fluxo originalmente definido em `.sff`.
 
 Ele existe para:
 
@@ -18,16 +18,16 @@ Ele existe para:
 * Separar claramente:
 
   * **Formato declarativo (SFF)** → humano, simples
-  * **Formato compilado (CFF)** → máquina, completo
+  * **Formato compilado (cpff)** → máquina, completo
 
-O CFF é um artefato derivado.
+O cpff é um artefato derivado.
 Ele nunca substitui o `.sff` como fonte de autoria.
 
 ---
 
 # 2. Princípio Arquitetural Fundamental
 
-> O CFF deve conter informação suficiente para que qualquer renderizador desenhe o fluxo sem precisar inferir regras estruturais.
+> O cpff deve conter informação suficiente para que qualquer renderizador desenhe o fluxo sem precisar inferir regras estruturais.
 
 Isso significa:
 
@@ -35,16 +35,16 @@ Isso significa:
 * Nenhuma decisão de branch deve ser inferida
 * Nenhuma análise de profundidade deve ocorrer no layout
 
-Tudo isso já deve estar presente no `.cff`.
+Tudo isso já deve estar presente no `.cpff`.
 
 ---
 
-# 3. Estrutura Raiz do CFF
+# 3. Estrutura Raiz do cpff
 
 ```json
 {
   "sff_source": { ... },
-  "cff": {
+  "cpff": {
     "version": "1.0",
     "stats": { ... },
     "graph": { ... },
@@ -58,11 +58,11 @@ Tudo isso já deve estar presente no `.cff`.
 
 ---
 
-# 4. Cabeçalho CFF (Bloco `cff`)
+# 4. Cabeçalho cpff (Bloco `cpff`)
 
 ## 4.1 version (obrigatório)
 
-Versão da especificação CFF.
+Versão da especificação cpff.
 
 ## 4.2 stats (obrigatório)
 
@@ -93,7 +93,7 @@ Contém métricas estruturais absolutas:
 
 # 5. Expansão de Nodes (Obrigatório)
 
-Cada node no CFF deve conter:
+Cada node no cpff deve conter:
 
 ## 5.1 Estrutura Base Herdada do SFF
 
@@ -255,7 +255,7 @@ Regra padrão:
 
 ---
 
-# 7. Lanes no CFF
+# 7. Lanes no cpff
 
 O bloco `lanes` pode conter expansão:
 
@@ -296,7 +296,7 @@ O compilador deve:
 
 ---
 
-# 9. O que NÃO pode existir no CFF
+# 9. O que NÃO pode existir no cpff
 
 * Campos não determinísticos
 * Valores dependentes de layout engine específico
@@ -312,8 +312,8 @@ Pipeline final:
 1. Ler `.sff`
 2. Validar estrutura
 3. Compilar grafo base
-4. Expandir contexto (CFF)
-5. Export/render consome apenas CFF
+4. Expandir contexto (cpff)
+5. Export/render consome apenas cpff
 
 ---
 
@@ -332,7 +332,7 @@ Pipeline final:
 
 Sempre que um campo estrutural for alterado:
 
-* Incrementar versão do CFF
+* Incrementar versão do cpff
 * Manter compatibilidade reversa quando possível
 * Registrar alteração em changelog
 
@@ -340,7 +340,7 @@ Sempre que um campo estrutural for alterado:
 
 # 13. Conclusão
 
-O CFF é o “esqueleto completo” do fluxo.
+O cpff é o “esqueleto completo” do fluxo.
 
 Ele transforma:
 

@@ -153,7 +153,7 @@
       }
     ]
   },
-  "cff": {
+  "cpff": {
     "version": "1.0",
     "stats": {
       "max_depth": 8,
@@ -161,12 +161,70 @@
       "edges_total": 9,
       "lanes_total": 3,
       "decision_nodes": 2,
-      "branch_edges": 2,
+      "branch_edges": 0,
       "joins": 1,
       "max_branch_depth": 2
     },
-    "graph": {},
-    "layout_context": {}
+    "graph": {
+      "prev": {
+        "start_checkout": [],
+        "fill_data": [
+          "start_checkout"
+        ],
+        "validate_data": [
+          "fill_data"
+        ],
+        "data_valid": [
+          "validate_data"
+        ],
+        "send_to_gateway": [
+          "data_valid"
+        ],
+        "wait_gateway": [
+          "send_to_gateway"
+        ],
+        "payment_approved": [
+          "wait_gateway"
+        ],
+        "end_success": [
+          "payment_approved"
+        ],
+        "end_failure": [
+          "data_valid",
+          "payment_approved"
+        ]
+      },
+      "next": {
+        "start_checkout": [
+          "fill_data"
+        ],
+        "fill_data": [
+          "validate_data"
+        ],
+        "validate_data": [
+          "data_valid"
+        ],
+        "data_valid": [
+          "end_failure",
+          "send_to_gateway"
+        ],
+        "send_to_gateway": [
+          "wait_gateway"
+        ],
+        "wait_gateway": [
+          "payment_approved"
+        ],
+        "payment_approved": [
+          "end_failure",
+          "end_success"
+        ],
+        "end_success": [],
+        "end_failure": []
+      }
+    },
+    "layout_context": {
+      "direction": "TB"
+    }
   },
   "lanes": {
     "user": {
@@ -213,18 +271,25 @@
           "e1"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 8,
         "future_decisions": 2,
-        "cross_lane_ahead": 3,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "system"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
-      }
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
+      },
+      "in_degree": 0,
+      "out_degree": 1
     },
     "fill_data": {
       "id": "fill_data",
@@ -251,18 +316,25 @@
           "e2"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 7,
         "future_decisions": 2,
-        "cross_lane_ahead": 3,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "system"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
-      }
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
+      },
+      "in_degree": 1,
+      "out_degree": 1
     },
     "validate_data": {
       "id": "validate_data",
@@ -289,18 +361,25 @@
           "e3"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 6,
         "future_decisions": 2,
-        "cross_lane_ahead": 2,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "gateway"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
-      }
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
+      },
+      "in_degree": 1,
+      "out_degree": 1
     },
     "data_valid": {
       "id": "data_valid",
@@ -318,8 +397,8 @@
           "validate_data"
         ],
         "next_nodes": [
-          "send_to_gateway",
-          "end_failure"
+          "end_failure",
+          "send_to_gateway"
         ],
         "in_edges": [
           "e3"
@@ -329,18 +408,25 @@
           "e5"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 5,
         "future_decisions": 1,
-        "cross_lane_ahead": 2,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "gateway"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
-      }
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
+      },
+      "in_degree": 1,
+      "out_degree": 2
     },
     "send_to_gateway": {
       "id": "send_to_gateway",
@@ -351,7 +437,7 @@
         "global": 5,
         "lane": 1,
         "depth": 4,
-        "branch_depth": 1
+        "branch_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -367,23 +453,25 @@
           "e6"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 3,
         "future_decisions": 1,
-        "cross_lane_ahead": 1,
+        "cross_lane_ahead": 0,
         "next_lane_target": ""
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
       },
-      "branch_context": {
-        "root_decision": "data_valid",
-        "branch_label": "",
-        "terminates_soon": false
-      }
+      "in_degree": 1,
+      "out_degree": 1
     },
     "wait_gateway": {
       "id": "wait_gateway",
@@ -394,7 +482,7 @@
         "global": 6,
         "lane": 2,
         "depth": 5,
-        "branch_depth": 1
+        "branch_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -410,23 +498,25 @@
           "e7"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 2,
         "future_decisions": 1,
-        "cross_lane_ahead": 1,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "system"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
       },
-      "branch_context": {
-        "root_decision": "data_valid",
-        "branch_label": "",
-        "terminates_soon": false
-      }
+      "in_degree": 1,
+      "out_degree": 1
     },
     "payment_approved": {
       "id": "payment_approved",
@@ -437,15 +527,15 @@
         "global": 7,
         "lane": 3,
         "depth": 6,
-        "branch_depth": 1
+        "branch_depth": 0
       },
       "links": {
         "prev_nodes": [
           "wait_gateway"
         ],
         "next_nodes": [
-          "end_success",
-          "end_failure"
+          "end_failure",
+          "end_success"
         ],
         "in_edges": [
           "e7"
@@ -455,23 +545,25 @@
           "e9"
         ]
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 1,
         "future_decisions": 0,
-        "cross_lane_ahead": 1,
-        "next_lane_target": ""
+        "cross_lane_ahead": 0,
+        "next_lane_target": "system"
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
       },
-      "branch_context": {
-        "root_decision": "data_valid",
-        "branch_label": "",
-        "terminates_soon": false
-      }
+      "in_degree": 1,
+      "out_degree": 2
     },
     "end_success": {
       "id": "end_success",
@@ -482,7 +574,7 @@
         "global": 8,
         "lane": 4,
         "depth": 7,
-        "branch_depth": 2
+        "branch_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -494,6 +586,11 @@
         ],
         "out_edges": []
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 0,
         "future_decisions": 0,
@@ -501,16 +598,13 @@
         "next_lane_target": ""
       },
       "layout_hints": {
-        "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
+        "is_main_path": true,
+        "routing_priority": 100,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
       },
-      "branch_context": {
-        "root_decision": "payment_approved",
-        "branch_label": "",
-        "terminates_soon": false
-      }
+      "in_degree": 1,
+      "out_degree": 0
     },
     "end_failure": {
       "id": "end_failure",
@@ -521,7 +615,7 @@
         "global": 5,
         "lane": 3,
         "depth": 4,
-        "branch_depth": 1
+        "branch_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -535,6 +629,11 @@
         ],
         "out_edges": []
       },
+      "branch_context": {
+        "root_decision": "",
+        "branch_label": "",
+        "terminates_soon": false
+      },
       "future_metrics": {
         "future_steps": 0,
         "future_decisions": 0,
@@ -543,15 +642,12 @@
       },
       "layout_hints": {
         "is_main_path": false,
-        "routing_priority": 0,
-        "preferred_exit_side": "",
-        "preferred_entry_side": ""
+        "routing_priority": 60,
+        "preferred_exit_side": "bottom",
+        "preferred_entry_side": "top"
       },
-      "branch_context": {
-        "root_decision": "data_valid",
-        "branch_label": "",
-        "terminates_soon": false
-      }
+      "in_degree": 2,
+      "out_degree": 0
     }
   },
   "edges": {
@@ -573,7 +669,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "user",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -584,19 +680,19 @@
       "to": "validate_data",
       "branch": null,
       "classification": {
-        "kind": "cross_lane",
-        "is_cross_lane": true,
+        "kind": "main_path",
+        "is_cross_lane": false,
         "is_return": false,
         "is_join": false
       },
-      "priority": 60,
+      "priority": 100,
       "routing_constraints": {
         "no_overlap": true,
         "no_cross": true,
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "user",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -619,7 +715,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "system",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -630,19 +726,19 @@
       "to": "send_to_gateway",
       "branch": "true",
       "classification": {
-        "kind": "branch",
-        "is_cross_lane": true,
+        "kind": "main_path",
+        "is_cross_lane": false,
         "is_return": false,
         "is_join": false
       },
-      "priority": 80,
+      "priority": 100,
       "routing_constraints": {
         "no_overlap": true,
         "no_cross": true,
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "system",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -665,7 +761,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "system",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -688,7 +784,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "gateway",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -711,7 +807,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "gateway",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -722,19 +818,19 @@
       "to": "end_success",
       "branch": "true",
       "classification": {
-        "kind": "branch",
-        "is_cross_lane": true,
+        "kind": "main_path",
+        "is_cross_lane": false,
         "is_return": false,
         "is_join": false
       },
-      "priority": 80,
+      "priority": 100,
       "routing_constraints": {
         "no_overlap": true,
         "no_cross": true,
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "gateway",
         "last_mile": true,
         "preferred_channel": 0
       }
@@ -746,7 +842,7 @@
       "branch": "false",
       "classification": {
         "kind": "return",
-        "is_cross_lane": true,
+        "is_cross_lane": false,
         "is_return": true,
         "is_join": false
       },
@@ -757,7 +853,7 @@
         "min_separation": 16
       },
       "routing_hints": {
-        "backbone_lane": "",
+        "backbone_lane": "gateway",
         "last_mile": true,
         "preferred_channel": 0
       }

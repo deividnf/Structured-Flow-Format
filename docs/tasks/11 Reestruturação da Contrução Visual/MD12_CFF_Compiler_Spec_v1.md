@@ -1,20 +1,20 @@
-# 📘 MD12 — Especificação Oficial do Compilador CFF
+# 📘 MD12 — Especificação Oficial do Compilador cpff
 
 ## Sugestão de título do arquivo:
 
-`MD12_CFF_Compiler_Spec_v1.md`
+`MD12_cpff_Compiler_Spec_v1.md`
 
 ---
 
-# CFF Compiler — Especificação Formal v1.0
+# cpff Compiler — Especificação Formal v1.0
 
 ---
 
 # 1. Objetivo
 
-Este documento define formalmente o **Comportamento Oficial do Compilador CFF**.
+Este documento define formalmente o **Comportamento Oficial do Compilador cpff**.
 
-O compilador é responsável por transformar um arquivo `.sff` válido em um `.cff` totalmente expandido, determinístico e pronto para consumo por qualquer engine de layout, exportador ou integração externa.
+O compilador é responsável por transformar um arquivo `.sff` válido em um `.cpff` totalmente expandido, determinístico e pronto para consumo por qualquer engine de layout, exportador ou integração externa.
 
 O compilador:
 
@@ -31,11 +31,11 @@ Ele apenas transforma estrutura declarativa em estrutura explícita.
 
 1. Determinismo absoluto
 2. Nenhuma inferência no export
-3. Nenhum campo implícito no CFF
+3. Nenhum campo implícito no cpff
 4. Zero ambiguidade estrutural
 5. Reprodutibilidade total
 
-Mesmo `.sff` → Mesmo `.cff` (sempre)
+Mesmo `.sff` → Mesmo `.cpff` (sempre)
 
 ---
 
@@ -306,7 +306,7 @@ Essas etapas pertencem ao Layout Engine (MD13+).
 
 ---
 
-# 6. Garantias do CFF Gerado
+# 6. Garantias do cpff Gerado
 
 Após compilação:
 
@@ -341,7 +341,7 @@ O compilador deve:
 
 # 8. Compatibilidade
 
-Se a estrutura do CFF mudar:
+Se a estrutura do cpff mudar:
 
 * Incrementar version
 * Manter backward compatibility quando possível
@@ -351,7 +351,7 @@ Se a estrutura do CFF mudar:
 
 # 9. Conclusão
 
-O Compilador CFF é o cérebro estrutural do sistema.
+O Compilador cpff é o cérebro estrutural do sistema.
 
 Ele transforma:
 

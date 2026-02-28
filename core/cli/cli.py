@@ -32,39 +32,17 @@ def main():
     export_format = None
     lanes_only = False
     # Detecta --format e --lanes-only ANTES de usar export_format
-    if command == "export":
-        if '--format' in sys.argv:
-            idx = sys.argv.index('--format')
-            if len(sys.argv) > idx + 1:
-                export_format = sys.argv[idx + 1].lower()
-        if '--lanes-only' in sys.argv:
-            lanes_only = True
-        if not export_format:
-            print("Formato de exportação obrigatório: --format mermaid|dot|json|svg")
-            sys.exit(1)
-    if command == "validate":
-        logger.info(f"Validando arquivo {filepath}")
-        try:
-            data = read_sff_file(filepath)
-            errors = validate_sff_structure(data)
-            if errors:
-                for err in errors:
-                    logger.error(err)
-                print("Erros de validação encontrados:")
-                for err in errors:
-                    print(f"- {err}")
-                sys.exit(2)
-            else:
-                logger.info("Validação estrutural OK")
-                print("Validação estrutural OK")
-        except Exception as e:
-            logger.error(str(e))
-            print(f"Erro: {e}")
-            sys.exit(3)
-    elif command == "compile":
+    if command == "compile":
+        import os
+        from core.compiler.cff_compiler import CFFCompiler
+
+        base_name = os.path.splitext(os.path.basename(filepath))[0]
+        output_path = os.path.join('data', 'compiled', f"{base_name}.cpff")
         logger.info(f"Compilando arquivo {filepath}")
         try:
             data = read_sff_file(filepath)
+
+            # Reutiliza compile_sff apenas para validação lógica
             compiled = compile_sff(data)
             errors = compiled['validation']['errors']
             warnings = compiled['validation']['warnings']
@@ -75,47 +53,18 @@ def main():
                 for err in errors:
                     print(f"- {err}")
                 sys.exit(1)
-                
-            # MD11/MD12: Export to CFF Formal Format
-            if '--to-cff' in sys.argv:
-                from core.compiler.cff_compiler import CFFCompiler
-                import json
-                import os
-                
-                cff_compiler = CFFCompiler(data)
-                cff_data = cff_compiler.compile()
-                
-                output_file = filepath.replace('.sff', '.cpff')
-                if out_flag:
-                    idx = sys.argv.index(out_flag)
-                    if len(sys.argv) > idx + 1:
-                        out_val = sys.argv[idx + 1]
-                        if os.path.isdir(out_val):
-                            base_name = os.path.splitext(os.path.basename(filepath))[0]
-                            output_file = os.path.join(out_val, f"{base_name}.cpff")
-                        else:
-                            output_file = out_val
-                            
-                os.makedirs(os.path.dirname(os.path.abspath(output_file)), exist_ok=True)
-                with open(output_file, 'w', encoding='utf-8') as f:
-                    json.dump(cff_data, f, indent=2, ensure_ascii=False)
-                    
-                logger.info(f"Compilação CFF OK! Salvo em: {output_file}")
-                print(f"Compilação CFF OK! Salvo: {output_file}")
-                sys.exit(0)
-                
-            else:
-                logger.info("Compilação OK")
-                print("Compilação OK!")
-                print("Índices prev/next:")
-                print("prev:", compiled['index']['prev'])
-                print("next:", compiled['index']['next'])
-                if warnings:
-                    print("Avisos:")
-                    for w in warnings:
-                        logger.warn(w)
-                        print(f"- {w}")
-                sys.exit(0)
+
+            # Gera CFF formal conforme MD11/MD12
+            cff_compiler = CFFCompiler(data)
+            cff_data = cff_compiler.compile()
+
+            import json
+            os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+            with open(output_path, 'w', encoding='utf-8') as f:
+                json.dump(cff_data, f, indent=2, ensure_ascii=False)
+            logger.info(f"Compilação CFF OK! Salvo em: {output_path}")
+            print(f"Compilação CFF OK! Salvo: {output_path}")
+            sys.exit(0)
         except Exception as e:
             logger.error(str(e))
             print(f"Erro: {e}")
@@ -175,13 +124,25 @@ def main():
             print(f"Erro: {e}")
             sys.exit(3)
     elif command == "export":
+        # Interpretar flags de formato e lanes-only para export
+        if '--format' in sys.argv:
+            idx = sys.argv.index('--format')
+            if len(sys.argv) > idx + 1:
+                export_format = sys.argv[idx + 1].lower()
+        if '--lanes-only' in sys.argv:
+            lanes_only = True
+        if not export_format:
+            print("Formato de exportação obrigatório: --format mermaid|dot|json|svg")
+            sys.exit(1)
+
         logger.info(f"Export iniciado: formato={export_format}, arquivo={filepath}, lanes_only={lanes_only}")
         try:
             import os
             # 1. Definir caminho de saída (Regras Task 07)
             base_name = os.path.splitext(os.path.basename(filepath))[0]
-            ext = export_format if export_format else 'txt'
-            
+            # Se export_format for json, usar .cpff como extensão
+            ext = 'cpff' if export_format == 'json' else (export_format if export_format else 'txt')
+
             if out_flag:
                 idx = sys.argv.index(out_flag)
                 out_value = sys.argv[idx + 1] if len(sys.argv) > idx + 1 else None
@@ -192,7 +153,11 @@ def main():
                         output_path = os.path.join(out_value, f"{base_name}.{ext}")
                     else:
                         # Caso 3: Usuário passa arquivo completo
-                        output_path = out_value
+                        # Se export_format for json e o usuário passar .json, troca para .cpff
+                        if export_format == 'json' and out_value and out_value.endswith('.json'):
+                            output_path = out_value[:-5] + '.cpff'
+                        else:
+                            output_path = out_value
                 else:
                     # Fallback (não deveria ocorrer se CLI validado)
                     output_path = os.path.join('data', 'export', f"{base_name}.{ext}")
@@ -262,20 +227,14 @@ def main():
                 sys.exit(1)
 
             # 5. Salvar e reportar
-            if export_format == 'svg' or (out_flag and output):
+            if output_path and output:
                 with open(output_path, 'w', encoding='utf-8') as f:
                     f.write(output)
                 print(f"Export OK → {output_path}")
                 logger.info(f"Export OK → {output_path}")
                 sys.exit(0)
             else:
-                # Formatos que podem imprimir no stdout se não houver --out (opcional)
-                if out_flag:
-                    with open(output_path, 'w', encoding='utf-8') as f:
-                        f.write(output)
-                    print(f"Export OK → {output_path}")
-                else:
-                    print(output)
+                print(output)
                 sys.exit(0)
 
         except Exception as e:

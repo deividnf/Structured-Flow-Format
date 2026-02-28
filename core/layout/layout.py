@@ -106,8 +106,9 @@ def generate_layout(data: Dict[str, Any], compiled: Dict[str, Any]) -> Dict[str,
         dst = edge["to"]
         src_pos = positions.get(src)
         dst_pos = positions.get(dst)
+        key = f"{src}->{dst}"
         if not src_pos or not dst_pos:
-            routing[(src, dst)] = []
+            routing[key] = []
             continue
         path = []
         # Caminho ortogonal: src → (x_dst, y_src) → dst
@@ -123,7 +124,7 @@ def generate_layout(data: Dict[str, Any], compiled: Dict[str, Any]) -> Dict[str,
                 path.append((src_pos, mid))
             if mid != dst_pos:
                 path.append((mid, dst_pos))
-        routing[(src, dst)] = path
+        routing[key] = path
     return {
         "ranks": ranks,
         "positions": positions,
