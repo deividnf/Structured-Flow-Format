@@ -1,5 +1,9 @@
 import json
 from core.validator.validator import validate_sff_structure
+from core.logger.logger import Logger
+
+
+_logger = Logger()
 
 
 class CFFCompiler:
@@ -17,7 +21,8 @@ class CFFCompiler:
             "version": "1.0",
             "stats": {},           # Preenchido em _finalize_stats
             "graph": {},           # Índices globais prev/next
-            "layout_context": {}   # Metadados mínimos para layout (ex.: direção)
+            "layout_context": {},  # Metadados mínimos para layout (ex.: direção)
+            "subflows": {}         # Reservado para MD18 (subflows estruturais)
         }
 
         self.lanes = {}
@@ -41,6 +46,9 @@ class CFFCompiler:
         # Step 4-7: Rank & Depth via BFS
         self._calculate_ranks()
 
+        # MD18 — Detecção de ciclos/SCC e ciclo_context
+        self._detect_cycles_and_cycle_context()
+
         # Etapa 5 (MD12) — Identificação do Main Path
         self._compute_main_path()
         
@@ -53,6 +61,30 @@ class CFFCompiler:
         # Step 12: General Stats
         self._finalize_stats()
         
+        # Log resumido de stats (MD19) para auditoria
+        stats = self.cpff.get("stats", {})
+        _logger.info(
+            "[CFF-COMPILER] N={nodes_total}, E={edges_total}, L={lanes_total}, "
+            "decisions={decision_nodes}, branches={branch_edges}, joins={joins}, "
+            "cycles={cycles_total}, max_cycle_depth={max_cycle_depth}, "
+            "max_branch_depth={max_branch_depth}, B_max={max_branches_per_rank}, "
+            "T_max={max_tracks_per_lane}".format(**{
+                **{
+                    "nodes_total": stats.get("nodes_total", 0),
+                    "edges_total": stats.get("edges_total", 0),
+                    "lanes_total": stats.get("lanes_total", 0),
+                    "decision_nodes": stats.get("decision_nodes", 0),
+                    "branch_edges": stats.get("branch_edges", 0),
+                    "joins": stats.get("joins", 0),
+                    "max_branch_depth": stats.get("max_branch_depth", 0),
+                    "cycles_total": stats.get("cycles_total", 0),
+                    "max_cycle_depth": stats.get("max_cycle_depth", 0),
+                    "max_branches_per_rank": stats.get("max_branches_per_rank", 0),
+                    "max_tracks_per_lane": stats.get("max_tracks_per_lane", 0),
+                }
+            })
+        )
+
         # End structure
         return {
             "sff_source": self.sff_source,
@@ -89,7 +121,8 @@ class CFFCompiler:
                     "global": 0,
                     "lane": 0,
                     "depth": 0,
-                    "branch_depth": 0
+                    "branch_depth": 0,
+                    "cycle_depth": 0  # MD18: nível de aninhamento de ciclo
                 },
                 "links": {
                     "prev_nodes": [],
@@ -109,6 +142,13 @@ class CFFCompiler:
                     "future_decisions": 0,
                     "cross_lane_ahead": 0,
                     "next_lane_target": ""
+                },
+                # Contexto de ciclo (MD18)
+                "cycle_context": {
+                    "cycle_id": "",
+                    "cycle_level": 0,
+                    "cycle_root": "",
+                    "cycle_exit_nodes": []
                 },
                 "layout_hints": {
                     "is_main_path": False,
@@ -254,6 +294,153 @@ class CFFCompiler:
             for index, n in enumerate(n_list):
                 self.nodes[n["id"]]["rank"]["lane"] = index + 1
 
+    def _detect_cycles_and_cycle_context(self):
+        """MD18: Detecta componentes fortemente conectados (SCC) e ciclo_context.
+
+        - Usa algoritmo de Tarjan para identificar SCCs.
+        - SCCs com mais de 1 nó são considerados ciclos estruturais.
+        - Atribui a cada nó em ciclo:
+            - cycle_id (cycle_1, cycle_2, ...)
+            - cycle_level (nível de aninhamento)
+            - cycle_root (nó com menor rank.global dentro do ciclo)
+            - cycle_exit_nodes (nós que saem do ciclo)
+        - Detecta ciclos sem saída externa e lança CYCLE_WITHOUT_EXIT.
+        """
+        if not self.nodes:
+            return
+
+        # Grafo baseado em links next_nodes
+        graph = {nid: list(n["links"]["next_nodes"]) for nid, n in self.nodes.items()}
+
+        index = 0
+        stack = []
+        on_stack = set()
+        indices = {}
+        lowlinks = {}
+        scc_list = []
+
+        def strongconnect(v):
+            nonlocal index
+            indices[v] = index
+            lowlinks[v] = index
+            index += 1
+            stack.append(v)
+            on_stack.add(v)
+
+            for w in graph.get(v, []):
+                if w not in indices:
+                    strongconnect(w)
+                    lowlinks[v] = min(lowlinks[v], lowlinks[w])
+                elif w in on_stack:
+                    lowlinks[v] = min(lowlinks[v], indices[w])
+
+            if lowlinks[v] == indices[v]:
+                # Raiz de uma SCC
+                scc = []
+                while True:
+                    w = stack.pop()
+                    on_stack.discard(w)
+                    scc.append(w)
+                    if w == v:
+                        break
+                scc_list.append(scc)
+
+        for v in self.nodes.keys():
+            if v not in indices:
+                strongconnect(v)
+
+        # Mapear SCCs e identificar quais são ciclos (|SCC| > 1)
+        node_to_scc = {}
+        cyclic_scc_ids = []
+        for idx, comp in enumerate(scc_list):
+            for nid in comp:
+                node_to_scc[nid] = idx
+            if len(comp) > 1:
+                cyclic_scc_ids.append(idx)
+
+        if not cyclic_scc_ids:
+            return
+
+        # Construir DAG condensado entre SCCs
+        scc_edges = {i: set() for i in range(len(scc_list))}
+        for e in self.edges.values():
+            src = e["from"]
+            dst = e["to"]
+            if src in node_to_scc and dst in node_to_scc:
+                c_src = node_to_scc[src]
+                c_dst = node_to_scc[dst]
+                if c_src != c_dst:
+                    scc_edges[c_src].add(c_dst)
+
+        # Detectar ciclos sem saída (MD18 8)
+        for cid in cyclic_scc_ids:
+            has_exit = False
+            for nid in scc_list[cid]:
+                for nxt in graph.get(nid, []):
+                    if node_to_scc.get(nxt) != cid:
+                        has_exit = True
+                        break
+                if has_exit:
+                    break
+            if not has_exit:
+                raise ValueError("CYCLE_WITHOUT_EXIT")
+
+        # Construir lista de SCCs cíclicas com ordem determinística por menor id
+        cyclic_scc_ids_sorted = sorted(
+            cyclic_scc_ids,
+            key=lambda cid: min(scc_list[cid])
+        )
+        scc_to_cycle_id = {
+            cid: f"cycle_{i+1}" for i, cid in enumerate(cyclic_scc_ids_sorted)
+        }
+
+        # Construir grafo reverso de SCCs para calcular cycle_level
+        rev_edges = {i: set() for i in range(len(scc_list))}
+        for src_c, dsts in scc_edges.items():
+            for d in dsts:
+                rev_edges[d].add(src_c)
+
+        from functools import lru_cache
+
+        @lru_cache(maxsize=None)
+        def scc_level(cid):
+            if cid not in cyclic_scc_ids:
+                return 0
+            preds = [p for p in rev_edges[cid] if p in cyclic_scc_ids]
+            if not preds:
+                return 1
+            return 1 + max(scc_level(p) for p in preds)
+
+        # Preencher cycle_context e cycle_depth nos nós
+        for cid in cyclic_scc_ids:
+            comp_nodes = scc_list[cid]
+            # Root: menor rank.global e, em empate, menor id
+            root = min(
+                comp_nodes,
+                key=lambda nid: (
+                    self.nodes[nid]["rank"].get("global", 0),
+                    nid,
+                ),
+            )
+            exits = set()
+            for nid in comp_nodes:
+                for nxt in graph.get(nid, []):
+                    if node_to_scc.get(nxt) != cid:
+                        exits.add(nid)
+
+            level = scc_level(cid)
+            cycle_id = scc_to_cycle_id[cid]
+
+            for nid in comp_nodes:
+                node = self.nodes[nid]
+                node["rank"]["cycle_depth"] = level
+                node["cycle_context"] = {
+                    "cycle_id": cycle_id,
+                    "cycle_level": level,
+                    "cycle_root": root,
+                    "cycle_exit_nodes": sorted(exits),
+                }
+
     def _compute_main_path(self):
         """Identifica o main path (MD12 Etapa 5) de forma determinística."""
         entry_start = self.sff_source.get("entry", {}).get("start")
@@ -318,13 +505,20 @@ class CFFCompiler:
             if not src_node or not dst_node:
                 continue
             
+            # Loops v1.0: self-loop proibido (MD17 3.3)
+            if e["from"] == e["to"]:
+                raise ValueError("SELF_LOOP_NOT_SUPPORTED_V1")
+
             kind = None
             priority = None
 
-            # Return/Loop? (Depth of target < ou = Depth de origem)
+            # Return/Loop? (Depth of target < ou = Depth de origem) — MD17 2/3.1
             if dst_node["rank"]["global"] <= src_node["rank"]["global"]:
                 kind = "return"
                 e["classification"]["is_return"] = True
+                # Loop cross-lane (MD17 3.2): return + cross_lane
+                if src_node.get("lane") != dst_node.get("lane"):
+                    e["classification"]["is_cross_lane"] = True
                 priority = 40
 
             # Join? (Target tem múltiplas entradas e não é return)
@@ -437,6 +631,35 @@ class CFFCompiler:
         
         max_branch_depth = max((n["rank"]["branch_depth"] for n in self.nodes.values()), default=0)
         stats["max_branch_depth"] = max_branch_depth
+
+        # MD18/MD19 — Estatísticas de ciclos e branches simultâneos
+        cycle_ids = set()
+        max_cycle_depth = 0
+        for n in self.nodes.values():
+            cc = n.get("cycle_context", {})
+            cid = cc.get("cycle_id")
+            if cid:
+                cycle_ids.add(cid)
+            max_cycle_depth = max(max_cycle_depth, n["rank"].get("cycle_depth", 0))
+        stats["cycles_total"] = len(cycle_ids)
+        stats["max_cycle_depth"] = max_cycle_depth
+
+        # B (MD19): máximo de branches simultâneas em um mesmo rank.global
+        branches_per_rank = {}
+        for e in self.edges.values():
+            if e.get("classification", {}).get("kind") == "branch":
+                src = self.nodes.get(e["from"])
+                if not src:
+                    continue
+                r = src["rank"].get("global", 0)
+                branches_per_rank[r] = branches_per_rank.get(r, 0) + 1
+        stats["max_branches_per_rank"] = max(branches_per_rank.values(), default=0)
+
+        # T (MD19): máximo de tracks configuradas por lane (antes de expansões em runtime)
+        stats["max_tracks_per_lane"] = max(
+            (lane.get("tracks_total", 0) for lane in self.lanes.values()),
+            default=0,
+        )
 
         # layout_context mínimo: direção do fluxo herdada do SFF
         self.cpff["layout_context"] = {

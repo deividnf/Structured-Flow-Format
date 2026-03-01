@@ -163,7 +163,11 @@
       "decision_nodes": 2,
       "branch_edges": 0,
       "joins": 1,
-      "max_branch_depth": 2
+      "max_branch_depth": 2,
+      "cycles_total": 0,
+      "max_cycle_depth": 0,
+      "max_branches_per_rank": 0,
+      "max_tracks_per_lane": 13
     },
     "graph": {
       "prev": {
@@ -224,7 +228,8 @@
     },
     "layout_context": {
       "direction": "TB"
-    }
+    },
+    "subflows": {}
   },
   "lanes": {
     "user": {
@@ -259,7 +264,8 @@
         "global": 1,
         "lane": 1,
         "depth": 0,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [],
@@ -282,6 +288,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "system"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -300,7 +312,8 @@
         "global": 2,
         "lane": 2,
         "depth": 1,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -327,6 +340,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "system"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -345,7 +364,8 @@
         "global": 3,
         "lane": 1,
         "depth": 2,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -372,6 +392,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "gateway"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -390,7 +416,8 @@
         "global": 4,
         "lane": 2,
         "depth": 3,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -419,6 +446,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "gateway"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -437,7 +470,8 @@
         "global": 5,
         "lane": 1,
         "depth": 4,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -464,6 +498,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": ""
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -482,7 +522,8 @@
         "global": 6,
         "lane": 2,
         "depth": 5,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -509,6 +550,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "system"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -527,7 +574,8 @@
         "global": 7,
         "lane": 3,
         "depth": 6,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -556,6 +604,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": "system"
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -574,7 +628,8 @@
         "global": 8,
         "lane": 4,
         "depth": 7,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -597,6 +652,12 @@
         "cross_lane_ahead": 0,
         "next_lane_target": ""
       },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
+      },
       "layout_hints": {
         "is_main_path": true,
         "routing_priority": 100,
@@ -615,7 +676,8 @@
         "global": 5,
         "lane": 3,
         "depth": 4,
-        "branch_depth": 0
+        "branch_depth": 0,
+        "cycle_depth": 0
       },
       "links": {
         "prev_nodes": [
@@ -639,6 +701,12 @@
         "future_decisions": 0,
         "cross_lane_ahead": 0,
         "next_lane_target": ""
+      },
+      "cycle_context": {
+        "cycle_id": "",
+        "cycle_level": 0,
+        "cycle_root": "",
+        "cycle_exit_nodes": []
       },
       "layout_hints": {
         "is_main_path": false,
@@ -842,7 +910,7 @@
       "branch": "false",
       "classification": {
         "kind": "return",
-        "is_cross_lane": false,
+        "is_cross_lane": true,
         "is_return": true,
         "is_join": false
       },

@@ -1,0 +1,292 @@
+{
+  "nodes": {
+    "start_checkout": {
+      "x": 150.0,
+      "y": 180,
+      "width": 40,
+      "height": 40
+    },
+    "fill_data": {
+      "x": 150.0,
+      "y": 360,
+      "width": 180,
+      "height": 50
+    },
+    "validate_data": {
+      "x": 450.0,
+      "y": 540,
+      "width": 180,
+      "height": 50
+    },
+    "data_valid": {
+      "x": 450.0,
+      "y": 720,
+      "width": 60,
+      "height": 60
+    },
+    "send_to_gateway": {
+      "x": 750.0,
+      "y": 900,
+      "width": 180,
+      "height": 50
+    },
+    "wait_gateway": {
+      "x": 750.0,
+      "y": 1080,
+      "width": 180,
+      "height": 50
+    },
+    "payment_approved": {
+      "x": 750.0,
+      "y": 1260,
+      "width": 60,
+      "height": 60
+    },
+    "end_success": {
+      "x": 450.0,
+      "y": 1440,
+      "width": 40,
+      "height": 40
+    },
+    "end_failure": {
+      "x": 450.0,
+      "y": 900,
+      "width": 40,
+      "height": 40
+    }
+  },
+  "edges": {
+    "e1": {
+      "points": [
+        [
+          150.0,
+          200.0
+        ],
+        [
+          150.0,
+          267.5
+        ],
+        [
+          150.0,
+          267.5
+        ],
+        [
+          150.0,
+          335.0
+        ]
+      ]
+    },
+    "e2": {
+      "points": [
+        [
+          150.0,
+          385.0
+        ],
+        [
+          150.0,
+          470.0
+        ],
+        [
+          450.0,
+          470.0
+        ],
+        [
+          450.0,
+          515.0
+        ]
+      ]
+    },
+    "e3": {
+      "points": [
+        [
+          450.0,
+          565.0
+        ],
+        [
+          450.0,
+          627.5
+        ],
+        [
+          450.0,
+          627.5
+        ],
+        [
+          450.0,
+          690.0
+        ]
+      ]
+    },
+    "e4": {
+      "points": [
+        [
+          450.0,
+          750.0
+        ],
+        [
+          450.0,
+          832.5
+        ],
+        [
+          750.0,
+          832.5
+        ],
+        [
+          750.0,
+          875.0
+        ]
+      ]
+    },
+    "e6": {
+      "points": [
+        [
+          750.0,
+          925.0
+        ],
+        [
+          750.0,
+          990.0
+        ],
+        [
+          750.0,
+          990.0
+        ],
+        [
+          750.0,
+          1055.0
+        ]
+      ]
+    },
+    "e7": {
+      "points": [
+        [
+          750.0,
+          1105.0
+        ],
+        [
+          750.0,
+          1187.5
+        ],
+        [
+          750.0,
+          1187.5
+        ],
+        [
+          750.0,
+          1230.0
+        ]
+      ]
+    },
+    "e8": {
+      "points": [
+        [
+          750.0,
+          1290.0
+        ],
+        [
+          750.0,
+          1335.0
+        ],
+        [
+          450.0,
+          1335.0
+        ],
+        [
+          450.0,
+          1420.0
+        ]
+      ]
+    },
+    "e9": {
+      "points": [
+        [
+          780.0,
+          1260
+        ],
+        [
+          780.0,
+          1200
+        ],
+        [
+          980,
+          1200
+        ],
+        [
+          980,
+          900
+        ],
+        [
+          470.0,
+          900
+        ]
+      ]
+    },
+    "e5": {
+      "points": [
+        [
+          450.0,
+          750.0
+        ],
+        [
+          450.0,
+          795.0
+        ],
+        [
+          450.0,
+          795.0
+        ],
+        [
+          450.0,
+          880.0
+        ]
+      ]
+    }
+  },
+  "lanes": {
+    "user": {
+      "x_start": 0,
+      "x_end": 300,
+      "tracks_total": 17,
+      "_center": 150.0
+    },
+    "system": {
+      "x_start": 300,
+      "x_end": 600,
+      "tracks_total": 17,
+      "_center": 450.0
+    },
+    "gateway": {
+      "x_start": 600,
+      "x_end": 900,
+      "tracks_total": 17,
+      "_center": 750.0
+    }
+  },
+  "cpff_stats": {
+    "max_depth": 8,
+    "nodes_total": 9,
+    "edges_total": 9,
+    "lanes_total": 3,
+    "decision_nodes": 2,
+    "branch_edges": 0,
+    "joins": 1,
+    "max_branch_depth": 2,
+    "cycles_total": 0,
+    "max_cycle_depth": 0,
+    "max_branches_per_rank": 0,
+    "max_tracks_per_lane": 13
+  },
+  "complexity": {
+    "N": 9,
+    "E": 9,
+    "L": 3,
+    "T_max": 17,
+    "D_max": 8,
+    "B_max": 0,
+    "cycles_total": 0,
+    "max_cycle_depth": 0,
+    "estimated_height": 1440,
+    "estimated_width": 1070.0,
+    "compiler_complexity": "O(N+E)",
+    "layout_complexity": "O(E log E)"
+  }
+}

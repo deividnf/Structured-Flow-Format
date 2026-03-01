@@ -1,0 +1,12 @@
+[
+  {
+    "attempt": 1,
+    "error": "ROUTING_IMPOSSIBLE: no horizontal track available (TB)",
+    "global_expansions_before": 0
+  },
+  {
+    "attempt": 2,
+    "error": "ROUTING_IMPOSSIBLE: no horizontal track available (TB)",
+    "global_expansions_before": 1
+  }
+]

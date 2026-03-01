@@ -54,7 +54,7 @@ def main():
                     print(f"- {err}")
                 sys.exit(1)
 
-            # Gera CFF formal conforme MD11/MD12
+            # Gera CFF formal conforme MD11/MD12/MD18/MD19
             cff_compiler = CFFCompiler(data)
             cff_data = cff_compiler.compile()
 
@@ -176,8 +176,48 @@ def main():
                 from core.layout.cff_engine import CFFEngine
                 with open(filepath, 'r', encoding='utf-8') as f:
                     cpff_data = json.load(f)
+                # Log resumo do CFF antes do layout (MD19)
+                stats = cpff_data.get("cpff", {}).get("stats", {})
+                logger.info(
+                    "[CFF-PIPELINE] cpff stats: N={nodes_total}, E={edges_total}, L={lanes_total}, "
+                    "decisions={decision_nodes}, branches={branch_edges}, joins={joins}, "
+                    "cycles={cycles_total}, max_cycle_depth={max_cycle_depth}, B_max={max_branches_per_rank}, "
+                    "T_max={max_tracks_per_lane}".format(**{
+                        **{
+                            "nodes_total": stats.get("nodes_total", 0),
+                            "edges_total": stats.get("edges_total", 0),
+                            "lanes_total": stats.get("lanes_total", 0),
+                            "decision_nodes": stats.get("decision_nodes", 0),
+                            "branch_edges": stats.get("branch_edges", 0),
+                            "joins": stats.get("joins", 0),
+                            "cycles_total": stats.get("cycles_total", 0),
+                            "max_cycle_depth": stats.get("max_cycle_depth", 0),
+                            "max_branches_per_rank": stats.get("max_branches_per_rank", 0),
+                            "max_tracks_per_lane": stats.get("max_tracks_per_lane", 0),
+                        }
+                    })
+                )
                 engine = CFFEngine(cpff_data)
                 layout = engine.generate()
+                # Layout_result contém bloco de complexidade MD19
+                complexity = layout.get("complexity", {})
+                if complexity:
+                    logger.info(
+                        "[CFF-PIPELINE] layout complexity: N={N}, E={E}, L={L}, D_max={D_max}, "
+                        "T_max={T_max}, B_max={B_max}, cycles={cycles_total}, max_cycle_depth={max_cycle_depth}, "
+                        "height≈{h}, width≈{w}".format(
+                            N=complexity.get("N", 0),
+                            E=complexity.get("E", 0),
+                            L=complexity.get("L", 0),
+                            D_max=complexity.get("D_max", 0),
+                            T_max=complexity.get("T_max", 0),
+                            B_max=complexity.get("B_max", 0),
+                            cycles_total=complexity.get("cycles_total", 0),
+                            max_cycle_depth=complexity.get("max_cycle_depth", 0),
+                            h=int(complexity.get("estimated_height", 0)),
+                            w=int(complexity.get("estimated_width", 0)),
+                        )
+                    )
                 data = cpff_data["sff_source"] # mock original data for exporters
                 compiled = {'validation': {'errors': [], 'warnings': []}} # mock for exporters
             else:
